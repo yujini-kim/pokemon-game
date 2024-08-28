@@ -2,7 +2,9 @@
   "name": "jinijini-online",
   "version": "1.0.0",
   "description": "",
-  "scripts": {},
+  "scripts": {
+  "build": "tailwindcss -i ./src/css/input.css -o ./src/css/output.css"
+  },
   "author": "",
   "license": "ISC"
 }
