@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-  "build": "tailwindcss -i ./src/css/input.css -o ./src/css/output.css"
+  "build": "tailwindcss -i ./src/css/input.css -o ./src/css/output.css",
+   "dev": "tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch"
   },
   "author": "",
   "license": "ISC"

@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
 <head>
@@ -12,193 +13,275 @@
   <div class="grid desktop:grid-cols-12 tablet:grid-cols-8 mobile:grid-cols-4">
 
     <!-- 상단 -->
-    <div class="text-white tracking-widest col-span-full
-    desktop:ml-[352px] desktop:mt-[64px]
-    mobile:text-base mobile:ml-4
-    ">
+    <div class="
+      mobile:col-span-4 mobile:mt-12 mobile:ml-4
+      tablet:col-span-8 tablet:ml-6
+      desktop:col-span-12 desktop:text-2xl desktop:ml-[350px]
+      text-white">
       Front-end Developer
     </div>
-    <div class="desktop:w-[1220px] desktop:h-[3px] desktop:ml-[352px]
-    tablet:w-[785px] tablet:h-[3px]
-    mobile:w-[328px] mobile:h-[3px]
-     bg-white mt-4 col-span-full"></div>
 
-    <!-- 유진포트폴리오 -->
-    <div class="text-[#A0E800] col-span-full flex items-center justify-center font-extrabold
-    desktop:text-9xl desktop:mt-[250px]
-    tablet:text-8xl tablet:mt-90
-    mobile:text-6xl mobile:[220px]">
-      YUJIN
-    </div>
-    <div class="col-span-full text-white flex items-center justify-center font-extrabold 
-    desktop:text-9xl">
-      PORTFOLIO
-    </div>
-  
-    <!-- 스크롤 -->
-    <div class="col-span-full flex items-center justify-center 
-    desktop:mt-[280px]">
-      <div class="flex flex-col items-center">
-        <img src="../img/arrow_down.png" alt="Arrow Down">
-        <div class="text-white">SCROLL</div>
+    <!--흰색 바-->
+    <div class="mobile:col-span-4 
+      tablet:col-span-8 
+      desktop:col-span-12 
+      mt-4
+      ">
+      <div class="
+        mobile:w-[calc(100%-32px)] mobile:h-[3px] mobile:mx-auto
+        desktop:w-[1220px]
+        bg-white">
       </div>
     </div>
 
-    <!-- 사진 및 연락처 -->
-    <div class="col-span-full flex items-center 
-    desktop:ml-[454px] desktop:mt-[180px] desktop:space-x-[50px]">
-  
-      <!-- 사진 -->
-      <div class="w-60 h-60 rounded-full overflow-hidden border-1 border-white">
-        <img src="../img/나.jpg" alt="Description" class="w-full h-full object-cover">
-      </div>
     
-      <!-- 이름 및 연락처 정보 -->
-      <div class="flex flex-col space-y-4 
-      desktop:ml-[48x]">
+    <!--유진포트폴리오-->
+    <div class="
+    mobile: mt-55
+    tablet: mt-128
+    desktop: mt-60
+    col-span-full flex justify-center items-center" >
+      <span class="mobile:col-span-4 mobile:text-6xl
+      tablet:col-span-8 tablet:text-8xl
+      desktop:col-span-12 desktop:text-9xl
+      text-[#A0E800] font-extrabold">YUJIN</span>
+    </div>
 
-        <!-- 이름 -->
-        <div class="text-white font-bold 
-        desktop:text-3xl">김유진</div>
-        
-        <!-- 연락처 정보와 p 태그를 포함하는 새로운 컨테이너 -->
-        <div class="flex flex-col space-y-8">
+    <div class="col-span-full flex justify-center items-center">
+      <span class="mobile:col-span-4 mobile:text-6xl
+      tablet:col-span-8 tablet:text-8xl
+      desktop:col-span-12 desktop:text-9xl
+      text-white font-extrabold">PORTFOLIO</span>
+    </div>
 
-          <!-- 연락처 정보 (세로로 배치됨) -->
-          <div class="flex flex-col space-y-2">
 
-            <!-- 이메일 정보 -->
-            <div class="flex items-center space-x-2">
-              <img src="../img/mail.png" class="w-4 h-4" alt="Mail">
-              <span class="text-[12px] text-white">kingyujin56@gmail.com</span>
-            </div>
-    
-            <!-- GitHub 정보 -->
-            <div class="flex items-center space-x-2">
-              <img src="../img/git.png" class="w-4 h-4" alt="GitHub">
-              <span class="text-[12px] text-white">yujini-kim</span>
-            </div>
-          </div>
-    
-          <!-- 추가된 p 태그 -->
-          <div class="text-white desktop:text-base">
-            안녕하세용 미래의 개발짱 김유진입니다<br>
-            영훈썜보다 잘하게 되는 그날까지
-          </div>
+    <!--화살표 이미지-->
+    <div class="
+    mobile: mt-60
+    tablet: mt-90
+    desktop: mt-70
+    col-span-full flex justify-center items-center">
+      <img class="w-8 h-8" 
+      src="../img/arrow_down.png">
+    </div>
+
+    <!--스크롤-->    
+    <div class="col-span-full flex justify-center items-center">
+      <span class="mobile:text-xs
+      text-white text-base">SCROLL</span>
+    </div>
+
+    <!--스크롤과 이름과 사진 간격--> 
+    <div class="mobile:h-40
+    tablet:h-44
+    desktop:h-44"></div>
+
+    <div class="col-span-full flex flex-col">
+
+    <!--이름과 사진-->
+    <div class="
+    mobile:ml-2 
+    tablet:ml-6
+    desktop:ml-96
+    col-span-full flex flex-row items-start">
+
+    <!--사진-->
+    <div class="
+    mobile:w-40 mobile:h-40 
+    tablet:w-60 tablet:h-60
+    desktop:w-60 desktop:h-60
+    rounded-full overflow-hidden">
+      <img class="w-full h-full object-cover" src="../img/나.jpg">
+    </div>
+
+    <!--이름과 연락처와 자기소개-->
+    <div class="flex flex-col space-y-6">
+    <!--이름과 연락처-->
+    <div class="flex flex-col justify-start space-y-4">
+    <!--이름-->
+    <div class="ml-6 mt-8 space-y-6">
+      <span class="
+      text-4xl text-white">김유진</span>
+    </div>
+
+    <!--이메일 깃-->
+    <div class="flex flex-col ml-8 space-y-1">
+        <!--이메일-->
+        <div class="flex items-center">
+          <img class="
+          w-4 h-4" src="../img/mail.png">
+          <span class="mobile: text-xs
+          tablet:text-sm
+          desktop:text-base
+          text-white ml-1">kingyujin56@gmail.com</span>
         </div>
-      </div>
-    </div>
 
-    <!-- 하단 구분선 -->
+        <!--깃-->
+        <div class="flex items-center">
+          <img class="
+          w-4 h-4" src="../img/git.png">
+          <span class="mobile: text-xs
+          tablet:text-sm
+          desktop:text-base
+          text-white ml-1">yujini-kim</span>
+        </div>
+        
+
+    </div>    <!--이메일 깃 끝-->
+  </div>   <!--이름과 연락처 끝-->
+
+    <!--자기소개-->
+        <div class="text-white ml-8">
+          <span>
+            안녕하세용 미래의 개발짱 김유진 입니다<br>
+            영훈썜보다 잘하게 되는 그날까지
+          </span>
+        </div>
+      </div> <!--이름과 연락처와 자기소개 끝-->
+  </div> <!--이름과 사진 끝-->
+</div>
+
+
+ <!--  구분선 -->
+ <div class="mobile:col-span-4 
+ tablet:col-span-8 
+ desktop:col-span-12 
+ mt-4
+ ">
+ <div class="
+   mobile:w-[calc(100%-32px)] mobile:h-[3px] mobile:mx-auto
+   desktop:w-[1220px]
+   bg-white">
+ </div>
+</div>
+
+
+   <!-- 아이콘과 텍스트 전체 -->
+      <div class="col-span-full flex
+      mobile:flex-col 
+      tablet:flex-col tablet:mt-16 tablet:ml-6
+      desktop:flex-row desktop:ml-96 desktop:space-x-96 mt-20">
+
+  <!-- 스킬어빌리티 아이콘과 텍스트 -->
+  <div class="
+    mobile: mb-60 mobile:ml-4">
+    <!-- 스킬어빌리티 -->
     <div>
-      <div class="desktop:w-[1020px] desktop:h-[3px] desktop:ml-[455px]
-     bg-white mt-6 col-span-full"></div>
-    </div>
-
-    <!-- 스킬 및 경험 -->
-    <div class="desktop:ml-[455px] desktop:mt-[56px] 
-    col-span-full">
-      <span class="text-[#A0E800] text-[40px] font-bold">SKILLS ABILITY</span>
-      <span class="text-[#A0E800] text-[40px] font-bold ml-[352px]">EXPERIENCE</span>
+      <span class="mobile:text-2xl 
+      tablet:text-4xl
+      desktop:text-[40px] text-[#A0E800] font-bold mt-4">SKILLS ABILITY</span>
     </div>
 
     <!-- 스킬 아이콘 -->
-    <div class="desktop:ml-[455px] desktop:mt-[40px] 
-    flex space-x-4 col-span-full">
-      <div class="rounded-lg overflow-hidden 
-      desktop:w-[60px] desktop:h-[60px]">
-        <img src="../img/js.jpg" alt="Description" class="w-full h-full object-cover">
+    <div class="flex 
+      mobile:space-x-2
+      tablet:space-x-2
+      desktop:flex-row desktop:space-x-4 desktop:mt-[40px] mt-4">
+      <div class="mobile:w-8 mobile:h-8 
+      tablet:w-12 tablet:h-12
+      desktop:w-[60px] desktop:h-[60px] rounded-lg overflow-hidden">
+        <img src="../img/js.jpg" alt="JavaScript" class="w-full h-full object-cover">
       </div>
-      <div class="rounded-lg overflow-hidden desktop:w-[60px] desktop:h-[60px]">
-        <img src="../img/HTML.jpg" alt="Description" class="w-full h-full object-cover">
+      <div class="mobile:w-8 mobile:h-8 
+      tablet:w-12 tablet:h-12
+      desktop:w-[60px] desktop:h-[60px] rounded-lg overflow-hidden">
+        <img src="../img/HTML.jpg" alt="HTML" class="w-full h-full object-cover">
       </div>
     </div>
+  </div><!-- 스킬어빌리티 아이콘과 텍스트 끝 -->
 
-    <!-- 프로젝트 섹션 -->
-    <div class="col-span-full flex items-center justify-center 
-    desktop:mt-[535px]">
-      <span class="text-white text-[56px] font-bold">PROJECT</span>
-    </div>
-
-    <!-- 프로젝트 목록 -->
-    <div class="col-span-full flex justify-center space-x-12 mt-20 mb-[90px]">
-
-
-      <div class="relative rounded-lg overflow-hidden bg-white desktop:w-[480px] desktop:h-[640px] group">
-        <!-- 피카츄 이미지와 텍스트 -->
-        <img src="../img/picachu.jpg" alt="PROJECT1" class="w-full h-full object-cover
-        ">
-      
-        <!-- 배경색 전환 -->
-        <div class="absolute inset-0 bg-transparent group-hover:bg-[#A0E800] transition duration-300"></div>
-        
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white font-bold">
-          <!-- 초기 텍스트 -->
-          <span class="text-[56px] group-hover:hidden">포켓몬 도감<br> 모으기 게임</span>
-          <!-- 마우스 오버 시 텍스트 -->
-          <span class="text-[56px] hidden group-hover:flex text-black ">간단한 설명</span>
-          <!-- 네모 상자 -->
-          <div class="desktop:text-base
-          mt-4 border border-white text-white w-[100px] h-[50px] 
-          flex justify-center items-center rounded-lg transition duration-300 bg-transparent
-           group-hover:text-black group-hover:border-black">
-            바로가기
-          </div>
-        </div>
+      <!-- 익스피어리언스 -->
+      <div class="mobile:ml-4 mb-40">
+        <span class="mobile:text-2xl mobile: mt-40 
+        tablet:text-4xl
+        desktop:text-[40px] text-[#A0E800] font-bold">EXPERIENCE</span>
       </div>
 
+</div><!-- 아이콘과 텍스트 전체 끝 -->
 
-      <div class="relative rounded-lg overflow-hidden bg-white desktop:w-[480px] desktop:h-[640px] group">
+
+<!-- 프로젝트 섹션 -->
+<div class="col-span-full flex items-center justify-center
+desktop:mt-[535px]">
+  <span class="
+  mobile: text-5xl
+  desktop:text-[56px]
+  text-white  font-bold">PROJECT</span>
+</div>
+
+<!-- 프로젝트 목록 -->
+<div class="col-span-full flex 
+mobile:space-x-2 mobile:justify-start
+ml-6
+tablet:justify-center
+desktop:items-center desktop:justify-center
+space-x-12 
+mt-20 mb-[90px] overflow-x-auto">
+
+  <div class="relative rounded-lg overflow-hidden bg-white 
+  mobile:min-w-[224px] mobile:h-80
+  desktop:w-[480px] desktop:h-[640px] group">
+    <!-- 피카츄 이미지와 텍스트 -->
+    <img src="../img/picachu.jpg" alt="PROJECT1" class="w-full h-full object-cover">
+  
+    <!-- 배경색 전환 -->
+    <div class="absolute inset-0 bg-transparent group-hover:bg-[#A0E800] transition duration-300"></div>
+    
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white font-bold space-y-12">
+      <!-- 초기 텍스트 -->
+      <span class="mobile:text-2xl desktop:text-[56px] group-hover:hidden">포켓몬 도감<br> 모으기 게임</span>
+      <!-- 마우스 오버 시 텍스트 -->
+      <span class="mobile:text-2xl desktop:text-[56px] hidden group-hover:flex text-black">간단한 설명</span>
+      <!-- 네모 상자 -->
+      <a href="./뽑기.html" class="desktop:text-base mt-4 border border-white text-white w-[100px] h-[50px] flex justify-center items-center rounded-lg transition duration-300 bg-transparent group-hover:text-black group-hover:border-black">
+        바로가기
+      </a>
+    </div>
+  </div>
+
+  <div class="relative rounded-lg overflow-hidden bg-white 
+  mobile:min-w-[224px] mobile:h-80
+  desktop:w-[480px] desktop:h-[640px] group">
     <!-- 준비중 이미지와 텍스트 -->
-      <div class="rounded-lg overflow-hidden bg-white
-      desktop:w-[480px] desktop:h-[640px]">
-      <img src="../img/preparing.jpg" alt="PROJECT1" class="w-full h-full object-cover">
+    <img src="../img/preparing.jpg" alt="PROJECT2" class="w-full h-full object-cover">
+  
+    <!-- 배경색 전환 -->
+    <div class="absolute inset-0 bg-transparent group-hover:bg-[#A0E800] transition duration-300"></div>
+  
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white font-bold space-y-12">
+      <!-- 초기 텍스트 -->
+      <span class="mobile:text-2xl desktop:text-[56px] group-hover:hidden">준비중</span>
+      <!-- 마우스 오버 시 텍스트 -->
+      <span class="mobile:text-2xl desktop:text-[56px] hidden group-hover:flex text-black">간단한 설명</span>
+      <!-- 네모 상자 -->
+      <div class="desktop:text-base mt-4 border border-white text-white w-[100px] h-[50px] flex justify-center items-center rounded-lg transition duration-300 bg-transparent group-hover:text-black group-hover:border-black">
+        바로가기
       </div>
-      <!-- 배경색 전환 -->
-      <div class="absolute inset-0 bg-transparent group-hover:bg-[#A0E800] transition duration-300"></div>
-
-      <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white font-bold">
-           <!-- 초기 텍스트 -->
-           <span class="text-[56px] group-hover:hidden">준비중</span>
-             <!-- 마우스 오버 시 텍스트 -->
-          <span class="text-[56px] hidden group-hover:flex text-black ">간단한 설명</span>
-          <!-- 네모 상자 -->
-          <div class="desktop:text-base
-          mt-4 border border-white text-white w-[100px] h-[50px] 
-          flex justify-center items-center rounded-lg transition duration-300 bg-transparent
-           group-hover:text-black group-hover:border-black">
-            바로가기
-          </div>
-        </div>
     </div>
+  </div>
 
-    <div class="relative rounded-lg overflow-hidden bg-white desktop:w-[480px] desktop:h-[640px] group">
-      <!-- 준비중 이미지와 텍스트 -->
-        <div class="rounded-lg overflow-hidden bg-white
-        desktop:w-[480px] desktop:h-[640px]">
-        <img src="../img/preparing.jpg" alt="PROJECT1" class="w-full h-full object-cover">
-        </div>
-        <!-- 배경색 전환 -->
-        <div class="absolute inset-0 bg-transparent group-hover:bg-[#A0E800] transition duration-300"></div>
+  <div class="relative rounded-lg overflow-hidden bg-white 
+  mobile:min-w-[224px] mobile:h-80
+  desktop:w-[480px] desktop:h-[640px] group">
+    <!-- 준비중 이미지와 텍스트 -->
+    <img src="../img/preparing.jpg" alt="PROJECT3" class="w-full h-full object-cover">
   
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white font-bold">
-             <!-- 초기 텍스트 -->
-             <span class="text-[56px] group-hover:hidden">준비중</span>
-               <!-- 마우스 오버 시 텍스트 -->
-            <span class="text-[56px] hidden group-hover:flex text-black ">간단한 설명</span>
-            <!-- 네모 상자 -->
-            <div class="desktop:text-base
-            mt-4 border border-white text-white w-[100px] h-[50px] 
-            flex justify-center items-center rounded-lg transition duration-300 bg-transparent
-             group-hover:text-black group-hover:border-black">
-              바로가기
-            </div>
-          </div>
+    <!-- 배경색 전환 -->
+    <div class="absolute inset-0 bg-transparent group-hover:bg-[#A0E800] transition duration-300"></div>
+  
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white font-bold space-y-12">
+      <!-- 초기 텍스트 -->
+      <span class="mobile:text-2xl desktop:text-[56px] group-hover:hidden">준비중</span>
+      <!-- 마우스 오버 시 텍스트 -->
+      <span class="mobile:text-2xl desktop:text-[56px] hidden group-hover:flex text-black">간단한 설명</span>
+      <!-- 네모 상자 -->
+      <div class="desktop:text-base mt-4 border border-white text-white w-[100px] h-[50px] flex justify-center items-center rounded-lg transition duration-300 bg-transparent group-hover:text-black group-hover:border-black">
+        바로가기
       </div>
-  
-  
+    </div>
+  </div>
 
-
+</div>
   </div> <!-- Grid container 끝 -->
 </body>
 

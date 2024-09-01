@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/output.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 상단바 -->
+    <div class="flex justify-between mt-10 ml-4
+        tablet:justify-between tablet:mt-16 tablet:ml-8
+        desktop:space-x-[800px] desktop:mt-24 desktop:ml-8">
+
+        <a href="./index.html" class="
+            h-8 w-8
+            tablet:w-20 tablet:h-12
+            desktop:w-20 desktop:h-12 
+            bg-[#00FFF2] rounded-3xl flex justify-center items-center">
+            <img class="
+                w-6 h-6
+                tablet:w-12 tablet:h-12
+                desktop:w-12 desktop:h-12" 
+                src="../img/home.png" alt="Home">
+        </a>
+
+        <div class="flex space-x-2 tablet:space-x-6">
+            <a href="./뽑기.html" class="
+                h-8 w-14
+                tablet:w-20 tablet:h-12
+                desktop:w-20 desktop:h-12 desktop:px-2
+                bg-[#00FFF2] rounded-3xl flex justify-center items-center space-x-1">
+                <img class="
+                    w-4 h-4
+                    tablet:w-6 tablet:h-6
+                    desktop:w-6 desktop:h-6" 
+                    src="../img/ball.png" alt="Ball">
+                <span class="
+                    text-sm
+                    tablet:text-lg desktop:text-xl
+                    whitespace-nowrap flex-shrink-0 font-bold">뽑기</span>
+            </a>
+
+            <a href="./도감.html" class="
+                h-8 w-14
+                tablet:w-20 tablet:h-12
+                desktop:w-20 desktop:h-12 desktop:px-2
+                bg-[#00FFF2] rounded-3xl flex justify-center items-center space-x-1">
+                <img class="
+                    w-4 h-4
+                    tablet:w-6 tablet:h-6
+                    desktop:w-6 desktop:h-6" 
+                    src="../img/book.png" alt="Book">
+                <span class="
+                    text-sm
+                    tablet:text-lg desktop:text-xl
+                    whitespace-nowrap flex-shrink-0 font-bold">도감</span>
+            </a>
+
+            <div class="
+                h-8 w-14
+                tablet:w-20 tablet:h-12
+                desktop:w-20 desktop:h-12 desktop:px-2
+                bg-[#00FFF2] rounded-3xl flex justify-center items-center space-x-1">
+                <img class="
+                    w-4 h-4
+                    tablet:w-6 tablet:h-6
+                    desktop:w-6 desktop:h-6" 
+                    src="../img/coin.png" alt="Coin">
+                <span class="
+                    text-sm
+                    tablet:text-lg desktop:text-xl
+                    whitespace-nowrap flex-shrink-0 font-bold">100</span>
+            </div>
+        </div>
+    </div><!--상단바 끝-->
+
+    <div id="countdown" class="flex justify-center items-center mt-4 text-2xl font-bold">
+        10초 남았다!!!
+    </div>
+
+    <div class="desktop:flex desktop:justify-center desktop:items-center desktop:space-x-40">
+        <div class="relative flex justify-center items-center mt-4">
+            <!-- 알 -->
+            <div id="알" class="relative w-[200px] h-80 z-10">
+                <img id="알이미지" src="../img/알1.png" class="absolute top-10 left-0 w-full h-full">
+                <img src="../img/망치.png" class="absolute top-0 left-32 w-4/5 h-1/2">
+            </div>
+    
+            <!-- 말풍선 -->
+            <div id="말풍선" class="absolute w-[310px] h-[320px] bg-[#FFDD00] rounded-xl p-4 z-20 flex justify-center items-center text-center hidden desktop:right-0">
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-t-[20px] border-t-[#FFDD00] desktop:left-auto desktop:right-4 desktop:translate-x-0"></div>
+                <p class="text-black font-bold">
+                    30초 안에 망치로 알을 후드려 패면 포켓몬이 나온다 !!!!
+                    30초 안에 못 후드려 패면 포켓몬은 없다 !!!
+                    그리고 돈도 없다 !!!
+                    망치로 후드려 패서 나온 포켓몬을 우리에게 주면 포켓코인을 주겠다 !!!
+                    피카츄를 제일 값비싸게 쳐주도록 하지 !!
+                </p>
+            </div>
+        </div>
+    
+        <div class="flex flex-col justify-center">
+            <!-- 로켓단 이미지 -->
+            <div class="flex justify-center mt-8 desktop:mb-1"> 
+                <div id="로켓단" class="w-40 h-60 desktop:w-96 desktop:h-[604px]">
+                    <img src="../img/로켓단.png">
+                </div>
+            </div>
+            
+            <!-- 게임설명 버튼 -->
+            <div id="게임설명" class="flex justify-center items-center mt-4 cursor-pointer">
+                <div class="w-20 h-9 bg-[#00FFF2] rounded-3xl flex justify-center items-center desktop:w-32 desktop:h-11">
+                    <span class="font-bold text-sm
+                    desktop:text-2xl">게임설명</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+         let clickCount = 0;
+         let timeLeft = 10;
+
+        document.getElementById('알').addEventListener('click', function() {
+            clickCount++;
+            if (clickCount === 10) {
+                document.getElementById('알이미지').src = '../img/알2.png';
+            }
+            else if(clickCount === 20){
+                document.getElementById('알이미지').src = '../img/알3.png';
+            } else if(clickCount === 30){
+                document.getElementById('알이미지').src = '../img/알4.png';
+            }
+        });
+
+        document.getElementById('게임설명').addEventListener('click', function() {
+            var balloon = document.getElementById('말풍선');
+            balloon.classList.toggle('hidden');
+        });
+
+        const countdownElement = document.getElementById('countdown');
+        const countdownInterval = setInterval(() => {
+            timeLeft--;
+            countdownElement.textContent = `${timeLeft}초 남았다!!!`;
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                countdownElement.textContent = '끝이다!!';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
