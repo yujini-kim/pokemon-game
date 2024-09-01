@@ -20,7 +20,7 @@
                 w-6 h-6
                 tablet:w-12 tablet:h-12
                 desktop:w-12 desktop:h-12" 
-                src="../img/home.png" alt="Home">
+                src="./img/home.png" alt="Home">
         </a>
 
         <div class="flex space-x-2 tablet:space-x-6">
@@ -33,7 +33,7 @@
                     w-4 h-4
                     tablet:w-6 tablet:h-6
                     desktop:w-6 desktop:h-6" 
-                    src="../img/ball.png" alt="Ball">
+                    src="./img/ball.png" alt="Ball">
                 <span class="
                     text-sm
                     tablet:text-lg desktop:text-xl
@@ -49,7 +49,7 @@
                     w-4 h-4
                     tablet:w-6 tablet:h-6
                     desktop:w-6 desktop:h-6" 
-                    src="../img/book.png" alt="Book">
+                    src="./img/book.png" alt="Book">
                 <span class="
                     text-sm
                     tablet:text-lg desktop:text-xl
@@ -65,7 +65,7 @@
                     w-4 h-4
                     tablet:w-6 tablet:h-6
                     desktop:w-6 desktop:h-6" 
-                    src="../img/coin.png" alt="Coin">
+                    src="./img/coin.png" alt="Coin">
                 <span class="
                     text-sm
                     tablet:text-lg desktop:text-xl
@@ -82,8 +82,8 @@
         <div class="relative flex justify-center items-center mt-4">
             <!-- 알 -->
             <div id="알" class="relative w-[200px] h-80 z-10">
-                <img id="알이미지" src="../img/알1.png" class="absolute top-10 left-0 w-full h-full">
-                <img src="../img/망치.png" class="absolute top-0 left-32 w-4/5 h-1/2">
+                <img id="알이미지" src="./img/알1.png" class="absolute top-10 left-0 w-full h-full">
+                <img src="./img/망치.png" class="absolute top-0 left-32 w-4/5 h-1/2">
             </div>
     
             <!-- 말풍선 -->
@@ -103,7 +103,7 @@
             <!-- 로켓단 이미지 -->
             <div class="flex justify-center mt-8 desktop:mb-1"> 
                 <div id="로켓단" class="w-40 h-60 desktop:w-96 desktop:h-[604px]">
-                    <img src="../img/로켓단.png">
+                    <img src="./img/로켓단.png">
                 </div>
             </div>
             
@@ -124,12 +124,12 @@
         document.getElementById('알').addEventListener('click', function() {
             clickCount++;
             if (clickCount === 10) {
-                document.getElementById('알이미지').src = '../img/알2.png';
+                document.getElementById('알이미지').src = './img/알2.png';
             }
             else if(clickCount === 20){
-                document.getElementById('알이미지').src = '../img/알3.png';
+                document.getElementById('알이미지').src = './img/알3.png';
             } else if(clickCount === 30){
-                document.getElementById('알이미지').src = '../img/알4.png';
+                document.getElementById('알이미지').src = './img/알4.png';
             }
         });
 
