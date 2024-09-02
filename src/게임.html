@@ -6,73 +6,47 @@
     <link href="./css/output.css" rel="stylesheet">
 </head>
 <body>
-    <!-- 상단바 -->
-    <div class="flex justify-between mt-10 ml-4
-        tablet:justify-between tablet:mt-16 tablet:ml-8
-        desktop:space-x-[800px] desktop:mt-24 desktop:ml-8">
+<!--상단바-->
+<div class="flex justify-between mt-10 ml-4
+    tablet:justify-between tablet:mt-16 tablet:ml-8
+    desktop:space-x-[800px] desktop:mt-24 desktop:ml-8">
 
-        <a href="./index.html" class="
-            h-8 w-8
-            tablet:w-20 tablet:h-12
-            desktop:w-20 desktop:h-12 
-            bg-[#00FFF2] rounded-3xl flex justify-center items-center">
-            <img class="
-                w-6 h-6
-                tablet:w-12 tablet:h-12
-                desktop:w-12 desktop:h-12" 
-                src="./img/home.png" alt="Home">
+    <a href="./index.html" class="
+        h-8 w-8
+        tablet:w-20 tablet:h-12
+        desktop:w-20 desktop:h-12 
+        bg-[#00FFF2] rounded-3xl CenteredFlex">
+        <img class="
+            w-6 h-6
+            tablet:w-12 tablet:h-12
+            desktop:w-12 desktop:h-12" 
+            src="./img/home.png" alt="Home">
+    </a>
+
+    <div class="flex 
+        space-x-2
+        tablet:space-x-6"> <!--옆에 세개-->
+        <a href="./뽑기.html" class="NavBar">
+            <img class="NavBarImg" 
+                src="./img/ball.png" alt="Ball">
+            <span class="NavBarText">뽑기</span>
         </a>
 
-        <div class="flex space-x-2 tablet:space-x-6">
-            <a href="./뽑기.html" class="
-                h-8 w-14
-                tablet:w-20 tablet:h-12
-                desktop:w-20 desktop:h-12 desktop:px-2
-                bg-[#00FFF2] rounded-3xl flex justify-center items-center space-x-1">
-                <img class="
-                    w-4 h-4
-                    tablet:w-6 tablet:h-6
-                    desktop:w-6 desktop:h-6" 
-                    src="./img/ball.png" alt="Ball">
-                <span class="
-                    text-sm
-                    tablet:text-lg desktop:text-xl
-                    whitespace-nowrap flex-shrink-0 font-bold">뽑기</span>
-            </a>
+        <a href="./도감.html" class="NavBar">
+            <img class="NavBarImg" 
+                src="./img/book.png" alt="Book">
+            <span class="NavBarText">도감</span>
+         </a>
 
-            <a href="./도감.html" class="
-                h-8 w-14
-                tablet:w-20 tablet:h-12
-                desktop:w-20 desktop:h-12 desktop:px-2
-                bg-[#00FFF2] rounded-3xl flex justify-center items-center space-x-1">
-                <img class="
-                    w-4 h-4
-                    tablet:w-6 tablet:h-6
-                    desktop:w-6 desktop:h-6" 
-                    src="./img/book.png" alt="Book">
-                <span class="
-                    text-sm
-                    tablet:text-lg desktop:text-xl
-                    whitespace-nowrap flex-shrink-0 font-bold">도감</span>
-            </a>
-
-            <div class="
-                h-8 w-14
-                tablet:w-20 tablet:h-12
-                desktop:w-20 desktop:h-12 desktop:px-2
-                bg-[#00FFF2] rounded-3xl flex justify-center items-center space-x-1">
-                <img class="
-                    w-4 h-4
-                    tablet:w-6 tablet:h-6
-                    desktop:w-6 desktop:h-6" 
-                    src="./img/coin.png" alt="Coin">
-                <span class="
-                    text-sm
-                    tablet:text-lg desktop:text-xl
-                    whitespace-nowrap flex-shrink-0 font-bold">100</span>
-            </div>
+        <div class="NavBar">
+            <img class="NavBarImg" 
+                src="./img/coin.png" alt="Coin">
+            <span class="NavBarText">100</span>
         </div>
-    </div><!--상단바 끝-->
+    </div><!--옆에 세개 끝-->    
+
+</div><!--상단바 끝-->
+
 
     <div id="countdown" class="flex justify-center items-center mt-4 text-2xl font-bold">
         10초 남았다!!!

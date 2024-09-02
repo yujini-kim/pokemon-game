@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<!-- 상단바 -->
+<!--상단바-->
 <div class="flex justify-between mt-10 ml-4
     tablet:justify-between tablet:mt-16 tablet:ml-8
     desktop:space-x-[800px] desktop:mt-24 desktop:ml-8">
@@ -16,7 +16,7 @@
         h-8 w-8
         tablet:w-20 tablet:h-12
         desktop:w-20 desktop:h-12 
-        bg-[#00FFF2] rounded-3xl flex justify-center items-center">
+        bg-[#00FFF2] rounded-3xl CenteredFlex">
         <img class="
             w-6 h-6
             tablet:w-12 tablet:h-12
@@ -24,56 +24,29 @@
             src="./img/home.png" alt="Home">
     </a>
 
-    <div class="flex space-x-2 tablet:space-x-6">
-        <a href="./뽑기.html" class="
-            h-8 w-14
-            tablet:w-20 tablet:h-12
-            desktop:w-20 desktop:h-12 desktop:px-2
-            bg-[#00FFF2] rounded-3xl flex justify-center items-center space-x-1">
-            <img class="
-                w-4 h-4
-                tablet:w-6 tablet:h-6
-                desktop:w-6 desktop:h-6" 
+    <div class="flex 
+        space-x-2
+        tablet:space-x-6"> <!--옆에 세개-->
+        <a href="./뽑기.html" class="NavBar">
+            <img class="NavBarImg" 
                 src="./img/ball.png" alt="Ball">
-            <span class="
-                text-sm
-                tablet:text-lg desktop:text-xl
-                whitespace-nowrap flex-shrink-0 font-bold">뽑기</span>
+            <span class="NavBarText">뽑기</span>
         </a>
 
-        <a href="./도감.html" class="
-            h-8 w-14
-            tablet:w-20 tablet:h-12
-            desktop:w-20 desktop:h-12 desktop:px-2
-            bg-[#00FFF2] rounded-3xl flex justify-center items-center space-x-1">
-            <img class="
-                w-4 h-4
-                tablet:w-6 tablet:h-6
-                desktop:w-6 desktop:h-6" 
+        <a href="./도감.html" class="NavBar">
+            <img class="NavBarImg" 
                 src="./img/book.png" alt="Book">
-            <span class="
-                text-sm
-                tablet:text-lg desktop:text-xl
-                whitespace-nowrap flex-shrink-0 font-bold">도감</span>
-        </a>
+            <span class="NavBarText">도감</span>
+         </a>
 
-        <div class="
-            h-8 w-14
-            tablet:w-20 tablet:h-12
-            desktop:w-20 desktop:h-12 desktop:px-2
-            bg-[#00FFF2] rounded-3xl flex justify-center items-center space-x-1">
-            <img class="
-                w-4 h-4
-                tablet:w-6 tablet:h-6
-                desktop:w-6 desktop:h-6" 
+        <div class="NavBar">
+            <img class="NavBarImg" 
                 src="./img/coin.png" alt="Coin">
-            <span class="
-                text-sm
-                tablet:text-lg desktop:text-xl
-                whitespace-nowrap flex-shrink-0 font-bold">100</span>
+            <span class="NavBarText">100</span>
         </div>
-    </div>
-</div>
+    </div><!--옆에 세개 끝-->    
+
+</div><!--상단바 끝-->
 
 <div class="flex justify-center mt-12">
     <!-- 큰박스 -->
@@ -85,32 +58,22 @@
             <div class="flex flex-col space-y-2 
             tablet:space-y-4
             desktop:space-y-6 desktop:mr-4"> <!--연한노랑 왼쪽 박스-->
-                <div class="flex justify-center items-center w-20 h-5 bg-[#FFEE80] rounded-3xl
-                tablet:w-40 tablet:h-10
-                desktop:w-40 desktop:h-10">
-                    <span class="text-[8px] font-bold
-                    tablet:text-base
-                    desktop:text-base">이름/번호검색</span>
+                <div class="lightYellowBox">
+                    <span class="lightYellowBoxText">이름/번호검색</span>
                 </div> 
-                <div class="flex justify-center items-center w-20 h-5 bg-[#FFEE80] rounded-3xl
-                tablet:w-40 tablet:h-10
-                desktop:w-40 desktop:h-10">
-                    <span class="text-[8px] font-bold
-                    tablet:text-base
-                    desktop:text-base ">정렬기준</span>
+                <div class="lightYellowBox">
+                    <span class="lightYellowBoxText">정렬기준</span>
                 </div> 
-                <div class="flex justify-center items-center w-20 h-5 bg-[#FFEE80] rounded-3xl
-                desktop:w-40 desktop:h-10
-                tablet:w-40 tablet:h-10">
-                    <span class="text-[8px] font-bold
-                    tablet:text-base
-                    desktop:text-base">타입</span>
+                <div class="lightYellowBox">
+                    <span class="lightYellowBoxText">타입</span>
                 </div> 
             </div><!--연한노랑 왼쪽 박스 끝-->
 
             <div class="flex flex-col space-y-2 
             tablet:space-y-4
-            desktop:space-y-6"> <!--오른쪽 흰박스 묶음-->
+            desktop:space-y-6">
+            
+            <!--오른쪽 흰박스 묶음-->
                 <div class="bg-white w-60 h-5 rounded-3xl
                 tablet:w-[520px] tablet:h-10
                 desktop:w-[836px] desktop:h-10"></div>
@@ -119,120 +82,95 @@
                 tablet:w-[520px] tablet:h-10
                 desktop:w-[836px] desktop:h-10"></div>
 
-                <div class=""> <!--타입 전체 박스-->
-                    <div class="flex flex-col mt-1 space-y-2
-                    tablet:flex-row tablet:space-y-0 tablet:space-x-2
-                    desktop:flex-row desktop:space-y-0 desktop:space-x-2 desktop:mt-0">
-                    <div class="space-y-1
+                
+                <div class="flex flex-col mt-1 space-y-2
+                tablet:flex-row tablet:space-y-0 tablet:space-x-2
+                desktop:flex-row desktop:space-y-0 desktop:space-x-2 desktop:mt-0">
+                    <!--☆--><div class="space-y-1
                     tablet:flex flex-col tablet:space-y-2
                     desktop:flex-row desktop:space-y-0 desktop:space-x-2">
-                        <div class="space-y-1
-                        tablet:flex tablet:space-y-0 flex-row tablet:space-x-2
-                        desktop:space-y-0">
-                        <div class="flex space-x-2"> <!--특성 전체 박스 첫째줄-->
-                            <div class="flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl bg-white
-                            tablet:w-[38px] tablet:h-[38px] tablet:rounded-2xl tablet:flex-col tablet:space-x-0
-                            desktop:w-[38px] desktop:h-[38px] desktop:rounded-2xl desktop:flex-col desktop:space-x-0">
-                                <img class="w-2 y-2
-                                tablet:w-4 tablet:h-4
-                                desktop:w-4 desktop:h-4" 
-                                src = "./img/노말.png">
-                                <span class="text-[8px]">노말</span>
-                            </div>
-                            <div class="flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl bg-white
-                            tablet:w-[38px] tablet:h-[38px] tablet:rounded-2xl tablet:flex-col tablet:space-x-0
-                            desktop:w-[38px] desktop:h-[38px] desktop:rounded-2xl desktop:flex-col desktop:space-x-0">
-                                <img class="w-2 y-2
-                                tablet:w-4 tablet:h-4
-                                desktop:w-4 desktop:h-4" 
-                                src = "./img/불.png">
-                                <span class="text-[8px]">불</span>
-                            </div>
-                            <div class="flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl bg-white
-                            tablet:w-[38px] tablet:h-[38px] tablet:rounded-2xl tablet:flex-col tablet:space-x-0
-                            desktop:w-[38px] desktop:h-[38px] desktop:rounded-2xl desktop:flex-col desktop:space-x-0">
-                                <img class="w-2 y-2
-                                tablet:w-4 tablet:h-4
-                                desktop:w-4 desktop:h-4" 
-                                src = "./img/물.png">
-                                <span class="text-[8px]">물</span>
-                            </div>
-                            <div class="flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl bg-white
-                            tablet:w-[38px] tablet:h-[38px] tablet:rounded-2xl tablet:flex-col tablet:space-x-0
-                            desktop:w-[38px] desktop:h-[38px] desktop:rounded-2xl desktop:flex-col desktop:space-x-0">
-                                <img class="w-2 y-2
-                                tablet:w-4 tablet:h-4
-                                desktop:w-4 desktop:h-4" 
-                                src = "./img/풀.png">
-                                <span class="text-[8px]">풀</span>
-                            </div>
-                            <div class="flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl bg-white
-                            tablet:w-[38px] tablet:h-[38px] tablet:rounded-2xl tablet:flex-col tablet:space-x-0
-                            desktop:w-[38px] desktop:h-[38px] desktop:rounded-2xl desktop:flex-col desktop:space-x-0">
-                                <img class="w-2 y-2 
-                                tablet:w-4 tablet:h-4
-                                desktop:w-4 desktop:h-4" 
-                                src = "./img/번개.png">
-                                <span class="text-[8px]">전기</span>
-                            </div>
-                        </div><!--특성 전체 박스 첫째줄 끝-->
+                        <!--★--><div class="whiteBox2">
+                            <div class="flex space-x-2"> <!--특성 전체 박스 첫째줄-->
+                                <div class="whiteBox">
+                                    <img class="w-2 y-2
+                                    tablet:w-4 tablet:h-4
+                                    desktop:w-4 desktop:h-4" 
+                                    src = "./img/노말.png">
+                                    <span class="text-[8px]">노말</span>
+                                </div>
+                                <div class="whiteBox">
+                                    <img class="w-2 y-2
+                                    tablet:w-4 tablet:h-4
+                                    desktop:w-4 desktop:h-4" 
+                                    src = "./img/불.png">
+                                    <span class="text-[8px]">불</span>
+                                </div>
+                                <div class="whiteBox">
+                                    <img class="w-2 y-2
+                                    tablet:w-4 tablet:h-4
+                                    desktop:w-4 desktop:h-4" 
+                                    src = "./img/물.png">
+                                    <span class="text-[8px]">물</span>
+                                </div>
+                                <div class="whiteBox">
+                                    <img class="w-2 y-2
+                                    tablet:w-4 tablet:h-4
+                                    desktop:w-4 desktop:h-4" 
+                                    src = "./img/풀.png">
+                                    <span class="text-[8px]">풀</span>
+                                </div>
+                                <div class="whiteBox">
+                                    <img class="w-2 y-2 
+                                    tablet:w-4 tablet:h-4
+                                    desktop:w-4 desktop:h-4" 
+                                    src = "./img/번개.png">
+                                    <span class="text-[8px]">전기</span>
+                                </div>
+                            </div><!--특성 전체 박스 첫째줄 끝-->
 
-                        <div class="flex space-x-2"><!--특성 전체 박스 2줄-->
-                            <div class="flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl bg-white
-                            tablet:w-[38px] tablet:h-[38px] tablet:rounded-2xl tablet:flex-col tablet:space-x-0
-                            desktop:w-[38px] desktop:h-[38px] desktop:rounded-2xl desktop:flex-col desktop:space-x-0">
-                                <img class="w-2 y-2
-                                tablet:w-4 tablet:h-4
-                                desktop:w-4 desktop:h-4" 
-                                src = "./img/얼음.png">
-                                <span class="text-[8px]">얼음</span>
-                            </div>
-                            <div class="flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl bg-white
-                            tablet:w-[38px] tablet:h-[38px] tablet:rounded-2xl tablet:flex-col tablet:space-x-0
-                            desktop:w-[38px] desktop:h-[38px] desktop:rounded-2xl desktop:flex-col desktop:space-x-0">
-                                <img class="w-2 y-2
-                                tablet:w-4 tablet:h-4
-                                desktop:w-4 desktop:h-4" 
-                                src = "./img/권투.png">
-                                <span class="text-[8px]">격투</span>
-                            </div>
-                            <div class="flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl bg-white
-                            tablet:w-[38px] tablet:h-[38px] tablet:rounded-2xl tablet:flex-col tablet:space-x-0
-                            desktop:w-[38px] desktop:h-[38px] desktop:rounded-2xl desktop:flex-col desktop:space-x-0">
-                                <img class="w-2 y-2
-                                tablet:w-4 tablet:h-4
-                                desktop:w-4 desktop:h-4" 
-                                src = "./img/독.png">
-                                <span class="text-[8px]">독</span>
-                            </div>
-                            <div class="flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl bg-white
-                            tablet:w-[38px] tablet:h-[38px] tablet:rounded-2xl tablet:flex-col tablet:space-x-0
-                            desktop:w-[38px] desktop:h-[38px] desktop:rounded-2xl desktop:flex-col desktop:space-x-0">
-                                <img class="w-2 y-2
-                                tablet:w-4 tablet:h-4
-                                desktop:w-4 desktop:h-4" 
-                                src = "./img/땅.png">
-                                <span class="text-[8px]">땅</span>
-                            </div>
-                            <div class="flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl bg-white
-                            tablet:w-[38px] tablet:h-[38px] tablet:rounded-2xl tablet:flex-col tablet:space-x-0
-                            desktop:w-[38px] desktop:h-[38px] desktop:rounded-2xl desktop:flex-col desktop:space-x-0">
-                                <img class="w-2 y-2
-                                tablet:w-4 tablet:h-4
-                                desktop:w-4 desktop:h-4" 
-                                src = "./img/비행.png">
-                                <span class="text-[8px]">비행</span>
-                            </div>
-                        </div><!--특성 전체 박스 2줄 끝-->
-                        </div>
-                        <div class="space-y-1
-                        tablet:flex flex-row tablet:space-x-2 tablet:space-y-0 
-                        desktop:space-y-0">
+                            <div class="flex space-x-2"><!--특성 전체 박스 2줄-->
+                                <div class="whiteBox">
+                                    <img class="w-2 y-2
+                                    tablet:w-4 tablet:h-4
+                                    desktop:w-4 desktop:h-4" 
+                                    src = "./img/얼음.png">
+                                    <span class="text-[8px]">얼음</span>
+                                </div>
+                                <div class="whiteBox">
+                                    <img class="w-2 y-2
+                                    tablet:w-4 tablet:h-4
+                                    desktop:w-4 desktop:h-4" 
+                                    src = "./img/권투.png">
+                                    <span class="text-[8px]">격투</span>
+                                </div>
+                                <div class="whiteBox">
+                                    <img class="w-2 y-2
+                                    tablet:w-4 tablet:h-4
+                                    desktop:w-4 desktop:h-4" 
+                                    src = "./img/독.png">
+                                    <span class="text-[8px]">독</span>
+                                </div>
+                                <div class="whiteBox">
+                                    <img class="w-2 y-2
+                                    tablet:w-4 tablet:h-4
+                                    desktop:w-4 desktop:h-4" 
+                                    src = "./img/땅.png">
+                                    <span class="text-[8px]">땅</span>
+                                </div>
+                                <div class="whiteBox">
+                                    <img class="w-2 y-2
+                                    tablet:w-4 tablet:h-4
+                                    desktop:w-4 desktop:h-4" 
+                                    src = "./img/비행.png">
+                                    <span class="text-[8px]">비행</span>
+                                </div>
+                            </div><!--특성 전체 박스 2줄 끝-->
+                            </div><!--★-->
+                        <!--★-->
+                        <div class="whiteBox2">
                         <div class="flex space-x-2"><!--특성 전체 박스 3줄-->
 
-                            <div class="flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl bg-white
-                            tablet:w-[38px] tablet:h-[38px] tablet:rounded-2xl tablet:flex-col tablet:space-x-0
-                            desktop:w-[38px] desktop:h-[38px] desktop:rounded-2xl desktop:flex-col desktop:space-x-0">
+                            <div class="whiteBox">
                                 <img class="w-2 y-2
                                 tablet:w-4 tablet:h-4
                                 desktop:w-4 desktop:h-4
@@ -240,9 +178,7 @@
                                 <span class="text-[8px]">에스퍼</span>
                             </div>
                             
-                            <div class="flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl bg-white
-                            tablet:w-[38px] tablet:h-[38px] tablet:rounded-2xl tablet:flex-col tablet:space-x-0
-                            desktop:w-[38px] desktop:h-[38px] desktop:rounded-2xl desktop:flex-col desktop:space-x-0">
+                            <div class="whiteBox">
                                 <img class="w-2 y-2
                                 tablet:w-4 tablet:h-4
                                 desktop:w-4 desktop:h-4
@@ -250,9 +186,7 @@
                                 <span class="text-[8px]">벌레</span>
                             </div>
     
-                            <div class="flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl bg-white
-                            tablet:w-[38px] tablet:h-[38px] tablet:rounded-2xl tablet:flex-col tablet:space-x-0
-                            desktop:w-[38px] desktop:h-[38px] desktop:rounded-2xl desktop:flex-col desktop:space-x-0">
+                            <div class="whiteBox">
                                 <img class="w-2 y-2
                                 tablet:w-4 tablet:h-4
                                 desktop:w-4 desktop:h-4
@@ -260,9 +194,7 @@
                                 <span class="text-[8px]">바위</span>
                             </div>
     
-                            <div class="flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl bg-white
-                            tablet:w-[38px] tablet:h-[38px] tablet:rounded-2xl tablet:flex-col tablet:space-x-0
-                            desktop:w-[38px] desktop:h-[38px] desktop:rounded-2xl desktop:flex-col desktop:space-x-0">
+                            <div class="whiteBox">
                                 <img class="w-2 y-2
                                 tablet:w-4 tablet:h-4
                                 desktop:w-4 desktop:h-4
@@ -270,9 +202,7 @@
                                 <span class="text-[8px]">고스트</span>
                             </div>
     
-                            <div class="flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl bg-white
-                            tablet:w-[38px] tablet:h-[38px] tablet:rounded-2xl tablet:flex-col tablet:space-x-0
-                            desktop:w-[38px] desktop:h-[38px] desktop:rounded-2xl desktop:flex-col desktop:space-x-0">
+                            <div class="whiteBox">
                                 <img class="w-2 y-2
                                 tablet:w-4 tablet:h-4
                                 desktop:w-4 desktop:h-4
@@ -283,9 +213,7 @@
     
                         <div class="flex space-x-2"><!--특성 전체 박스 4줄-->
     
-                            <div class="flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl bg-white
-                            tablet:w-[38px] tablet:h-[38px] tablet:rounded-2xl tablet:flex-col tablet:space-x-0
-                            desktop:w-[38px] desktop:h-[38px] desktop:rounded-2xl desktop:flex-col desktop:space-x-0">
+                            <div class="whiteBox">
                                 <img class="w-2 y-2
                                 tablet:w-4 tablet:h-4
                                 desktop:w-4 desktop:h-4
@@ -293,9 +221,7 @@
                                 <span class="text-[8px]">악</span>
                             </div>
                             
-                            <div class="flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl bg-white
-                            tablet:w-[38px] tablet:h-[38px] tablet:rounded-2xl tablet:flex-col tablet:space-x-0
-                            desktop:w-[38px] desktop:h-[38px] desktop:rounded-2xl desktop:flex-col desktop:space-x-0">
+                            <div class="whiteBox">
                                 <img class="w-2 y-2
                                 tablet:w-4 tablet:h-4
                                 desktop:w-4 desktop:h-4
@@ -303,9 +229,7 @@
                                 <span class="text-[8px]">강철</span>
                             </div>
     
-                            <div class="flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl bg-white
-                            tablet:w-[38px] tablet:h-[38px] tablet:rounded-2xl tablet:flex-col tablet:space-x-0
-                            desktop:w-[38px] desktop:h-[38px] desktop:rounded-2xl desktop:flex-col desktop:space-x-0">
+                            <div class="whiteBox">
                                 <img class="w-2 y-2
                                 tablet:w-4 tablet:h-4
                                 desktop:w-4 desktop:h-4
@@ -313,69 +237,66 @@
                                 <span class="text-[8px]">페어리</span>
                             </div>
                         </div><!--특성 전체 박스 4줄 끝-->
-                        </div>
-                        </div>
+                        </div><!--★-->
+                    </div><!--☆-->
                     </div> <!--타입 전체 박스 끝-->
                 </div>
             </div> <!--오른쪽 흰박스 묶음 끝-->
         </div>
     </div>
-</div>
+
 
 <div class="flex flex-col space-y-2 mt-6">
     <div class="flex space-x-1 justify-center
     tablet:space-x-2"><!--첫줄 시작-->
-        <div class="w-24 h-44 bg-[#00FFF2] rounded-3xl flex flex-col justify-center item space-y-1
-        tablet:w-28 ">
-            <span class="flex justify-center font-extrabold">001</span>
+        <div class="poketBox">
+            <span class="poketBoxText">001</span>
             <div class="flex justify-center">
                 <div class="w-20 h-20 bg-white"></div>
             </div>
-            <span class="flex justify-center font-extrabold">이상해씨</span>
+            <span class="poketBoxText">이상해씨</span>
             <div class="flex justify-center space-x-1">
-                <div class="bg-white h-3.5 w-10 rounded-3xl flex items-center justify-center">
+                <div class="poketImgBox">
                     <img class="w-2 h-2" src="./img/풀.png">
                     <span class="text-[8px]">풀</span>            
                 </div>
-                <div class="bg-white h-3.5 w-10 rounded-3xl flex items-center justify-center">
+                <div class="poketImgBox">
                     <img class="w-2 h-2" src="./img/독.png">
                     <span class="text-[8px]">독</span>            
                 </div>
             </div>
         </div>
     
-        <div class="w-24 h-44 bg-[#00FFF2] rounded-3xl flex flex-col justify-center item space-y-1
-        tablet:w-28">
-            <span class="flex justify-center font-extrabold">002</span>
+        <div class="poketBox">
+            <span class="poketBoxText">002</span>
             <div class="flex justify-center">
                 <div class="w-20 h-20 bg-white"></div>
             </div>
-            <span class="flex justify-center font-extrabold">이상해씨</span>
+            <span class="poketBoxText">이상해씨</span>
             <div class="flex justify-center space-x-1">
-                <div class="bg-white h-3.5 w-10 rounded-3xl flex items-center justify-center">
+                <div class="poketImgBox">
                     <img class="w-2 h-2" src="./img/풀.png">
                     <span class="text-[8px]">풀</span>            
                 </div>
-                <div class="bg-white h-3.5 w-10 rounded-3xl flex items-center justify-center">
+                <div class="poketImgBox">
                     <img class="w-2 h-2" src="./img/독.png">
                     <span class="text-[8px]">독</span>            
                 </div>
             </div>
         </div>
 
-        <div class="w-24 h-44 bg-[#00FFF2] rounded-3xl flex flex-col justify-center item space-y-1
-        tablet:w-28">
-            <span class="flex justify-center font-extrabold">003</span>
+        <div class="poketBox">
+            <span class="poketBoxText">003</span>
             <div class="flex justify-center">
                 <div class="w-20 h-20 bg-white"></div>
             </div>
-            <span class="flex justify-center font-extrabold">이상해씨</span>
+            <span class="poketBoxText">이상해씨</span>
             <div class="flex justify-center space-x-1">
-                <div class="bg-white h-3.5 w-10 rounded-3xl flex items-center justify-center">
+                <div class="poketImgBox">
                     <img class="w-2 h-2" src="./img/풀.png">
                     <span class="text-[8px]">풀</span>            
                 </div>
-                <div class="bg-white h-3.5 w-10 rounded-3xl flex items-center justify-center">
+                <div class="poketImgBox">
                     <img class="w-2 h-2" src="./img/독.png">
                     <span class="text-[8px]">독</span>            
                 </div>
@@ -384,57 +305,54 @@
     </div><!--첫줄 끝-->
 
     <div class="flex space-x-1 justify-center"><!--2줄 시작-->
-        <div class="w-24 h-44 bg-[#00FFF2] rounded-3xl flex flex-col justify-center item space-y-1
-        tablet:w-28">
-            <span class="flex justify-center font-extrabold">004</span>
+        <div class="poketBox">
+            <span class="poketBoxText">004</span>
             <div class="flex justify-center">
                 <div class="w-20 h-20 bg-white"></div>
             </div>
-            <span class="flex justify-center font-extrabold">이상해씨</span>
+            <span class="poketBoxText">이상해씨</span>
             <div class="flex justify-center space-x-1">
-                <div class="bg-white h-3.5 w-10 rounded-3xl flex items-center justify-center">
+                <div class="poketImgBox">
                     <img class="w-2 h-2" src="./img/풀.png">
                     <span class="text-[8px]">풀</span>            
                 </div>
-                <div class="bg-white h-3.5 w-10 rounded-3xl flex items-center justify-center">
+                <div class="poketImgBox">
                     <img class="w-2 h-2" src="./img/독.png">
                     <span class="text-[8px]">독</span>            
                 </div>
             </div>
         </div>
     
-        <div class="w-24 h-44 bg-[#00FFF2] rounded-3xl flex flex-col justify-center item space-y-1
-        tablet:w-28">
-            <span class="flex justify-center font-extrabold">005</span>
+        <div class="poketBox">
+            <span class="poketBoxText">005</span>
             <div class="flex justify-center">
                 <div class="w-20 h-20 bg-white"></div>
             </div>
-            <span class="flex justify-center font-extrabold">이상해씨</span>
+            <span class="poketBoxText">이상해씨</span>
             <div class="flex justify-center space-x-1">
-                <div class="bg-white h-3.5 w-10 rounded-3xl flex items-center justify-center">
+                <div class="poketImgBox">
                     <img class="w-2 h-2" src="./img/풀.png">
                     <span class="text-[8px]">풀</span>            
                 </div>
-                <div class="bg-white h-3.5 w-10 rounded-3xl flex items-center justify-center">
+                <div class="poketImgBox">
                     <img class="w-2 h-2" src="./img/독.png">
                     <span class="text-[8px]">독</span>            
                 </div>
             </div>
         </div>
 
-        <div class="w-24 h-44 bg-[#00FFF2] rounded-3xl flex flex-col justify-center item space-y-1
-        tablet:w-28">
-            <span class="flex justify-center font-extrabold">006</span>
+        <div class="poketBox">
+            <span class="poketBoxText">006</span>
             <div class="flex justify-center">
                 <div class="w-20 h-20 bg-white"></div>
             </div>
-            <span class="flex justify-center font-extrabold">이상해씨</span>
+            <span class="poketBoxText">이상해씨</span>
             <div class="flex justify-center space-x-1">
-                <div class="bg-white h-3.5 w-10 rounded-3xl flex items-center justify-center">
+                <div class="poketImgBox">
                     <img class="w-2 h-2" src="./img/풀.png">
                     <span class="text-[8px]">풀</span>            
                 </div>
-                <div class="bg-white h-3.5 w-10 rounded-3xl flex items-center justify-center">
+                <div class="poketImgBox">
                     <img class="w-2 h-2" src="./img/독.png">
                     <span class="text-[8px]">독</span>            
                 </div>
@@ -443,57 +361,54 @@
     </div><!--2줄 끝-->
 
     <div class="flex space-x-1 justify-center"><!--3줄 시작-->
-        <div class="w-24 h-44 bg-[#00FFF2] rounded-3xl flex flex-col justify-center item space-y-1
-        tablet:w-28">
-            <span class="flex justify-center font-extrabold">007</span>
+        <div class="poketBox">
+            <span class="poketBoxText">007</span>
             <div class="flex justify-center">
                 <div class="w-20 h-20 bg-white"></div>
             </div>
-            <span class="flex justify-center font-extrabold">이상해씨</span>
+            <span class="poketBoxText">이상해씨</span>
             <div class="flex justify-center space-x-1">
-                <div class="bg-white h-3.5 w-10 rounded-3xl flex items-center justify-center">
+                <div class="poketImgBox">
                     <img class="w-2 h-2" src="./img/풀.png">
                     <span class="text-[8px]">풀</span>            
                 </div>
-                <div class="bg-white h-3.5 w-10 rounded-3xl flex items-center justify-center">
+                <div class="poketImgBox">
                     <img class="w-2 h-2" src="./img/독.png">
                     <span class="text-[8px]">독</span>            
                 </div>
             </div>
         </div>
     
-        <div class="w-24 h-44 bg-[#00FFF2] rounded-3xl flex flex-col justify-center item space-y-1
-        tablet:w-28">
-            <span class="flex justify-center font-extrabold">008</span>
+        <div class="poketBox">
+            <span class="poketBoxText">008</span>
             <div class="flex justify-center">
                 <div class="w-20 h-20 bg-white"></div>
             </div>
-            <span class="flex justify-center font-extrabold">이상해씨</span>
+            <span class="poketBoxText">이상해씨</span>
             <div class="flex justify-center space-x-1">
-                <div class="bg-white h-3.5 w-10 rounded-3xl flex items-center justify-center">
+                <div class="poketImgBox">
                     <img class="w-2 h-2" src="./img/풀.png">
                     <span class="text-[8px]">풀</span>            
                 </div>
-                <div class="bg-white h-3.5 w-10 rounded-3xl flex items-center justify-center">
+                <div class="poketImgBox">
                     <img class="w-2 h-2" src="./img/독.png">
                     <span class="text-[8px]">독</span>            
                 </div>
             </div>
         </div>
 
-        <div class="w-24 h-44 bg-[#00FFF2] rounded-3xl flex flex-col justify-center item space-y-1
-        tablet:w-28">
-            <span class="flex justify-center font-extrabold">009</span>
+        <div class="poketBox">
+            <span class="poketBoxText">009</span>
             <div class="flex justify-center">
                 <div class="w-20 h-20 bg-white"></div>
             </div>
-            <span class="flex justify-center font-extrabold">이상해씨</span>
+            <span class="poketBoxText">이상해씨</span>
             <div class="flex justify-center space-x-1">
-                <div class="bg-white h-3.5 w-10 rounded-3xl flex items-center justify-center">
+                <div class="poketImgBox">
                     <img class="w-2 h-2" src="./img/풀.png">
                     <span class="text-[8px]">풀</span>            
                 </div>
-                <div class="bg-white h-3.5 w-10 rounded-3xl flex items-center justify-center">
+                <div class="poketImgBox">
                     <img class="w-2 h-2" src="./img/독.png">
                     <span class="text-[8px]">독</span>            
                 </div>
