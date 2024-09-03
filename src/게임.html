@@ -48,12 +48,12 @@
 </div><!--상단바 끝-->
 
 
-    <div id="countdown" class="flex justify-center items-center mt-4 text-2xl font-bold">
+    <div id="countdown" class="CenteredFlex mt-4 text-2xl font-bold">
         10초 남았다!!!
     </div>
 
-    <div class="desktop:flex desktop:justify-center desktop:items-center desktop:space-x-40">
-        <div class="relative flex justify-center items-center mt-4">
+    <div class="desktop:CenteredFlex desktop:space-x-40">
+        <div class="relative CenteredFlex mt-4">
             <!-- 알 -->
             <div id="알" class="relative w-[200px] h-80 z-10">
                 <img id="알이미지" src="./img/알1.png" class="absolute top-10 left-0 w-full h-full">
@@ -61,8 +61,10 @@
             </div>
     
             <!-- 말풍선 -->
-            <div id="말풍선" class="absolute w-[310px] h-[320px] bg-[#FFDD00] rounded-xl p-4 z-20 flex justify-center items-center text-center hidden desktop:right-0">
-                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-t-[20px] border-t-[#FFDD00] desktop:left-auto desktop:right-4 desktop:translate-x-0"></div>
+            <div id="말풍선" class="absolute w-[310px] h-[320px] bg-[#FFDD00] rounded-xl 
+            p-4 z-20 flex justify-center items-center text-center hidden">
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full w-0 h-0 border-l-[20px] 
+                border-l-transparent border-r-[20px] border-r-transparent border-t-[20px] border-t-[#FFDD00]"></div> <!--삼각형-->
                 <p class="text-black font-bold">
                     30초 안에 망치로 알을 후드려 패면 포켓몬이 나온다 !!!!
                     30초 안에 못 후드려 패면 포켓몬은 없다 !!!

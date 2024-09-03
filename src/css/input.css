@@ -27,6 +27,10 @@
     @apply bg-[#FFDD00] flex justify-center pt-2 w-24 h-44 rounded-3xl 
 }
 
+.yellowBoxIn{
+    @apply flex flex-col justify-center items-center space-y-6
+}
+
 .coinBox{
     @apply bg-[#FFEE80] w-12 h-9 flex justify-center items-center space-x-1 rounded-3xl 
 }
@@ -56,8 +60,88 @@
     @apply flex justify-center font-extrabold
 }
 
-.poketImgBox{
+.poketTypeImgBox{
     @apply w-10 h-3.5 bg-white rounded-3xl flex items-center justify-center
+}
+
+.poketImgBox{
+    @apply w-20 h-20 bg-white
+}
+
+.poketTypeImg{
+    @apply w-2 h-2
+}
+
+.typeBoxImg{
+    @apply w-2 h-2
+}
+
+.coinImg{
+    @apply w-4 h-4
+}
+
+.ballImg{
+    @apply w-16 h-16
+}
+
+.coinText{
+    @apply font-bold
+}
+
+.ballText{
+    @apply text-black text-2xl font-extrabold
+}
+
+.skillIcon{
+    @apply w-8 h-8 rounded-lg overflow-hidden
+}
+
+.skillText{
+    @apply text-2xl mt-40 text-[#A0E800] font-bold
+}
+
+.projectBox{
+    @apply relative rounded-lg overflow-hidden bg-white min-w-[224px] h-80
+}
+
+.changeBg{
+ @apply absolute inset-0 bg-transparent group-hover:bg-[#A0E800] transition duration-300
+}
+
+.bgText{
+    @apply absolute inset-0 flex flex-col justify-center items-center text-center text-white font-bold space-y-12
+}
+
+.initialText{
+    @apply text-2xl group-hover:hidden
+}
+
+.mouseOverText{
+    @apply text-2xl text-black hidden group-hover:flex
+}
+
+.linkBox{
+    @apply mt-4 border border-white text-white w-[100px] h-[50px] flex justify-center items-center rounded-lg transition duration-300 bg-transparent group-hover:text-black group-hover:border-black
+}
+
+.whiteBar{
+    @apply col-span-4 mt-4
+}
+
+.whiteBar2{
+    @apply w-[calc(100%-32px)] h-[3px] mx-auto bg-white
+}
+
+.full-span-center{
+    @apply col-span-full flex justify-center items-center
+}
+
+.yujinText{
+    @apply col-span-4 font-extrabold text-6xl
+}
+
+.informationText{
+    @apply text-white text-xs ml-1
 }
 
 @screen tablet {
@@ -85,8 +169,43 @@
     .lightYellowBoxText{
         @apply text-base   
     }
+    .poketBox{
+        @apply w-44 h-72
+    }
+    .poketTypeImgBox{
+        @apply w-14 h-6
+    }
 
- 
+    .poketImgBox{
+        @apply w-36 h-40
+    }
+
+    .poketTypeImg{
+        @apply w-4 h-4
+    }
+
+    .typeBoxImg{
+        @apply w-4 h-4
+    }
+
+    .skillIcon{
+        @apply w-12 h-12
+    }
+    .skillText{
+        @apply text-4xl
+    }
+    .whiteBar{
+        @apply col-span-8 
+    }
+
+    .yujinText{
+        @apply col-span-8 text-8xl
+    }
+    .informationText{
+        @apply text-sm
+    }
+    
+
 }
 
 @screen desktop{
@@ -109,7 +228,54 @@
     .whiteBox2{
         @apply space-y-0
     }
-  
+    .coinImg{
+        @apply w-6 h-6
+    }
+    .ballImg{
+        @apply w-32 h-32
+    }
+    .coinText{
+        @apply text-2xl 
+    }
 
+    .ballText{
+        @apply text-5xl
+    }
+
+    .yellowBoxIn{
+        @apply space-y-10
+    }
+    .skillIcon{
+        @apply w-[60px] h-[60px]
+    }
+    .skillText{
+        @apply text-[40px] 
+    }
+    .projectBox{
+        @apply w-[480px] h-[640px]
+    }
+    .initialText{
+        @apply text-[56px]
+    }
+    .mouseOverText{
+        @apply text-[56px] text-black
+    }
+    .linkBox{
+        @apply text-base
+    }
+    .whiteBar{
+        @apply col-span-12
+    }
+    
+    .whiteBar2{
+        @apply w-[1220px] ml-[350px]
+    }
+    .yujinText{
+        @apply col-span-12 text-9xl
+    }
+
+    .informationText{
+        @apply text-base
+    }
+    
 }
-
