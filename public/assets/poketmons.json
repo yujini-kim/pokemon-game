@@ -1,0 +1,42 @@
+[
+    {
+      "number": "001",
+      "name": "이상해씨",
+      "types": [
+        { "name": "풀", "imgSrc": "/img/풀.png" },
+        { "name": "독", "imgSrc": "/img/독.png" }
+      ]
+    },
+    {
+      "number": "002",
+      "name": "이상해풀",
+      "types": [
+        { "name": "풀", "imgSrc": "/img/풀.png" },
+        { "name": "독", "imgSrc": "/img/독.png" }
+      ]
+    },
+    {
+      "number": "003",
+      "name": "이상해풀",
+      "types": [
+        { "name": "풀", "imgSrc": "/img/풀.png" },
+        { "name": "독", "imgSrc": "/img/독.png" }
+      ]
+    },
+    {
+      "number": "004",
+      "name": "이상해풀",
+      "types": [
+        { "name": "풀", "imgSrc": "/img/풀.png" },
+        { "name": "독", "imgSrc": "/img/독.png" }
+      ]
+    },
+    {
+      "number": "005",
+      "name": "이상해풀",
+      "types": [
+        { "name": "풀", "imgSrc": "/img/풀.png" },
+        { "name": "독", "imgSrc": "/img/독.png" }
+      ]
+    }
+  ]
