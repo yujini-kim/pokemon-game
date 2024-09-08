@@ -1,8 +1,13 @@
 import Image from 'next/image'
-import '../styles/globals.css'
-import WhiteBar from "../components/WhiteBar";
-import SkillIcon from "../components/SkillIcon";
-import ProjectBox from "../components/ProjectBox";
+import '../../styles/globals.css'
+import WhiteBar from "../../components/WhiteBar";
+import SkillIcon from "../../components/SkillIcon";
+import ProjectBox from "../../components/ProjectBox";
+import Link from 'next/link';
+
+export const metadata = {
+  title: '프론트엔드 개발자 포트폴리오',
+}
 
 export default function Home() {
   return (
@@ -51,13 +56,18 @@ export default function Home() {
           <div className="flex flex-col ml-8 space-y-4">
             <div className="flex items-center">
               <img className="w-4 h-4" src="./img/mail.png" alt="Mail" />
-              <span className="informationText">kingyujin56@gmail.com</span>
+              <span className="informationText">kingyujin56@지메일</span>
             </div>
+
+            <Link href="https://github.com/yujini-kim">        
             <div className="flex items-center">
               <img className="w-4 h-4" src="./img/git.png" alt="GitHub" />
               <span className="informationText">yujini-kim</span>
             </div>
+            </Link>
+    
           </div>
+
           <div className="ml-8">
             안녕하세용 미래의 개발짱 김유진 입니다<br />
             영훈썜보다 잘하게 되는 그날까지
@@ -78,12 +88,14 @@ export default function Home() {
             <div className="flex flex-col space-y-4">
               <div className="flex items-center">
                 <img className="w-4 h-4" src="./img/mail.png" alt="Mail" />
-                <span className="informationText">kingyujin56@gmail.com</span>
+                <span className="informationText">kingyujin56@지메일</span>
               </div>
+              <Link href="https://github.com/yujini-kim">   
               <div className="flex items-center">
                 <img className="w-4 h-4" src="./img/git.png" alt="GitHub" />
                 <span className="informationText">yujini-kim</span>
               </div>
+              </Link>
             </div>
           </div>
         </div>
