@@ -2,22 +2,27 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { useCoin } from '../context/CoinContext'; 
 
 export default function EggGame() {
   const [clickCount, setClickCount] = useState(0);
-  const [eggImage, setEggImage] = useState('/img/알1.png');
+  const [eggImage, setEggImage] = useState('/img/알1.webp');
   const [isBalloonVisible, setBalloonVisibility] = useState(false);
+  const [hammer, setHammer] = useState(false)
+  const [isSparkling, setIsSparkling] = useState(false)
 
+  const { setCoin } = useCoin(); 
   const handleEggClick = () => {
     const newClickCount = clickCount + 1;
     setClickCount(newClickCount);
 
     if (newClickCount === 10) {
-      setEggImage('/img/알2.png');
+      setEggImage('/img/알2.webp');
     } else if (newClickCount === 20) {
-      setEggImage('/img/알3.png');
+      setEggImage('/img/알3.webp');
     } else if (newClickCount === 30) {
-      setEggImage('/img/알4.png');
+      setEggImage('/img/알4.webp');
+      setCoin(10); 
     }
   };
 
@@ -25,15 +30,31 @@ export default function EggGame() {
     setBalloonVisibility(!isBalloonVisible);
   };
 
+  const Click = () => {
+    setHammer(!hammer)
+    setIsSparkling(!isSparkling)
+  }
+
+  
+
   return (
     <div className="desktop:flex desktop:justify-center desktop:space-x-40">
       <div className="relative CenteredFlex mt-4" onClick={handleEggClick}>
         {/* 알 이미지 */}
         <div className="relative w-[200px] h-80 z-10">
-          <Image id="알이미지" src={eggImage} alt="Egg" width={200} height={320} className="absolute top-10 left-0 w-full h-full" />
-          <Image src="/img/망치.png" alt="Hammer" width={160} height={120} className="absolute top-0 left-32 w-4/5 h-1/2" />
+        <Image
+            onClick={Click}
+            id="알이미지"
+            src={eggImage}
+            alt="Egg"
+            width={200}
+            height={320}
+            className={`absolute top-10 left-0 w-full h-full ${isSparkling ? 'animate-shake' : ''}`} 
+          />
+          <Image onClick={Click} 
+          src={hammer ? "/img/망치2.webp" : "/img/망치.webp"} alt="Hammer"
+           width={160} height={120} className="absolute top-0 left-32 w-4/5 h-1/2" />
         </div>
-
 
         {isBalloonVisible && (
           <div className="absolute w-[310px] h-[320px] bg-[#FFDD00] rounded-xl p-4 z-20 flex justify-center items-center text-center mt-4 
@@ -53,7 +74,7 @@ export default function EggGame() {
       <div className="flex flex-col justify-center">
         <div className="flex justify-center mt-8 desktop:mb-1">
           <div id="로켓단" className="w-40 h-60 desktop:w-96 desktop:h-[604px]">
-            <Image src="/img/로켓단.png" alt="Rocket Team" width={384} height={604} />
+            <Image src="/img/로켓단.webp" alt="Rocket Team" width={384} height={604} />
           </div>
         </div>
 

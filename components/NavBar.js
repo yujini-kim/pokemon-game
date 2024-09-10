@@ -1,11 +1,15 @@
+"use client";
+
 import Image from 'next/image';
 import Link from 'next/link';
 import '../styles/globals.css';
+import { useCoin } from '../context/CoinContext'; 
 
 export default function NavBar() {
+  const { coin } = useCoin(); 
   return (
     <div className="flex justify-between mt-10 ml-4 tablet:justify-between tablet:mt-16 tablet:ml-8 desktop:space-x-[800px] desktop:mt-24 desktop:ml-8">
-      
+
       <Link href="/">
         <div className="bg-[#00FFF2] h-8 w-8 rounded-3xl CenteredFlex
         tablet:w-20 tablet:h-12 desktop:w-20 desktop:h-12">
@@ -15,7 +19,7 @@ export default function NavBar() {
       </Link>
 
       <div className="flex space-x-2 tablet:space-x-6">
-        
+
         <Link href="/project/poketmon">
           <div className="NavBar">
             <Image src="/img/ball.png" alt="Ball" width={48} height={48} className="NavBarImg" />
@@ -32,7 +36,7 @@ export default function NavBar() {
 
         <div className="NavBar">
           <Image src="/img/coin.png" alt="Coin" width={48} height={48} className="NavBarImg" />
-          <span className="NavBarText">100</span>
+          <span className="NavBarText">{coin}</span>
         </div>
       </div>
     </div>

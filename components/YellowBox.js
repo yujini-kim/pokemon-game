@@ -5,7 +5,7 @@ export default function YellowBox({ coinAmount, ballSrc, ballText }) {
     <div className="yellowBox">
       <div className="yellowBoxIn">
         <div className="coinBox">
-          <Image src="/img/coin.png" alt="Coin" width={24} height={24} className="coinImg" />
+          <Image src="/img/coin.webp" alt="Coin" width={24} height={24} className="coinImg" />
           <span className="coinText">{coinAmount}</span>
         </div>
         <div>

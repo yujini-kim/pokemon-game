@@ -25,48 +25,48 @@
 }
 
 .yellowBox{
-    @apply bg-[#FFDD00] flex justify-center pt-2 w-24 h-44 rounded-3xl 
+    @apply bg-[#FFDD00] flex justify-center pt-2 w-24 h-44 rounded-3xl;
 }
 
 .yellowBoxIn{
-    @apply flex flex-col justify-center items-center space-y-6
+    @apply flex flex-col justify-center items-center space-y-6;
 }
 
 .coinBox{
-    @apply bg-[#FFEE80] w-12 h-9 flex justify-center items-center space-x-1 rounded-3xl 
+    @apply bg-[#FFEE80] w-12 h-9 flex justify-center items-center space-x-1 rounded-3xl; 
 }
 
 .lightYellowBox{
-    @apply bg-[#FFEE80] w-20 h-5 flex justify-center items-center rounded-3xl
+    @apply bg-[#FFEE80] w-20 h-5 flex justify-center items-center rounded-3xl;
 }
 
 .whiteBox{
-    @apply bg-white flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl 
+    @apply bg-white flex justify-center items-center space-x-1 w-11 h-3.5 rounded-3xl;
 }
 
 .whiteBox2{
-    @apply space-y-1
+    @apply space-y-1;
 }
 
 .lightYellowBoxText{
-    @apply text-[8px] font-bold 
+    @apply text-[8px] font-bold; 
 
 }
 .poketBox{
-    @apply w-24 h-44 bg-[#00FFF2] rounded-3xl flex flex-col justify-center items-center space-y-1
+    @apply w-24 h-44 bg-[#00FFF2] rounded-3xl flex flex-col justify-center items-center space-y-1;
 
 }
 
 .poketBoxText{
-    @apply flex justify-center font-extrabold
+    @apply flex justify-center font-extrabold;
 }
 
 .poketTypeImgBox{
-    @apply w-10 h-3.5 bg-white rounded-3xl flex items-center justify-center
+    @apply w-10 h-3.5 bg-white rounded-3xl flex items-center justify-center;
 }
 
 .poketImgBox{
-    @apply w-20 h-20 bg-white
+    @apply w-20 h-20 bg-white;
 }
 
 .poketTypeImg{

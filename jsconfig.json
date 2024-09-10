@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",   // 프로젝트의 기본 경로를 현재 디렉터리로 설정
+      "paths": {
+        "@components/*": ["components/*"],
+        "@context/*": ["context/*"],
+        "@styles/*": ["styles/*"]
+         // '@components' alias 추가
+      }
+    }
+  }

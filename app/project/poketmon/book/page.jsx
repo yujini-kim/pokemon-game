@@ -1,17 +1,20 @@
-import NavBar from '../../../../components/NavBar';
-import FilterBox from '../../../../components/FilterBox';
-import PokemonList from '../../../../components/PokemonList';
+"use client"
 
-export const metadata = {
-  title: '포켓몬 도감',
-}
+import NavBar from '@components/NavBar';
+import FilterBox from '@components/FilterBox';
+import PokemonList from '@components/PokemonList';
+import {CoinProvider} from '@context/CoinContext'
+
 
 export default function MainPage() {
   return (
     <div>
-      <NavBar />
-      <FilterBox />
-      <PokemonList />
+      <CoinProvider>
+        <NavBar />
+        <FilterBox />
+        <PokemonList />
+      </CoinProvider> 
+
     </div>
   );
 }

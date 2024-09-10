@@ -1,17 +1,17 @@
-import NavBar from '../../../../components/NavBar';
-import EggGame from '../../../../components/EggGame';
-import Countdown from '../../../../components/Countdown';
-
-export const metadata = {
-  title: '포켓코인 모으기',
-}
+import NavBar from '@components/NavBar';
+import EggGame from '@components/EggGame';
+import Countdown from '@components/Countdown';
+import {CoinProvider} from '@context/CoinContext'
 
 export default function Home() {
   return (
     <div>
-      <NavBar />
-      <Countdown />
-      <EggGame />
-    </div>
+       <CoinProvider>
+        <NavBar />
+        <Countdown />
+        <EggGame />
+       </CoinProvider>
+
+      </div>
   );
 }

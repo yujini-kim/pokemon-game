@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import '../../styles/globals.css'
-import WhiteBar from "../../components/WhiteBar";
-import SkillIcon from "../../components/SkillIcon";
-import ProjectBox from "../../components/ProjectBox";
+import '@styles/globals.css'
+import WhiteBar from "@components//WhiteBar";
+import SkillIcon from "@components/SkillIcon";
+import ProjectBox from "@components/ProjectBox";
 import Link from 'next/link';
 
 export const metadata = {
@@ -35,7 +35,7 @@ export default function Home() {
 
       {/* 화살표 이미지 */}
       <div className="full-span-center mobile:mt-60 tablet:mt-90 desktop:mt-70">
-        <img className="w-8 h-8" src="./img/arrow_down.png" alt="Arrow Down" />
+        <img className="w-8 h-8" src="./img/arrow_down.webp" alt="Arrow Down" />
       </div>
 
       {/* 스크롤 */}
@@ -48,20 +48,20 @@ export default function Home() {
       {/* 이름과 사진 테블릿, 데스크탑 버전 */}
       <div className="hidden tablet:flex col-span-full flex-row mobile:ml-2 tablet:ml-6 desktop:ml-96 items-start">
         <div className="mobile:w-40 mobile:h-40 tablet:w-60 tablet:h-60 desktop:w-60 desktop:h-60 rounded-full overflow-hidden">
-          <img className="w-full h-full object-cover" src="./img/나.jpg" alt="Yujin" />
+          <img className="w-full h-full object-cover" src="./img/나.webp" alt="Yujin" />
         </div>
 
         <div className="flex flex-col ml-6 mt-8 space-y-6 text-white">
           <span className="text-4xl ml-6">김유진</span>
           <div className="flex flex-col ml-8 space-y-4">
             <div className="flex items-center">
-              <img className="w-4 h-4" src="./img/mail.png" alt="Mail" />
+              <img className="w-4 h-4" src="./img/mail.webp" alt="Mail" />
               <span className="informationText">kingyujin56@지메일</span>
             </div>
 
             <Link href="https://github.com/yujini-kim">        
             <div className="flex items-center">
-              <img className="w-4 h-4" src="./img/git.png" alt="GitHub" />
+              <img className="w-4 h-4" src="./img/git.webp" alt="GitHub" />
               <span className="informationText">yujini-kim</span>
             </div>
             </Link>
@@ -80,19 +80,19 @@ export default function Home() {
       <div className="flex">
         <div className="col-span-full flex flex-row mobile:ml-2 items-start">
           <div className="mobile:w-40 mobile:h-40 rounded-full overflow-hidden">
-            <img className="w-full h-full object-cover" src="./img/나.jpg" alt="Yujin" />
+            <img className="w-full h-full object-cover" src="./img/나.webp" alt="Yujin" />
           </div>
 
           <div className="flex flex-col ml-6 mt-8 space-y-6 text-white">
             <span className="text-4xl">김유진</span>
             <div className="flex flex-col space-y-4">
               <div className="flex items-center">
-                <img className="w-4 h-4" src="./img/mail.png" alt="Mail" />
+                <img className="w-4 h-4" src="./img/mail.webp" alt="Mail" />
                 <span className="informationText">kingyujin56@지메일</span>
               </div>
               <Link href="https://github.com/yujini-kim">   
               <div className="flex items-center">
-                <img className="w-4 h-4" src="./img/git.png" alt="GitHub" />
+                <img className="w-4 h-4" src="./img/git.webp" alt="GitHub" />
                 <span className="informationText">yujini-kim</span>
               </div>
               </Link>
@@ -116,8 +116,8 @@ export default function Home() {
         <div className="mobile:ml-4">
           <span className="skillText">SKILLS ABILITY</span>
           <div className="flex mobile:space-x-2 desktop:space-x-4 mt-4">
-            <SkillIcon src="./img/js.jpg" alt="JavaScript" />
-            <SkillIcon src="./img/HTML.jpg" alt="HTML" />
+            <SkillIcon src="./img/js.webp" alt="JavaScript" />
+            <SkillIcon src="./img/HTML.webp" alt="HTML" />
           </div>
         </div>
         <div className="mobile:ml-4 mb-40">
@@ -135,7 +135,7 @@ export default function Home() {
       tablet:ml-3 desktop:ml-60">
         <div className="snap-center flex-shrink-0">
           <ProjectBox
-            src="./img/picachu.jpg"
+            src="./img/picachu.webp"
             alt="PROJECT1"
             title="포켓몬 도감 모으기 게임"
             description="간단한 설명"
@@ -144,7 +144,7 @@ export default function Home() {
         </div>
         <div className="snap-center flex-shrink-0">
           <ProjectBox
-            src="./img/preparing.jpg"
+            src="./img/preparing.webp"
             alt="PROJECT2"
             title="준비중"
             description="간단한 설명"
@@ -153,7 +153,7 @@ export default function Home() {
         </div>
         <div className="snap-center flex-shrink-0">
           <ProjectBox
-            src="./img/preparing.jpg"
+            src="./img/preparing.webp"
             alt="PROJECT3"
             title="준비중"
             description="간단한 설명"
