@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { useCoin } from '../context/CoinContext'; 
+import Button from './Button.js'
 
 export default function EggGame() {
   const [clickCount, setClickCount] = useState(0);
@@ -12,6 +13,7 @@ export default function EggGame() {
   const [isSparkling, setIsSparkling] = useState(false)
 
   const { setCoin } = useCoin(); 
+
   const handleEggClick = () => {
     const newClickCount = clickCount + 1;
     setClickCount(newClickCount);
@@ -78,12 +80,10 @@ export default function EggGame() {
           </div>
         </div>
 
-        {/* 게임설명 버튼 */}
-        <div id="게임설명" className="flex justify-center items-center mt-4 cursor-pointer" onClick={toggleBalloon}>
-          <div className="w-20 h-9 bg-[#00FFF2] rounded-3xl flex justify-center items-center desktop:w-32 desktop:h-11">
-            <span className="font-bold text-sm desktop:text-2xl">게임설명</span>
-          </div>
+        <div className='flex justify-center mt-6'>
+          <Button onClick={toggleBalloon} text="게임설명"/>
         </div>
+        
       </div>
     </div>
   );

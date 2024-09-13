@@ -135,7 +135,7 @@ export default function Home() {
       tablet:ml-3 desktop:ml-60">
         <div className="snap-center flex-shrink-0">
           <ProjectBox
-            src="./img/picachu.webp"
+            src="/img/picachu.webp"
             alt="PROJECT1"
             title="포켓몬 도감 모으기 게임"
             description="간단한 설명"
@@ -144,7 +144,7 @@ export default function Home() {
         </div>
         <div className="snap-center flex-shrink-0">
           <ProjectBox
-            src="./img/preparing.webp"
+            src="/img/preparing.webp"
             alt="PROJECT2"
             title="준비중"
             description="간단한 설명"
@@ -153,7 +153,7 @@ export default function Home() {
         </div>
         <div className="snap-center flex-shrink-0">
           <ProjectBox
-            src="./img/preparing.webp"
+            src="/img/preparing.webp"
             alt="PROJECT3"
             title="준비중"
             description="간단한 설명"

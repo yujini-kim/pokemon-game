@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Button from './Button';
 
-export default function Countdown() {
-  const [time, setTime] = useState(30);
+export default function Countdown({ initialTime = 30 }) {
+  const [time, setTime] = useState(initialTime);
   const [isCounting, setIsCounting] = useState(true);
 
   useEffect(() => {
@@ -24,25 +25,14 @@ export default function Countdown() {
   }, [isCounting, time]);
 
   const handleRestart = () => {
-    setTime(30); 
+    setTime(initialTime); 
     setIsCounting(true); 
   };
 
   return (
     <div className="CenteredFlex mt-4 text-2xl font-bold">
       {isCounting && <div>{time}초 남았다!!!</div>} 
-      {!isCounting && <Restart onClick={handleRestart} />} 
-    </div>
-  );
-}
-
-function Restart({ onClick }) {
-  return (
-    <div 
-      className="CenteredFlex w-20 h-10 bg-[#00FFF2] rounded-3xl desktop:w-36 desktop:h-14 cursor-pointer"
-      onClick={onClick}
-    >
-      <span className="text-base text-black font-extrabold desktop:text-2xl">다시시작</span>
+      {!isCounting && <Button onClick={handleRestart} text="다시시작" />} 
     </div>
   );
 }

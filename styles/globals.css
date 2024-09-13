@@ -164,6 +164,7 @@
     .whiteBox{
         @apply w-[38px] h-[38px] rounded-2xl flex-col space-x-0
     }
+    
     .whiteBox2{
         @apply flex flex-col space-x-0 space-y-1
     }

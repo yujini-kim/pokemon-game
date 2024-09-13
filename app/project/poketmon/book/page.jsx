@@ -2,7 +2,7 @@
 
 import NavBar from '@components/NavBar';
 import FilterBox from '@components/FilterBox';
-import PokemonList from '@components/PokemonList';
+import PokemonList from '@components/PoketmonList';
 import {CoinProvider} from '@context/CoinContext'
 
 

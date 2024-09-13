@@ -1,17 +1,16 @@
 import NavBar from '@components/NavBar';
 import EggGame from '@components/EggGame';
 import Countdown from '@components/Countdown';
-import {CoinProvider} from '@context/CoinContext'
+import { CoinProvider } from '@context/CoinContext';
 
 export default function Home() {
   return (
-    <div>
-       <CoinProvider>
+    <CoinProvider> 
+      <div>
         <NavBar />
         <Countdown />
         <EggGame />
-       </CoinProvider>
-
       </div>
+    </CoinProvider>
   );
 }

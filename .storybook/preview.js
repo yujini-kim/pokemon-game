@@ -1,4 +1,14 @@
 /** @type { import('@storybook/react').Preview } */
+import { CoinProvider } from '@context/CoinContext';
+
+
+export const decorators = [
+  (Story) => (
+    <CoinProvider>
+      <Story />
+    </CoinProvider>
+  ),
+];
 const preview = {
   parameters: {
     controls: {
