@@ -116,7 +116,7 @@ export default function Home() {
         <div className="mobile:ml-4">
           <span className="skillText">SKILLS ABILITY</span>
           <div className="flex mobile:space-x-2 desktop:space-x-4 mt-4">
-            <SkillIcon src="./img/js.webp" alt="JavaScript" />
+            <SkillIcon src="./img/JS.webp" alt="JavaScript" />
             <SkillIcon src="./img/HTML.webp" alt="HTML" />
           </div>
         </div>
