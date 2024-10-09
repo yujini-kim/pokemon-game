@@ -1,14 +1,13 @@
+"use client"
+
 import React, { Suspense } from 'react';
 import TypeSkeleton from './typeSkeleton'
-import { components } from 'storybook/internal/components';
 
-
-// MyImageComponent를 동적으로 import (React.lazy 사용)
 const MyImageComponent = React.lazy(() => import('./MyImageComponent'));
 
 export default function Page() {
   return (
-    <div className="whiteBox2 ">
+    <div className="whiteBox2">
       <div className="space-y-1 tablet:flex tablet:gap-1 tablet:space-y-0 tablet:space-x-1 desktop:space-x-0">{/* 첫줄,  두줄 */}       
         <div className="flex gap-1 tablet:space-x-1 desktop:space-x-0">{/* 첫줄 */}
         <Suspense fallback={<TypeSkeleton/>}>

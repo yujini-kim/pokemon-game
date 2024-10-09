@@ -2,19 +2,21 @@
 
 import NavBar from '@components/NavBar';
 import FilterBox from '@components/FilterBox';
-import PokemonList from '@components/PoketmonList';
-import {CoinProvider} from '@context/CoinContext'
+import { CoinProvider } from '@context/CoinContext'
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 
 export default function MainPage() {
   return (
     <div>
-      <CoinProvider>
-        <NavBar />
-        <FilterBox />
-        <PokemonList />
-      </CoinProvider> 
-
+      <QueryClientProvider client={queryClient}>
+          <CoinProvider>
+            <NavBar />
+            <FilterBox />
+          </CoinProvider> 
+      </QueryClientProvider>
     </div>
   );
 }
