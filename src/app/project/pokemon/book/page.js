@@ -16,8 +16,7 @@ export default async function PokeBook(){
             <PokeNavbar />
             <PokeProviders>
               <PokeGrid />
-            </PokeProviders>
-                          
+            </PokeProviders>                       
         </>
     )
 

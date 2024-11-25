@@ -7,8 +7,8 @@
     const data = await response.json();
   
     const poketmonDetails = await Promise.all(
-      data.results.map(async (poketmon) => {
-        const res = await fetch(poketmon.url);
+      data.results.map(async (pokemon) => {
+        const res = await fetch(pokemon.url);
         const details = await res.json();
   
         // 한국어 이름
@@ -19,7 +19,7 @@
         const koreanNameObj = speciesData.names.find(
           (name) => name.language.name === "ko"
         );
-        const koreanName = koreanNameObj ? koreanNameObj.name : poketmon.name;
+        const koreanName = koreanNameObj ? koreanNameObj.name : pokemon.name;
   
         // 한국어 타입
         const types = await Promise.all(

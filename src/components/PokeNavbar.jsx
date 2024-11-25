@@ -10,12 +10,12 @@ export default function PokeNavbar(){
                 </div>
 
                 <div className="flex gap-2">
-                    <Link href="/" className="bg-[#1C1D1F] p-2 tablet:px-3 rounded-3xl flex items-center justify-center gap-1">
+                    <Link href="/project/pokemon" className="bg-[#1C1D1F] p-2 tablet:px-3 rounded-3xl flex items-center justify-center gap-1">
                         <img className="w-4 h-4 tablet:w-6 tablet:h-6" src="/img/icon_game.webp"/>
                         <p className="text-white text-sm tablet:text-base">뽑기</p>
                     </Link>
 
-                    <Link href="./pokemon/book" className="bg-[#1C1D1F] p-2 tablet:px-3 rounded-3xl flex items-center justify-center gap-1">
+                    <Link href="/project/pokemon/book" className="bg-[#1C1D1F] p-2 tablet:px-3 rounded-3xl flex items-center justify-center gap-1">
                         <img className="w-4 h-4 tablet:w-6 tablet:h-6" src="/img/icon_book.webp"/>
                         <p className="text-white text-sm tablet:text-base">도감</p>
                     </Link>
