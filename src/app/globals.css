@@ -3,8 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F2E6DA;
+  --foreground: #1C1D1F;
+}
+
+@layer utilities {
+  .text-stroke {
+    -webkit-text-stroke: 1px #1C1D1F; 
+    
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -12,10 +19,15 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+  /* 다크모드일 경우 색상 */
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
