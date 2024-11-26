@@ -20,17 +20,19 @@ export default function PokeTypes({selectedType, setSelectedType}) {
     return (
 
       <div className="grid grid-cols-5 gap-1
-      tablet:grid-cols-10 tablet:m-10">
+      tablet:grid-cols-10 tablet:m-10
+      desktop:grid-cols-18">
         {types.map((type, index) => (
           <div key={index} className="flex justify-center items-center gap-2
-          
+         
           ">
             <button 
               className={`w-16 h-7 ${
-                selectedType  === type ? "bg-[#E0FE6A] font-bold" : "bg-[#FBF8CB]" 
+                selectedType  === type ? "bg-[#BC99FF] font-bold " : "bg-[#FBF8CB]" 
               } border border-[#1C1D1F] 
               rounded-lg flex items-center justify-center gap-0.5
-              tablet:flex-col tablet:w-14 tablet:h-14 tablet:py-2`}
+              tablet:flex-col tablet:w-14 tablet:h-14 tablet:py-2
+              desktop:flex-row desktop:w-full desktop:h-10`}
 
               onClick={() => onClick(type)}
               >

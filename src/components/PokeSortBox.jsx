@@ -10,7 +10,7 @@ export default function PokeSortBox ({selectedOption, setSelectedOption}) {
         setSelectedOption(selectedSort);}
 
     return (
-        <div className="flex justify-end px-2">
+        <div className="flex justify-end px-2 desktop:mx-44">
             <select
             value={selectedOption}
             onChange={handleSortChange}

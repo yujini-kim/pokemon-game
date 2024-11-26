@@ -65,7 +65,7 @@ export default function PokeGrid({ }){
         
         <div className="flex flex-col tablet:mx-4">
             <div className="m-2 w-auto h-auto p-3 bg-white rounded-lg border border-[#1C1D1F]
-            tablet:py-6">
+            tablet:py-6 desktop:mx-44">
               <div className="space-y-2">{/* 검색 */}               
                 <PokeSearchBox 
                     searchText={searchText} setSearchText={setSearchText} setSearchName={setSearchName}
@@ -85,7 +85,7 @@ export default function PokeGrid({ }){
         <div className="grid grid-cols-3 justify-center items-center
             gap-2 p-2
             tablet:grid-cols-4
-            desktop:grid-cols-5">
+            desktop:grid-cols-6 desktop:mx-44">
                 {isLoading ?
                     [...Array(12)].map((_, index) => (<PokeCardSkeleton key={index} />)) :
                     filteredPokemon.map(( pokemon ) =>(

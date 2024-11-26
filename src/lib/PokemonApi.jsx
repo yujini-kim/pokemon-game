@@ -35,6 +35,8 @@
   
         const type1 = types[0]
         const type2 = types[1] || null;
+
+        const totalBaseStat = details.stats.reduce((sum, stat) => sum + stat.base_stat, 0);
   
         return {
           name: koreanName,
@@ -42,6 +44,7 @@
           image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${details.id}.svg`,
           type1: type1,
           type2: type2,
+          totalBaseStat: totalBaseStat,
         };
       })
     );

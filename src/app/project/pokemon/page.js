@@ -8,10 +8,16 @@ export const metadata = {
 
 export default function PokemonHome() {
     return(
-        <div>
-            <PokeNavbar />           
-            <PokeGacha />
-            <PokeGamego />   
-        </div>
+        <>
+            <PokeNavbar /> 
+            <div className="space-y-8">
+                <PokeGacha />
+                <PokeGamego /> 
+            </div>
+                    
+
+        </>
+     
+
     )
 }
