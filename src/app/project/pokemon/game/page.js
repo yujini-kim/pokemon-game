@@ -10,7 +10,6 @@ export default function gamePage(){
             <PokeProviders>
                 <CoinProvider>
                     <PokeNavbar />
-                    <PokeGameCountdown />
                     <PokeGame />
                 </CoinProvider>
             </PokeProviders>
