@@ -1,93 +1,197 @@
+"use client";
 
-export default function PokeGacha(){
-    return(
-        <>
-            <div className="flex flex-col items-center justify-center gap-y-2 mt-14
-            tablet:flex-row gap-2 tablet:mt-64 desktop:gap-3">{/* 1 */} 
-                <div className="flex gap-2 desktop:gap-3">
-                    <div className="bg-[#FBF8CB] w-28 h-auto p-2 rounded-3xl border border-[#1C1D1F]
-                    flex flex-col justify-center items-center space-y-4
-                    tablet:w-32 tablet:p-4
-                    desktop:w-36">
-                        <div className="flex items-center justify-center gap-0.5
-                        bg-[#E0FE6A] w-14 h-8 rounded-3xl border border-[#1C1D1F]
-                        tablet:w-16 tablet:gap-1">
-                            <img className="w-4 h-4 tablet:w-6 tablet:h-6" src="/img/coin.webp" />
-                            <span className="font-bold tablet:text-lg">5</span>
-                        </div>
+import { useState, useMemo } from "react";
+import PokeGachaCard from "./PokeGachaCard";
+import { useQuery } from "@tanstack/react-query";
+import { getPokemonList } from "@/lib/PokemonApi";
 
-                        <img className="h-20 w-20 tablet:w-24 tablet:h-24" src="/img/ball.webp"/>
+export default function PokeGacha() {
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
 
-                        <span className="font-bold text-4xl">C</span>
-                    </div>
-                    <div className="bg-[#FBF8CB] w-28 h-auto p-2 rounded-3xl border border-[#1C1D1F]
-                    flex flex-col justify-center items-center space-y-4
-                    tablet:w-32
-                    desktop:w-36">
-                        <div className="flex items-center justify-center gap-0.5
-                        bg-[#E0FE6A] w-14 h-8 rounded-3xl border border-[#1C1D1F]
-                        tablet:w-16 tablet:gap-1">
-                            <img className="w-4 h-4 tablet:w-6 tablet:h-6" src="/img/coin.webp" />
-                            <span className="font-bold tablet:text-lg">10</span>
-                        </div>
+  // 포켓몬 리스트를 가져옵니다.
+  const { data: pokemonList = [] } = useQuery({
+    queryKey: ["pokemon"],
+    queryFn: getPokemonList,
+  });
 
-                        <img className="h-20 w-20 tablet:w-24 tablet:h-24" src="/img/슈퍼볼.webp"/>
+  // 랭크를 할당하는 함수
+  const assignRandomRank = (pokemon) => {
+    const { totalBaseStat } = pokemon;
 
-                        <span className="font-bold text-4xl">B</span>
-                    </div>
-                    <div className="bg-[#FBF8CB] w-28 h-auto p-2 rounded-3xl border border-[#1C1D1F]
-                    flex flex-col justify-center items-center space-y-4
-                    tablet:w-32
-                    desktop:w-36">
-                        <div className="flex items-center justify-center gap-0.5
-                        bg-[#E0FE6A] w-14 h-8 rounded-3xl border border-[#1C1D1F]
-                        tablet:w-16 tablet:gap-1">
-                            <img className="w-4 h-4 tablet:w-6 tablet:h-6" src="/img/coin.webp" />
-                            <span className="font-bold tablet:text-lg">20</span>
-                        </div>
+    if (totalBaseStat > 0 && totalBaseStat < 400) {
+      return 'C';
+    } else if (totalBaseStat >= 400 && totalBaseStat < 500) {
+      return 'B';
+    } else if (totalBaseStat >= 500 && totalBaseStat < 600) {
+      return 'A';
+    } else if (totalBaseStat >= 600) {
+      return 'S';
+    } else {
+      return 'R';
+    }
+  };
 
-                        <img className="h-20 w-20 tablet:w-24 tablet:h-24" src="/img/하이퍼볼.webp"/>
+  // useMemo를 사용하여 랭크별 포켓몬 리스트를 분류합니다.
+  const { rankC, rankB, rankA, rankS, rankR } = useMemo(() => {
+    const rankC = [];
+    const rankB = [];
+    const rankA = [];
+    const rankS = [];
+    const rankR = [...pokemonList]; // R 랭크는 모든 포켓몬을 포함
 
-                        <span className="font-bold text-4xl">A</span>
-                    </div>
-                </div>
-            
-       
-            <div className="flex gap-2 desktop:gap-3">
-                <div className="bg-[#FBF8CB] w-28 h-auto p-2 rounded-3xl border border-[#1C1D1F]
-                    flex flex-col justify-center items-center space-y-4
-                    tablet:w-32 tablet:p-4
-                    desktop:w-36">
-                        <div className="flex items-center justify-center gap-0.5
-                        bg-[#E0FE6A] w-14 h-8 rounded-3xl border border-[#1C1D1F]
-                        tablet:w-16 tablet:gap-1">
-                            <img className="w-4 h-4 tablet:w-6 tablet:h-6" src="/img/coin.webp" />
-                            <span className="font-bold tablet:text-lg">50</span>
-                        </div>
+    pokemonList.forEach((pokemon) => {
+      const rank = assignRandomRank(pokemon);
+      pokemon.rank = rank; // 포켓몬 객체에 랭크 할당 (선택 사항)
 
-                        <img className="h-20 w-20 tablet:w-24 tablet:h-24" src="/img/마스터볼.webp"/>
+      if (rank === 'C') {
+        rankC.push(pokemon);
+      } else if (rank === 'B') {
+        rankB.push(pokemon);
+      } else if (rank === 'A') {
+        rankA.push(pokemon);
+      } else if (rank === 'S') {
+        rankS.push(pokemon);
+      }
+      // R 랭크는 모든 포켓몬을 포함하므로 별도 처리 필요 없음
+    });
 
-                        <span className="font-bold text-4xl">S</span>
-                </div>
-                <div className="bg-[#FBF8CB] w-28 h-auto p-2 rounded-3xl border border-[#1C1D1F]
-                    flex flex-col justify-center items-center space-y-4
-                    tablet:w-32
-                    desktop:w-36">
-                        <div className="flex items-center justify-center gap-0.5
-                        bg-[#E0FE6A] w-14 h-8 rounded-3xl border border-[#1C1D1F]
-                        tablet:w-16 tablet:gap-1">
-                            <img className="w-4 h-4 tablet:w-6 tablet:h-6" src="/img/coin.webp" />
-                            <span className="font-bold tablet:text-lg">30</span>
-                        </div>
+    return { rankC, rankB, rankA, rankS, rankR };
+  }, [pokemonList]);
 
-                        <img className="h-20 w-20 tablet:w-24 tablet:h-24" src="/img/랜덤볼.webp"/>
+  // 가챠 카드 클릭 시 호출되는 핸들러
+  const handleGachaClick = (rank) => {
+    let selectedList = [];
 
-                        <span className="font-bold text-4xl">R</span>
-                </div>
-            </div>
+    switch (rank) {
+      case 'C':
+        selectedList = rankC;
+        break;
+      case 'B':
+        selectedList = rankB;
+        break;
+      case 'A':
+        selectedList = rankA;
+        break;
+      case 'S':
+        selectedList = rankS;
+        break;
+      case 'R':
+        selectedList = rankR;
+        break;
+      default:
+        selectedList = [];
+    }
 
-        </div>{/* 1 */} 
+    if (selectedList.length === 0) {
+      // 해당 랭크에 포켓몬이 없을 경우 처리 (예: 알림 표시)
+      alert(`랭크 ${rank}에 해당하는 포켓몬이 없습니다.`);
+      return;
+    }
 
-        </>
-    )
+    // 선택된 리스트에서 랜덤 포켓몬 선택
+    const randomIndex = Math.floor(Math.random() * selectedList.length);
+    const randomPokemon = selectedList[randomIndex];
+    setSelectedPokemon(randomPokemon);
+  };
+
+  // 상세 정보 UI 닫기 핸들러
+  const closeSelectedPokemon = () => {
+    setSelectedPokemon(null);
+  };
+
+  return (
+    <>
+      {/* 가챠 카드 렌더링 */}
+      <div
+        className="flex flex-col items-center justify-center gap-y-2 mt-14
+        tablet:flex-row gap-2 tablet:mt-64 desktop:gap-3"
+      >
+        <div className="flex gap-2 desktop:gap-3">
+          <PokeGachaCard
+            onClick={() => handleGachaClick('C')}
+            id="C"
+            coin={"5"}
+            ballImg={"ball"}
+            rank={"C"}
+          />
+          <PokeGachaCard
+            onClick={() => handleGachaClick('B')}
+            id="B"
+            coin={"10"}
+            ballImg={"슈퍼볼"}
+            rank={"B"}
+          />
+          <PokeGachaCard
+            onClick={() => handleGachaClick('A')}
+            id="A"
+            coin={"20"}
+            ballImg={"하이퍼볼"}
+            rank={"A"}
+          />
+        </div>
+
+        <div className="flex gap-2 desktop:gap-3">
+          <PokeGachaCard
+            onClick={() => handleGachaClick('S')}
+            id="S"
+            coin={"30"}
+            ballImg={"마스터볼"}
+            rank={"S"}
+          />
+          <PokeGachaCard
+            onClick={() => handleGachaClick('R')}
+            id="R"
+            coin={"50"}
+            ballImg={"랜덤볼"}
+            rank={"R"}
+          />
+        </div>
+      </div>
+
+      {/* 선택된 포켓몬 상세 정보 렌더링 */}
+      {selectedPokemon && (
+        <div
+          className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+          bg-white border border-[#1C1D1F] p-4 rounded-xl shadow-lg flex flex-col items-center
+          z-50 w-48 drop-shadow-xl"
+        >
+          <div
+            className="w-auto h-auto px-3 py-0.5 bg-[#E0FE6A] border border-[#1C1D1F] rounded-xl
+            flex flex-col items-center justify-center mb-2"
+          >
+            <h2 className="font-bold text-sm">{selectedPokemon.number}</h2>
+            <h2 className="text-xs">{selectedPokemon.name}</h2>
+          </div>
+
+          <img
+            src={selectedPokemon.image}
+            alt={selectedPokemon.name}
+            className="w-28 h-28 mb-2"
+          />
+          <p className="text-xs">
+            타입: {selectedPokemon.type1}
+            {selectedPokemon.type2 && ` / ${selectedPokemon.type2}`}
+          </p>
+          <p className="text-xs">총 종족값: {selectedPokemon.totalBaseStat}</p>
+
+          {/* 닫기 버튼 */}
+          <button
+            onClick={closeSelectedPokemon}
+            className="w-auto h-auto px-3 py-2 bg-[#E8E8E8] border border-[#1C1D1F] rounded-xl
+            flex flex-col items-center justify-center mt-4 text-xs"
+          >
+            닫기
+          </button>
+        </div>
+      )}
+
+      {/* 배경 클릭 시 닫기 (선택 사항) */}
+      {selectedPokemon && (
+        <div
+        className="fixed inset-0 bg-black opacity-30 z-40"
+          onClick={closeSelectedPokemon}
+        ></div>
+      )}
+    </>
+  );
 }

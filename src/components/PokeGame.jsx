@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useContext } from "react";
-import { CoinProvider } from '@context/PokeCoinProviders.js'
+import { CoinContext } from './PokeCoinProviders'
 import { useQuery } from "@tanstack/react-query";
 import { getPokemonList } from "@/lib/PokemonApi";
 import PokeGameExp from "./PokeGameExp";
@@ -19,7 +19,7 @@ export default function PokeGame({}) {
     queryFn: getPokemonList,
   });
 
-  const { setCoin } = useContext(CoinProvider); 
+  const { setCoin } = useContext(CoinContext); 
 
   const clickHammer = () => {
     setHammer((prevHammer) => !prevHammer);
@@ -44,17 +44,22 @@ export default function PokeGame({}) {
     }, [clickCount, pokemonList]);
 
 
-    if (0 < selectedPokemon.totalBaseStat < 300){
-      setCoin((pre) => pre + 10)
-    } else if (300 < selectedPokemon.totalBaseStat < 400) {
-      setCoin((pre) => pre + 20)
-    } else if (400 < selectedPokemon.totalBaseStat < 500) {
-      setCoin((pre) => pre + 30)
-    } else if ( 500 <selectedPokemon.totalBaseStat < 600 ) {
-      setCoin((pre) => pre + 30)
-    } else if ( 600 < selectedPokemon.totalBaseStat) {
-      setCoin((pre) => pre + 30)
-    }
+    useEffect(() => {
+      if (selectedPokemon) {
+        const { totalBaseStat } = selectedPokemon;
+        if (totalBaseStat > 0 && totalBaseStat < 300) {
+          setCoin((prev) => prev + 10);
+        } else if (totalBaseStat >= 300 && totalBaseStat < 400) {
+          setCoin((prev) => prev + 20);
+        } else if (totalBaseStat >= 400 && totalBaseStat < 500) {
+          setCoin((prev) => prev + 30);
+        } else if (totalBaseStat >= 500 && totalBaseStat < 500) {
+          setCoin((prev) => prev + 40);
+        } else if (totalBaseStat >= 600) {
+          setCoin((prev) => prev + 50);
+        }
+      }
+    }, [selectedPokemon, setCoin]);
 
   return (
     <div className="relative h-screen">

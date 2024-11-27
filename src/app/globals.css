@@ -31,3 +31,58 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+
+.PokeGachaCard{
+  @apply bg-[#FBF8CB] w-28 h-auto p-2 rounded-3xl border border-[#1C1D1F]
+  flex flex-col justify-center items-center space-y-4
+}
+
+.PokeGachaCardCoinBox{
+  @apply flex items-center justify-center gap-0.5
+  bg-[#E0FE6A] w-14 h-8 rounded-3xl border border-[#1C1D1F]
+}
+
+.PokeGachaCardCoinText {
+  @apply font-bold
+}
+
+.PokeGachaCardCoinImg {
+  @apply w-4 h-4
+}
+
+.PokeGachaCardBallImg {
+  @apply h-20 w-20
+}
+
+.PokeGachaCardRankText{
+  @apply font-bold text-4xl
+}
+
+@screen tablet {
+
+  .PokeGachaCard{
+    @apply w-32 p-4
+  }
+  .PokeGachaCardCoinBox{
+    @apply w-16 gap-1
+  }
+  .PokeGachaCardCoinText {
+    @apply text-lg
+  }
+  .PokeGachaCardCoinImg {
+    @apply w-6 h-6
+  }
+  .PokeGachaCardBallImg {
+    @apply h-24 w-24
+  }
+  
+}
+
+@screen desktop {
+
+  .PokeGachaCard{
+    @apply w-36
+  }
+
+}
