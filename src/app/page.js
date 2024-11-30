@@ -18,17 +18,17 @@ export default function Home() {
 
         <div className="flex flex-col gap-y-2 justify-center items-center mt-72">
           <p className="text-5xl font-bold text-[#BC99FF] text-stroke
-          tablet:text-7xl">
+          tablet:text-7xl desktop:text-8xl">
             YUJIN</p>
           <p className="text-5xl font-bold text-[#E0FE6A] text-stroke
-          tablet:text-7xl">PORTPOILO</p>
+          tablet:text-7xl desktop:text-8xl">PORTPOILO</p>
         </div>
 
         <div className='flex flex-col items-center mt-20
 '>
           <div className='text-center text-sm
         tablet:text-lg
-        desktop:text-2xl'>
+        '>
             안녕하세요<br/>성장하고 있는 프론트엔드 개발자 김유진 입니다.
           </div>
         </div>

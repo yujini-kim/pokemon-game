@@ -1,14 +1,16 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useContext } from "react";
 import PokeGachaCard from "./PokeGachaCard";
 import { useQuery } from "@tanstack/react-query";
 import { getPokemonList } from "@/lib/PokemonApi";
+import { CoinContext } from './PokeCoinProviders'; 
 
 export default function PokeGacha() {
   const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const { coin, setCoin } = useContext(CoinContext); // 코인 상태 가져오기
 
-  // 포켓몬 리스트를 가져옵니다.
+
   const { data: pokemonList = [] } = useQuery({
     queryKey: ["pokemon"],
     queryFn: getPokemonList,
@@ -58,8 +60,28 @@ export default function PokeGacha() {
     return { rankC, rankB, rankA, rankS, rankR };
   }, [pokemonList]);
 
+  // 랭크별 코인 비용 정의
+  const rankCoinCost = {
+    C: 5,
+    B: 10,
+    A: 20,
+    S: 30,
+    R: 50,
+  };
+
   // 가챠 카드 클릭 시 호출되는 핸들러
   const handleGachaClick = (rank) => {
+    const cost = rankCoinCost[rank]; // 해당 랭크의 코인 비용
+
+    // 충분한 코인인지 확인
+    if (coin < cost) {
+      alert("코인이 부족합니다!");
+      return;
+    }
+
+    // 코인 차감
+    setCoin(coin - cost);
+
     let selectedList = [];
 
     switch (rank) {
@@ -82,11 +104,6 @@ export default function PokeGacha() {
         selectedList = [];
     }
 
-    if (selectedList.length === 0) {
-      // 해당 랭크에 포켓몬이 없을 경우 처리 (예: 알림 표시)
-      alert(`랭크 ${rank}에 해당하는 포켓몬이 없습니다.`);
-      return;
-    }
 
     // 선택된 리스트에서 랜덤 포켓몬 선택
     const randomIndex = Math.floor(Math.random() * selectedList.length);
@@ -99,6 +116,7 @@ export default function PokeGacha() {
     setSelectedPokemon(null);
   };
 
+
   return (
     <>
       {/* 가챠 카드 렌더링 */}
@@ -110,21 +128,21 @@ export default function PokeGacha() {
           <PokeGachaCard
             onClick={() => handleGachaClick('C')}
             id="C"
-            coin={"5"}
+            coin={5} // 숫자로 전달
             ballImg={"ball"}
             rank={"C"}
           />
           <PokeGachaCard
             onClick={() => handleGachaClick('B')}
             id="B"
-            coin={"10"}
+            coin={10} // 숫자로 전달
             ballImg={"슈퍼볼"}
             rank={"B"}
           />
           <PokeGachaCard
             onClick={() => handleGachaClick('A')}
             id="A"
-            coin={"20"}
+            coin={20} // 숫자로 전달
             ballImg={"하이퍼볼"}
             rank={"A"}
           />
@@ -134,14 +152,14 @@ export default function PokeGacha() {
           <PokeGachaCard
             onClick={() => handleGachaClick('S')}
             id="S"
-            coin={"30"}
+            coin={30} // 숫자로 전달
             ballImg={"마스터볼"}
             rank={"S"}
           />
           <PokeGachaCard
             onClick={() => handleGachaClick('R')}
             id="R"
-            coin={"50"}
+            coin={50} // 숫자로 전달
             ballImg={"랜덤볼"}
             rank={"R"}
           />
@@ -150,47 +168,54 @@ export default function PokeGacha() {
 
       {/* 선택된 포켓몬 상세 정보 렌더링 */}
       {selectedPokemon && (
-        <div
-          className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-          bg-white border border-[#1C1D1F] p-4 rounded-xl shadow-lg flex flex-col items-center
-          z-50 w-48 drop-shadow-xl"
-        >
+        <>
           <div
-            className="w-auto h-auto px-3 py-0.5 bg-[#E0FE6A] border border-[#1C1D1F] rounded-xl
-            flex flex-col items-center justify-center mb-2"
+            className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 space-y-2
+            bg-white border border-[#1C1D1F] p-4 px-6 rounded-xl shadow-lg flex flex-col items-center z-50
+            tablet:px-12 tablet:space-y-4"
           >
-            <h2 className="font-bold text-sm">{selectedPokemon.number}</h2>
-            <h2 className="text-xs">{selectedPokemon.name}</h2>
+            <div
+              className="w-auto h-auto px-3 py-1 bg-[#E0FE6A] border border-[#1C1D1F] rounded-xl
+              flex flex-col items-center justify-center mb-2
+              tablet:px-4"
+            >
+              <h2 className="font-bold text-sm
+              tablet:text-base">{selectedPokemon.number}</h2>
+              <h2 className="text-xs
+              tablet:text-sm">{selectedPokemon.name}</h2>
+            </div>
+
+            <img
+              src={selectedPokemon.image}
+              alt={selectedPokemon.name}
+              className="w-28 h-28 mb-2
+              tablet:w-36 tablet:h-36"
+            />
+            <div className="flex flex-col items-center">
+            <p className="text-xs tablet:text-base">
+              타입: {selectedPokemon.type1}
+              {selectedPokemon.type2 && ` / ${selectedPokemon.type2}`}
+            </p>
+            <p className="text-xs tablet:text-base">총 종족값: {selectedPokemon.totalBaseStat}</p>
+            </div>
+
+            {/* 닫기 버튼 */}
+            <button
+              onClick={closeSelectedPokemon}
+              className="w-auto h-auto p-2 mt-4 bg-[#E8E8E8] border border-[#1C1D1F] rounded-xl
+              flex flex-col items-center justify-center text-xs
+              tablet:text-base"
+            >
+              닫기
+            </button>
           </div>
 
-          <img
-            src={selectedPokemon.image}
-            alt={selectedPokemon.name}
-            className="w-28 h-28 mb-2"
-          />
-          <p className="text-xs">
-            타입: {selectedPokemon.type1}
-            {selectedPokemon.type2 && ` / ${selectedPokemon.type2}`}
-          </p>
-          <p className="text-xs">총 종족값: {selectedPokemon.totalBaseStat}</p>
-
-          {/* 닫기 버튼 */}
-          <button
+          {/* 배경 클릭 시 닫기 */}
+          <div
+            className="fixed inset-0 w-screen h-screen bg-black opacity-50 z-40"
             onClick={closeSelectedPokemon}
-            className="w-auto h-auto px-3 py-2 bg-[#E8E8E8] border border-[#1C1D1F] rounded-xl
-            flex flex-col items-center justify-center mt-4 text-xs"
-          >
-            닫기
-          </button>
-        </div>
-      )}
-
-      {/* 배경 클릭 시 닫기 (선택 사항) */}
-      {selectedPokemon && (
-        <div
-        className="fixed inset-0 bg-black opacity-30 z-40"
-          onClick={closeSelectedPokemon}
-        ></div>
+          ></div>
+        </>
       )}
     </>
   );

@@ -5,7 +5,7 @@ import { CoinContext } from './PokeCoinProviders'
 import { useContext } from 'react';
 
 export default function PokeNavbar(){
-
+    
     const { coin } = useContext(CoinContext); 
 
     return(
