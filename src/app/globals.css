@@ -59,6 +59,145 @@ html {
   @apply font-bold text-4xl
 }
 
+.HomeText {
+  @apply text-[#1C1D1F] text-4xl font-bold
+}
+
+.HomeTextDiv {
+  @apply flex justify-center mt-72
+}
+
+.HomeAboutMeInfo {
+  @apply flex flex-col justify-center space-y-1
+}
+.HomeAboutMeIcon {
+  @apply w-5 h-5 fill-[#1C1D1F]
+}
+.HomeAboutMeIconText {
+  @apply text-sm
+}
+
+.MyPhoto {
+ @apply w-32 h-40 rounded-md
+}
+.navbar {
+  @apply p-4 bg-white
+}
+.navbarLogoText {
+  @apply font-bold text-lg
+}
+.navbarUl{
+  @apply flex flex-col gap-y-1
+}
+
+.navbarList{
+  @apply w-full flex justify-center
+}
+
+.navbarListText {
+  @apply text-center text-sm  hover:text-[#BC99FF] hover:font-bold
+}
+
+.navbarIcon {
+  @apply hidden
+}
+
+.projectBox{
+  @apply mt-20 mb-20 gap-y-4 px-2 flex flex-col items-center justify-center
+}
+
+.projectBgBox {
+  @apply w-full h-auto bg-[#ffffff] rounded-xl drop-shadow-lg px-4 py-1 border border-[#1C1D1F]
+}
+
+.projectTitle {
+  @apply w-44 h-8 bg-[#BC99FF] rounded-lg flex items-center justify-center 
+  border border-[#1C1D1F]
+}
+.projectTitleText{
+  @apply text-sm font-bold
+}
+.projectDateText{
+  @apply text-xs text-[#878787] mt-2 
+}
+.dividingLine {
+  @apply mt-2 w-auto h-[1px] bg-[#878787]
+}
+
+.descriptionBox{
+  @apply w-auto h-[420px] px-4 mt-8
+}
+.descriptionBoxText{
+  @apply text-base font-bold
+}
+
+.projectButton{
+  @apply flex flex-row items-center gap-2 mt-6
+}
+
+.projectButtonBg{
+  @apply w-2 h-4 bg-[#585D7C]
+}
+
+.projectSkillsBg{
+  @apply mt-6 w-auto h-8 rounded-lg bg-[#E0FE6A] border border-[#1C1D1F]
+  flex items-center 
+}
+
+.projectSkillsText{
+  @apply text-xs ml-4
+}
+.HomeSkillsComponent{
+  @apply p-2 rounded-lg border border-[#1C1D1F] text-sm
+}
+
+.SkillsBg{
+  @apply bg-white w-auto h-auto rounded-xl drop-shadow-lg space-y-4 border border-[#1C1D1F]
+  flex flex-col justify-center p-6 
+}
+
+.SkillsComponentBox{
+  @apply flex flex-wrap gap-x-1 gap-y-1
+}
+
+.SkillsLine {
+  @apply flex flex-col items-start gap-y-1 
+}
+
+.pokeCardBg {
+  @apply flex flex-col justify-center items-center p-2 gap-y-2
+  w-full h-full bg-[#FBF8CB] border border-[#1C1D1F]
+  rounded-lg cursor-pointer
+}
+
+.pokeCardnumber {
+  @apply font-bold text-xl
+}
+
+.pokeCardImgBox{
+  @apply bg-white rounded-lg w-24 h-24
+}
+
+.pokeCardImg{
+  @apply w-full h-full object-contain p-2 
+}
+
+.pokeCardName{
+  @apply font-bold text-sm
+}
+
+.pokeCardType{
+  @apply bg-[#ffffff] p-1 w-12 h-auto flex flex-col items-center justify-center rounded-2xl border border-[#1C1D1F]
+}
+
+.pokeCardTypeImg{
+  @apply w-4 h-4
+}
+
+.pokeCardTypeText{
+  @apply text-xs
+}
+
 @screen tablet {
 
   .PokeGachaCard{
@@ -76,6 +215,94 @@ html {
   .PokeGachaCardBallImg {
     @apply h-24 w-24
   }
+  .HomeText {
+    @apply text-6xl
+  }
+  .HomeAboutMeIconText {
+    @apply text-lg
+  }
+
+  .MyPhoto {
+    @apply w-40 h-52
+   }
+
+  .navbar {
+    @apply p-4 flex items-center justify-between
+  }
+  
+  .navbarLogoText {
+  @apply text-2xl
+}
+  .navbarUl{
+    @apply flex flex-row gap-4 pr-20
+  }
+
+  .navbarList{
+    @apply w-auto
+  }
+  
+  .navbarListText {
+    @apply text-base 
+  }
+
+  .navbarIcon {
+    @apply flex w-7 h-7
+  }
+
+  .projectBox{
+    @apply px-8
+  }
+  .projectTitle{
+    @apply w-[300px] h-12
+  }
+  .projectTitleText{
+    @apply text-2xl
+  }
+  .projectDateText{
+    @apply text-lg
+  }
+
+  .descriptionBox{
+    @apply px-8
+  }
+
+  .descriptionBoxText{
+    @apply text-lg
+  }
+
+  .projectSkillsText{
+    @apply text-sm
+  }
+  .SkillsBg{
+    @apply p-10
+  }
+
+  .SkillsLine {
+    @apply flex-row gap-2
+  }
+
+  .pokeCardnumber {
+    @apply text-2xl
+  }
+  .pokeCardImgBox{
+    @apply w-36 h-36
+  }
+  .pokeCardName{
+    @apply text-base
+  }
+
+  .pokeCardType {
+    @apply flex-row w-20
+  }
+
+  .pokeCardTypeImg{
+    @apply w-6 h-6
+  }
+  
+  .pokeCardTypeText{
+    @apply text-sm
+  }
+
   
 }
 
@@ -85,4 +312,30 @@ html {
     @apply w-36
   }
 
+  .navbar {
+    @apply p-6 flex justify-between
+  }
+  .navbarUl{
+    @apply gap-6
+  }
+
+  .navbarListText {
+    @apply text-lg
+  }
+
+  .projectBox{
+    @apply flex-row gap-4 px-40
+  }
+
+  .pokeCardBg{
+    @apply py-6
+  }
+
+  .pokeCardImgBox{
+    @apply w-44 h-44
+  }
+
+  .pokeCardImg{
+    @apply p-4
+  }
 }
