@@ -66,6 +66,10 @@ export default function PokeGame({}) {
       setClickCount(0);
       setSelectedPokemon(null);
     };
+
+    const closeDetail = () => {
+      setSelectedPokemon(null);
+  };
   
 
   return (
@@ -77,10 +81,10 @@ export default function PokeGame({}) {
 
 
       <div className="flex flex-col items-center justify-center
-      tablet:flex-row tablet:gap-20 tablet:mt-56
-      desktop:mt-0">
+      tablet:flex-row tablet:gap-20 tablet:mt-32
+      desktop:mt-0 ">
         <div 
-        className="relative w-40 "
+        className="relative w-40"
         onClick={clickHammer}>
             <img 
               className='w-40'
@@ -94,7 +98,7 @@ export default function PokeGame({}) {
 
       {selectedPokemon && (
         <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-         bg-white border border-[#1C1D1F] p-4 rounded-xl shadow-lg flex flex-col items-center">
+         bg-white border border-[#1C1D1F] px-8 py-4 rounded-xl shadow-lg flex flex-col items-center">
           <div className="w-auto h-auto p-1 bg-[#E0FE6A] border border-[#1C1D1F] rounded-xl
           flex flex-col items-center justify-center mb-2">
             <h2 className="font-bold text-sm">{selectedPokemon.number}</h2>
@@ -104,6 +108,12 @@ export default function PokeGame({}) {
           <img src={selectedPokemon.image} alt={selectedPokemon.name} className="w-28 h-28 mb-2" />
           <p className="text-xs">타입: {selectedPokemon.type1}{selectedPokemon.type2 && ` / ${selectedPokemon.type2}`}</p>
           <p className="text-xs">총 종족값: {selectedPokemon.totalBaseStat}</p>
+            <button
+                onClick={closeDetail}
+                className="mt-2 p-2 bg-[#E8E8E8] border border-[#1C1D1F] rounded-lg text-sm"
+                >
+                닫기
+                </button>
         </div>
       )}
 

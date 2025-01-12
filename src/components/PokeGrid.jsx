@@ -120,7 +120,7 @@ export default function PokeGrid({ }){
             tablet:grid-cols-4
             desktop:grid-cols-6 desktop:mx-44">
                 {isLoading ?
-                    [...Array(12)].map((_, index) => (<PokeCardSkeleton key={index} />)) :
+                    [...Array(18)].map((_, index) => (<PokeCardSkeleton key={index} />)) :
                     filteredPokemon.map(( pokemon ) =>(
                         <PokeCard 
                         key={pokemon.number}

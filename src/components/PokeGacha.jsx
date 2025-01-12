@@ -1,10 +1,14 @@
 "use client";
 
-import { useState, useMemo, useContext } from "react";
+import { useState, useMemo, useContext, Suspense } from "react";
 import PokeGachaCard from "./PokeGachaCard";
 import { useQuery } from "@tanstack/react-query";
 import { getPokemonList } from "@/lib/PokemonApi";
 import { CoinContext } from './PokeCoinProviders'; 
+import PokeGachaCardSkeleton from "@components/PokeGachaCardSkeleton"
+import React from 'react'; 
+
+const LazyPokeGachaCard  = React.lazy(() => import('./PokeGachaCard'));
 
 export default function PokeGacha() {
   const [selectedPokemon, setSelectedPokemon] = useState(null);
@@ -122,47 +126,58 @@ export default function PokeGacha() {
       {/* 가챠 카드 렌더링 */}
       <div
         className="flex flex-col items-center justify-center gap-y-2 mt-14
-        tablet:flex-row gap-2 tablet:mt-64 desktop:gap-3"
+        tablet:flex-row gap-2 tablet:mt-36 desktop:mt-52 desktop:gap-3"
       >
         <div className="flex gap-2 desktop:gap-3">
-          <PokeGachaCard
-            onClick={() => handleGachaClick('C')}
-            id="C"
-            coin={5} // 숫자로 전달
-            ballImg={"ball"}
-            rank={"C"}
-          />
-          <PokeGachaCard
+          <Suspense fallback={<PokeGachaCardSkeleton />}>
+            <LazyPokeGachaCard
+              onClick={() => handleGachaClick('C')}
+              id="C"
+              coin={5} // 숫자로 전달
+              ballImg={"ball"}
+              rank={"C"}
+            />
+          </Suspense>
+
+        <Suspense fallback={<PokeGachaCardSkeleton />}>
+          <LazyPokeGachaCard
             onClick={() => handleGachaClick('B')}
             id="B"
             coin={10} // 숫자로 전달
             ballImg={"슈퍼볼"}
             rank={"B"}
           />
-          <PokeGachaCard
+          </Suspense>
+          <Suspense fallback={<PokeGachaCardSkeleton />}>
+          <LazyPokeGachaCard
             onClick={() => handleGachaClick('A')}
             id="A"
             coin={20} // 숫자로 전달
             ballImg={"하이퍼볼"}
             rank={"A"}
           />
+          </Suspense>
         </div>
 
         <div className="flex gap-2 desktop:gap-3">
-          <PokeGachaCard
+        <Suspense fallback={<PokeGachaCardSkeleton />}>
+        <LazyPokeGachaCard
             onClick={() => handleGachaClick('S')}
             id="S"
             coin={30} // 숫자로 전달
             ballImg={"마스터볼"}
             rank={"S"}
           />
-          <PokeGachaCard
+           </Suspense>
+           <Suspense fallback={<PokeGachaCardSkeleton />}>
+           <LazyPokeGachaCard
             onClick={() => handleGachaClick('R')}
             id="R"
             coin={50} // 숫자로 전달
             ballImg={"랜덤볼"}
             rank={"R"}
           />
+          </Suspense>
         </div>
       </div>
 
