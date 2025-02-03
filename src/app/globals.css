@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #f2e6da;
-  --foreground: #1c1d1f;
+  --background: #e7e7e7;
+  --foreground: #000000;
 }
 
 @layer utilities {
@@ -32,29 +32,29 @@ html {
 }
 
 .SignInput {
-  @apply w-full h-8 bg-transparent border-b-2 border-black text-black pl-10 placeholder-black outline-none focus:border-[#BC99FF];
+  @apply w-full h-8 bg-transparent border-b-2 border-black text-black pl-10 placeholder-black outline-none focus:border-[#F74D66];
 }
 
 .SignButton {
-  @apply w-full py-2 rounded-full bg-[#E0FE6A] border border-black text-lg font-medium uppercase tracking-wider mt-5;
+  @apply w-full py-2 rounded-full bg-[#FEEDEF] border border-black text-lg font-medium uppercase tracking-wider mt-5;
 }
 
 .SingTogglebtn {
-  @apply block text-center py-5 text-black uppercase bg-[#BC99FF] hover:bg-[#FBF8CB] transition-colors duration-300;
+  @apply block text-center py-5 text-black uppercase bg-[#D7C9FF] hover:bg-[#F1F1F1] transition-colors duration-300;
 }
 
 .PokeGachaCard {
-  @apply bg-[#FBF8CB] w-28 h-auto p-2 rounded-3xl border border-[#1C1D1F]
+  @apply bg-white w-28 h-auto p-2 rounded-3xl border border-[#F1F1F1] shadow-md
   flex flex-col justify-center items-center space-y-4;
 }
 
 .PokeGachaCardCoinBox {
   @apply flex items-center justify-center gap-0.5
-  bg-[#E0FE6A] w-14 h-8 rounded-3xl border border-[#1C1D1F];
+  bg-[#F5F5F5] w-14 h-8 rounded-3xl;
 }
 
 .PokeGachaCardCoinText {
-  @apply font-bold;
+  @apply text-[#999999];
 }
 
 .PokeGachaCardCoinImg {
@@ -66,7 +66,7 @@ html {
 }
 
 .PokeGachaCardRankText {
-  @apply font-bold text-4xl;
+  @apply font-semibold text-[#F74D66] text-2xl;
 }
 
 .HomeText {
@@ -85,31 +85,6 @@ html {
 }
 .HomeAboutMeIconText {
   @apply text-sm;
-}
-
-.MyPhoto {
-  @apply w-32 h-40 rounded-md;
-}
-.navbar {
-  @apply p-4 bg-white;
-}
-.navbarLogoText {
-  @apply font-bold text-lg;
-}
-.navbarUl {
-  @apply flex flex-col gap-y-1;
-}
-
-.navbarList {
-  @apply w-full flex justify-center;
-}
-
-.navbarListText {
-  @apply text-center text-sm  hover:text-[#BC99FF] hover:font-bold;
-}
-
-.navbarIcon {
-  @apply hidden;
 }
 
 .projectBox {
@@ -176,7 +151,7 @@ html {
 
 .pokeCardBg {
   @apply flex flex-col justify-center items-center p-2 gap-y-2
-  w-full h-full bg-[#FBF8CB] border border-[#1C1D1F]
+  w-full h-full bg-white
   rounded-lg cursor-pointer;
 }
 
@@ -197,7 +172,7 @@ html {
 }
 
 .pokeCardType {
-  @apply bg-[#ffffff] p-1 w-12 h-auto flex flex-col items-center justify-center rounded-2xl border border-[#1C1D1F];
+  @apply bg-[#F5F5F5] p-1 w-12 h-auto flex flex-col items-center justify-center rounded-2xl;
 }
 
 .pokeCardTypeImg {
@@ -205,7 +180,7 @@ html {
 }
 
 .pokeCardTypeText {
-  @apply text-xs;
+  @apply text-xs text-[#999999];
 }
 
 @screen tablet {
@@ -229,33 +204,6 @@ html {
   }
   .HomeAboutMeIconText {
     @apply text-lg;
-  }
-
-  .MyPhoto {
-    @apply w-40 h-52;
-  }
-
-  .navbar {
-    @apply p-4 flex items-center justify-between;
-  }
-
-  .navbarLogoText {
-    @apply text-2xl;
-  }
-  .navbarUl {
-    @apply flex flex-row gap-4 pr-20;
-  }
-
-  .navbarList {
-    @apply w-auto;
-  }
-
-  .navbarListText {
-    @apply text-base;
-  }
-
-  .navbarIcon {
-    @apply flex w-7 h-7;
   }
 
   .projectBox {
@@ -316,17 +264,6 @@ html {
 @screen desktop {
   .PokeGachaCard {
     @apply w-36;
-  }
-
-  .navbar {
-    @apply p-6 flex justify-between;
-  }
-  .navbarUl {
-    @apply gap-6;
-  }
-
-  .navbarListText {
-    @apply text-lg;
   }
 
   .projectBox {

@@ -8,23 +8,17 @@ import {
 } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { useRouter } from "next/navigation";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: process.env.LOGIN_API_KEY,
-  authDomain: process.env.LOGIN_AUTH_DOMAIN,
-  projectId: process.env.LOGIN_PROJECT_ID,
-  storageBucket: process.env.LOGIN_STORAGE_BUCKET,
-  messagingSenderId: process.env.LOGIN_MESSAGING_SENDER_ID,
-  appId: process.env.LOGIN_APP_ID,
-  measurementId: process.env.LOGIN_MEASUREMENT_ID,
+  apiKey: process.env.NEXT_PUBLIC_LOGIN_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_LOGIN_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_LOGIN_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_LOGIN_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_LOGIN_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_LOGIN_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_LOGIN_MEASUREMENT_ID,
 };
-
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
@@ -40,6 +34,7 @@ export default function SignUp() {
   const handlePasswordChange = (e) => {
     setPasswordValue(e.target.value);
   };
+  const router = useRouter();
   const auth = getAuth();
   // 회원가입
   const signupClick = (e) => {
@@ -48,6 +43,7 @@ export default function SignUp() {
       .then((userCredential) => {
         console.log("회원가입성공", userCredential.user);
         alert("회원가입이 완료되었습니다");
+        router.push("/singup");
       })
       .catch((error) => {
         console.log("회원가입실패", error.message);
@@ -61,6 +57,7 @@ export default function SignUp() {
       .then((userCredential) => {
         console.log("로그인성공", userCredential.user);
         alert("로그인 성공");
+        router.push("/");
       })
       .catch((error) => {
         console.log("로그인실패", error.message);
@@ -83,7 +80,7 @@ export default function SignUp() {
       >
         <form
           onSubmit={signinClick}
-          className="bg-white border border-black p-8 flex flex-col"
+          className="bg-white shadow-md p-8 flex flex-col"
         >
           <div className="flex justify-center">
             <img src="/img/singIcon.webp" className="size-48" />
@@ -119,11 +116,7 @@ export default function SignUp() {
             Sign In
           </button>
         </form>
-        <a
-          href="#"
-          onClick={toggleForm}
-          className="SingTogglebtn border border-black border-t-0"
-        >
+        <a href="#" onClick={toggleForm} className="SingTogglebtn border-t-0">
           sign up
         </a>
       </div>
@@ -134,17 +127,10 @@ export default function SignUp() {
           !isSignUp ? "translate-y-full" : "translate-y-0"
         }`}
       >
-        <a
-          href="#"
-          onClick={toggleForm}
-          className="SingTogglebtn border border-black border-b-0"
-        >
+        <a href="#" onClick={toggleForm} className="SingTogglebtn border-b-0">
           sign in
         </a>
-        <form
-          onSubmit={signupClick}
-          className="bg-white border border-black p-8"
-        >
+        <form onSubmit={signupClick} className="bg-white p-8">
           <div className="flex justify-center">
             <img src="/img/singIcon.webp" className="size-48" />
           </div>

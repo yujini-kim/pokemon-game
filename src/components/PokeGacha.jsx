@@ -4,16 +4,15 @@ import { useState, useMemo, useContext, Suspense } from "react";
 import PokeGachaCard from "./PokeGachaCard";
 import { useQuery } from "@tanstack/react-query";
 import { getPokemonList } from "@/lib/PokemonApi";
-import { CoinContext } from './PokeCoinProviders'; 
-import PokeGachaCardSkeleton from "@components/PokeGachaCardSkeleton"
-import React from 'react'; 
+import { CoinContext } from "./PokeCoinProviders";
+import PokeGachaCardSkeleton from "@components/PokeGachaCardSkeleton";
+import React from "react";
 
-const LazyPokeGachaCard  = React.lazy(() => import('./PokeGachaCard'));
+const LazyPokeGachaCard = React.lazy(() => import("./PokeGachaCard"));
 
 export default function PokeGacha() {
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const { coin, setCoin } = useContext(CoinContext); // 코인 상태 가져오기
-
 
   const { data: pokemonList = [] } = useQuery({
     queryKey: ["pokemon"],
@@ -25,15 +24,15 @@ export default function PokeGacha() {
     const { totalBaseStat } = pokemon;
 
     if (totalBaseStat > 0 && totalBaseStat < 400) {
-      return 'C';
+      return "C";
     } else if (totalBaseStat >= 400 && totalBaseStat < 500) {
-      return 'B';
+      return "B";
     } else if (totalBaseStat >= 500 && totalBaseStat < 600) {
-      return 'A';
+      return "A";
     } else if (totalBaseStat >= 600) {
-      return 'S';
+      return "S";
     } else {
-      return 'R';
+      return "R";
     }
   };
 
@@ -49,13 +48,13 @@ export default function PokeGacha() {
       const rank = assignRandomRank(pokemon);
       pokemon.rank = rank; // 포켓몬 객체에 랭크 할당 (선택 사항)
 
-      if (rank === 'C') {
+      if (rank === "C") {
         rankC.push(pokemon);
-      } else if (rank === 'B') {
+      } else if (rank === "B") {
         rankB.push(pokemon);
-      } else if (rank === 'A') {
+      } else if (rank === "A") {
         rankA.push(pokemon);
-      } else if (rank === 'S') {
+      } else if (rank === "S") {
         rankS.push(pokemon);
       }
       // R 랭크는 모든 포켓몬을 포함하므로 별도 처리 필요 없음
@@ -89,25 +88,24 @@ export default function PokeGacha() {
     let selectedList = [];
 
     switch (rank) {
-      case 'C':
+      case "C":
         selectedList = rankC;
         break;
-      case 'B':
+      case "B":
         selectedList = rankB;
         break;
-      case 'A':
+      case "A":
         selectedList = rankA;
         break;
-      case 'S':
+      case "S":
         selectedList = rankS;
         break;
-      case 'R':
+      case "R":
         selectedList = rankR;
         break;
       default:
         selectedList = [];
     }
-
 
     // 선택된 리스트에서 랜덤 포켓몬 선택
     const randomIndex = Math.floor(Math.random() * selectedList.length);
@@ -120,7 +118,6 @@ export default function PokeGacha() {
     setSelectedPokemon(null);
   };
 
-
   return (
     <>
       {/* 가챠 카드 렌더링 */}
@@ -131,7 +128,7 @@ export default function PokeGacha() {
         <div className="flex gap-2 desktop:gap-3">
           <Suspense fallback={<PokeGachaCardSkeleton />}>
             <LazyPokeGachaCard
-              onClick={() => handleGachaClick('C')}
+              onClick={() => handleGachaClick("C")}
               id="C"
               coin={5} // 숫자로 전달
               ballImg={"ball"}
@@ -139,44 +136,44 @@ export default function PokeGacha() {
             />
           </Suspense>
 
-        <Suspense fallback={<PokeGachaCardSkeleton />}>
-          <LazyPokeGachaCard
-            onClick={() => handleGachaClick('B')}
-            id="B"
-            coin={10} // 숫자로 전달
-            ballImg={"슈퍼볼"}
-            rank={"B"}
-          />
+          <Suspense fallback={<PokeGachaCardSkeleton />}>
+            <LazyPokeGachaCard
+              onClick={() => handleGachaClick("B")}
+              id="B"
+              coin={10} // 숫자로 전달
+              ballImg={"슈퍼볼"}
+              rank={"B"}
+            />
           </Suspense>
           <Suspense fallback={<PokeGachaCardSkeleton />}>
-          <LazyPokeGachaCard
-            onClick={() => handleGachaClick('A')}
-            id="A"
-            coin={20} // 숫자로 전달
-            ballImg={"하이퍼볼"}
-            rank={"A"}
-          />
+            <LazyPokeGachaCard
+              onClick={() => handleGachaClick("A")}
+              id="A"
+              coin={20} // 숫자로 전달
+              ballImg={"하이퍼볼"}
+              rank={"A"}
+            />
           </Suspense>
         </div>
 
         <div className="flex gap-2 desktop:gap-3">
-        <Suspense fallback={<PokeGachaCardSkeleton />}>
-        <LazyPokeGachaCard
-            onClick={() => handleGachaClick('S')}
-            id="S"
-            coin={30} // 숫자로 전달
-            ballImg={"마스터볼"}
-            rank={"S"}
-          />
-           </Suspense>
-           <Suspense fallback={<PokeGachaCardSkeleton />}>
-           <LazyPokeGachaCard
-            onClick={() => handleGachaClick('R')}
-            id="R"
-            coin={50} // 숫자로 전달
-            ballImg={"랜덤볼"}
-            rank={"R"}
-          />
+          <Suspense fallback={<PokeGachaCardSkeleton />}>
+            <LazyPokeGachaCard
+              onClick={() => handleGachaClick("S")}
+              id="S"
+              coin={30} // 숫자로 전달
+              ballImg={"마스터볼"}
+              rank={"S"}
+            />
+          </Suspense>
+          <Suspense fallback={<PokeGachaCardSkeleton />}>
+            <LazyPokeGachaCard
+              onClick={() => handleGachaClick("R")}
+              id="R"
+              coin={50} // 숫자로 전달
+              ballImg={"랜덤볼"}
+              rank={"R"}
+            />
           </Suspense>
         </div>
       </div>
@@ -186,18 +183,26 @@ export default function PokeGacha() {
         <>
           <div
             className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 space-y-2
-            bg-white border border-[#1C1D1F] p-4 px-6 rounded-xl shadow-lg flex flex-col items-center z-50
+            bg-[#FEEDEF] border border-[#1C1D1F] p-4 px-6 rounded-xl shadow-lg flex flex-col items-center z-50
             tablet:px-12 tablet:space-y-4"
           >
             <div
-              className="w-auto h-auto px-3 py-1 bg-[#E0FE6A] border border-[#1C1D1F] rounded-xl
+              className="w-auto h-auto px-3 py-1 bg-white border border-[#1C1D1F] rounded-xl
               flex flex-col items-center justify-center mb-2
               tablet:px-4"
             >
-              <h2 className="font-bold text-sm
-              tablet:text-base">{selectedPokemon.number}</h2>
-              <h2 className="text-xs
-              tablet:text-sm">{selectedPokemon.name}</h2>
+              <h2
+                className="font-bold text-sm
+              tablet:text-base"
+              >
+                {selectedPokemon.number}
+              </h2>
+              <h2
+                className="text-xs
+              tablet:text-sm"
+              >
+                {selectedPokemon.name}
+              </h2>
             </div>
 
             <img
@@ -207,17 +212,19 @@ export default function PokeGacha() {
               tablet:w-36 tablet:h-36"
             />
             <div className="flex flex-col items-center">
-            <p className="text-xs tablet:text-base">
-              타입: {selectedPokemon.type1}
-              {selectedPokemon.type2 && ` / ${selectedPokemon.type2}`}
-            </p>
-            <p className="text-xs tablet:text-base">총 종족값: {selectedPokemon.totalBaseStat}</p>
+              <p className="text-xs tablet:text-base">
+                타입: {selectedPokemon.type1}
+                {selectedPokemon.type2 && ` / ${selectedPokemon.type2}`}
+              </p>
+              <p className="text-xs tablet:text-base">
+                총 종족값: {selectedPokemon.totalBaseStat}
+              </p>
             </div>
 
             {/* 닫기 버튼 */}
             <button
               onClick={closeSelectedPokemon}
-              className="w-auto h-auto p-2 mt-4 bg-[#E8E8E8] border border-[#1C1D1F] rounded-xl
+              className="w-auto h-auto p-2 mt-4 bg-[#F5F5F5] border border-[#1C1D1F] rounded-xl
               flex flex-col items-center justify-center text-xs
               tablet:text-base"
             >
@@ -227,7 +234,7 @@ export default function PokeGacha() {
 
           {/* 배경 클릭 시 닫기 */}
           <div
-            className="fixed inset-0 w-screen h-screen bg-black opacity-50 z-40"
+            className="fixed inset-0 w-screen h-screen bg-black opacity-10 z-40"
             onClick={closeSelectedPokemon}
           ></div>
         </>

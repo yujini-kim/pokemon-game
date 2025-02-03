@@ -2,7 +2,11 @@
 
 import { useState, useEffect } from "react";
 
-export default function PokeGameCountdown({ initialTime = 15, selectedPokemon, resetGame }) {
+export default function PokeGameCountdown({
+  initialTime = 15,
+  selectedPokemon,
+  resetGame,
+}) {
   const [time, setTime] = useState(initialTime);
   const [isCounting, setIsCounting] = useState(true);
 
@@ -37,7 +41,7 @@ export default function PokeGameCountdown({ initialTime = 15, selectedPokemon, r
         <div>
           {selectedPokemon ? (
             <button
-              className="bg-[#BC99FF] w-24 h-10 
+              className="bg-[#FEEDEF] w-24 h-10 
                     border border-[#1C1D1F] rounded-3xl font-bold text-base"
               onClick={handleRestart}
             >
@@ -45,12 +49,12 @@ export default function PokeGameCountdown({ initialTime = 15, selectedPokemon, r
             </button>
           ) : (
             <button
-            className="bg-[#BC99FF] w-24 h-10 
+              className="bg-[#FEEDEF] w-24 h-10 
                   border border-[#1C1D1F] rounded-3xl font-bold text-base"
-            onClick={handleRestart}
-          >
-            다시시작
-          </button>
+              onClick={handleRestart}
+            >
+              다시시작
+            </button>
           )}
         </div>
       )}

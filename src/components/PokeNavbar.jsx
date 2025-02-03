@@ -1,38 +1,59 @@
 "use client";
 
-import Link from "next/link"
-import { CoinContext } from './PokeCoinProviders'
-import { useContext } from 'react';
+import Link from "next/link";
+import { CoinContext } from "./PokeCoinProviders";
+import { useContext } from "react";
 
-export default function PokeNavbar(){
-    
-    const { coin } = useContext(CoinContext); 
+export default function PokeNavbar() {
+  const { coin } = useContext(CoinContext);
 
-    return(
-        <>
-            <div className="flex justify-between p-6 tablet:p-8">
-                <Link href="/" className="bg-[#1C1D1F] px-3 tablet:px-5 rounded-3xl flex items-center justify-center">
-                    <img className="w-4 h-4 tablet:w-6 tablet:h-6" src="/img/icon_home.webp"/>
-                </Link>
-
-                <div className="flex gap-2">
-                    <Link href="/game" className="bg-[#1C1D1F] p-2 tablet:px-3 rounded-3xl flex items-center justify-center gap-1">
-                        <img className="w-4 h-4 tablet:w-6 tablet:h-6" src="/img/icon_game.webp"/>
-                        <p className="text-white text-sm tablet:text-base">게임</p>
-                    </Link>
-
-                    <Link href="/book" className="bg-[#1C1D1F] p-2 tablet:px-3 rounded-3xl flex items-center justify-center gap-1">
-                        <img className="w-4 h-4 tablet:w-6 tablet:h-6" src="/img/icon_book.webp"/>
-                        <p className="text-white text-sm tablet:text-base">도감</p>
-                    </Link>
-
-                    <div className="bg-[#1C1D1F] p-2 tablet:px-3 rounded-3xl flex items-center justify-center gap-1">
-                        <img className="w-4 h-4 tablet:w-6 tablet:h-6" src="/img/icon_coin.webp"/>
-                        <p className="text-white text-sm tablet:text-base">{coin}</p>
-                    </div>
-                </div>
-            </div>
-        </>
-
-    )
+  return (
+    <nav className="bg-[#F74D66] w-full h-full">
+      <ul className="flex px-6 py-4">
+        <li>
+          <Link href="/">
+            <img src="/img/logo.webp" className="w-20 h-20" />
+          </Link>
+        </li>
+        <div className="flex gap-4 absolute right-6 top-6">
+          <li>
+            <Link
+              href="/book"
+              className="flex flex-col items-center justify-center bg-[#F74D66] border border-black w-16 h-16 rounded-xl"
+            >
+              <img src="/img/icon_book.webp" className="w-6 h-6" />
+              <span className="text-base font-semibold">도감</span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/game"
+              className="flex flex-col items-center justify-center bg-[#F74D66] border border-black w-16 h-16 rounded-xl"
+            >
+              <img src="/img/icon_game.webp" className="w-6 h-6" />
+              <span className="text-base font-semibold">게임</span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/"
+              className="flex flex-col items-center justify-center bg-[#F74D66] border border-black w-16 h-16 rounded-xl"
+            >
+              <img src="/img/icon_coin.webp" className="w-6 h-6" />
+              <span className="text-base font-semibold">{coin}</span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/signup"
+              className="flex flex-col items-center justify-center bg-black w-16 h-16 rounded-xl"
+            >
+              <img src="/img/icon_name_pink.webp" className="w-6 h-6" />
+              <span className="text-base font-semibold text-white">로그인</span>
+            </Link>
+          </li>
+        </div>
+      </ul>
+    </nav>
+  );
 }

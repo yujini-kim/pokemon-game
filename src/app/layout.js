@@ -1,16 +1,9 @@
-import { Noto_Sans_KR, Poppins } from "next/font/google";
+import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
-import LoginBtn from "@/components/LoginBtn";
 
 const notoSansKR = Noto_Sans_KR({
   weight: ["400", "700"],
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const EgFont = Poppins({
-  weight: ["400", "700"],
-  subsets: ["latin"],
+  subsets: ["korean"],
   display: "swap",
 });
 
@@ -21,15 +14,11 @@ export const metadata = {
   },
   description: "Yujin Portfolio",
 };
+
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <body
-        className={`${notoSansKR.className} ${EgFont.className} antialiased`}
-      >
-        <LoginBtn />
-        {children}
-      </body>
+      <body className={`${notoSansKR.className} antialiased`}>{children}</body>
     </html>
   );
 }
