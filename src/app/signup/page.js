@@ -1,76 +1,192 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
-export default function Signup() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
-  const router = useRouter();
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-  const handleSignup = async (e) => {
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyB_TcRsEX-x0rrKazrbmRffI-xpal2bMWM",
+  authDomain: "jinijinionline-pokemon.firebaseapp.com",
+  projectId: "jinijinionline-pokemon",
+  storageBucket: "jinijinionline-pokemon.firebasestorage.app",
+  messagingSenderId: "622355097523",
+  appId: "1:622355097523:web:6f7c128fdbf5f7e6bc4dc6",
+  measurementId: "G-7QYBVL1Y6V",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+export default function SignUp() {
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [emailValue, setEmailValue] = useState("");
+  const [passwordValue, setPasswordValue] = useState("");
+
+  const handleEmailChange = (e) => {
+    setEmailValue(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPasswordValue(e.target.value);
+  };
+  const auth = getAuth();
+  // 회원가입
+  const signupClick = (e) => {
     e.preventDefault();
-
-    try {
-      const res = await fetch("/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
+    createUserWithEmailAndPassword(auth, emailValue, passwordValue)
+      .then((userCredential) => {
+        console.log("회원가입성공", userCredential.user);
+        alert("회원가입이 완료되었습니다");
+      })
+      .catch((error) => {
+        console.log("회원가입실패", error.message);
+        alert(error.message);
       });
+  };
 
-      const data = await res.json();
+  const signinClick = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, emailValue, passwordValue)
+      .then((userCredential) => {
+        console.log("로그인성공", userCredential.user);
+        alert("로그인 성공");
+      })
+      .catch((error) => {
+        console.log("로그인실패", error.message);
+        alert(error.message);
+      });
+  };
 
-      if (res.ok) {
-        setMessage(data.message);
-        // 회원가입 성공 시 로그인 페이지로 이동
-        router.push("/login");
-      } else {
-        setMessage(data.message || "회원가입에 실패했습니다.");
-      }
-    } catch (error) {
-      console.error("Signup error:", error);
-      setMessage("회원가입 중 오류가 발생했습니다.");
-    }
+  const toggleForm = (e) => {
+    e.preventDefault();
+    setIsSignUp(!isSignUp);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <form
-        onSubmit={handleSignup}
-        className="bg-white p-8 rounded shadow-md w-full max-w-md"
+    <div className="mt-32 relative h-[580px] w-[400px] mx-auto rounded-lg overflow-hidden top-0 bottom-0 left-0 right-0">
+      {/* 로그인 */}
+      <div
+        className={`absolute inset-0 transition-transform ease-in-out duration-500 ${
+          isSignUp ? "translate-y-full" : "translate-y-0"
+        }`}
       >
-        <h1 className="text-2xl font-bold mb-6 text-center">회원가입</h1>
-        <div className="mb-4">
-          <label className="block text-gray-700 mb-2">아이디</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            className="w-full px-3 py-2 border rounded"
-          />
-        </div>
-        <div className="mb-6">
-          <label className="block text-gray-700 mb-2">비밀번호</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="w-full px-3 py-2 border rounded"
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+        <form
+          onSubmit={signinClick}
+          className="bg-white border border-black p-8 flex flex-col"
         >
-          가입하기
-        </button>
-        {message && <p className="mt-4 text-center text-red-500">{message}</p>}
-      </form>
+          <div className="flex justify-center">
+            <img src="/img/singIcon.webp" className="size-48" />
+          </div>
+
+          <div className="relative mb-5">
+            <img
+              src="/img/icon_mail.webp"
+              className="absolute top-1/2 left-3 transform -translate-y-1/2 size-4"
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              className="SignInput"
+              value={emailValue}
+              onChange={handleEmailChange}
+            />
+          </div>
+          <div className="relative mb-5">
+            <img
+              src="/img/icon_password.webp"
+              className="absolute top-1/2 left-3 transform -translate-y-1/2 size-4"
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              className="SignInput"
+              value={passwordValue}
+              onChange={handlePasswordChange}
+            />
+          </div>
+          <button type="submit" className="SignButton">
+            Sign In
+          </button>
+        </form>
+        <a
+          href="#"
+          onClick={toggleForm}
+          className="SingTogglebtn border border-black border-t-0"
+        >
+          sign up
+        </a>
+      </div>
+
+      {/* 회원가입 */}
+      <div
+        className={`absolute inset-0 transition-transform ease-in-out duration-500  ${
+          !isSignUp ? "translate-y-full" : "translate-y-0"
+        }`}
+      >
+        <a
+          href="#"
+          onClick={toggleForm}
+          className="SingTogglebtn border border-black border-b-0"
+        >
+          sign in
+        </a>
+        <form
+          onSubmit={signupClick}
+          className="bg-white border border-black p-8"
+        >
+          <div className="flex justify-center">
+            <img src="/img/singIcon.webp" className="size-48" />
+          </div>
+          <div className="relative mb-5">
+            <img
+              src="/img/icon_name.webp"
+              className="absolute top-1/2 left-3 transform -translate-y-1/2 size-4"
+            />
+            <input type="text" placeholder="Username" className="SignInput" />
+          </div>
+          <div className="relative mb-5">
+            <img
+              src="/img/icon_mail.webp"
+              className="absolute top-1/2 left-3 transform -translate-y-1/2 size-4"
+            />
+            <input
+              type="text"
+              placeholder="Email"
+              className="SignInput"
+              onChange={handleEmailChange}
+              value={emailValue}
+            />
+          </div>
+          <div className="relative mb-5">
+            <img
+              src="/img/icon_password.webp"
+              className="absolute top-1/2 left-3 transform -translate-y-1/2 size-4"
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              className="SignInput"
+              onChange={handlePasswordChange}
+              value={passwordValue}
+            />
+          </div>
+
+          <button type="submit" className="SignButton">
+            Sign Up
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

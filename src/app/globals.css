@@ -3,14 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --background: #F2E6DA;
-  --foreground: #1C1D1F;
+  --background: #f2e6da;
+  --foreground: #1c1d1f;
 }
 
 @layer utilities {
   .text-stroke {
-    -webkit-text-stroke: 1px #1C1D1F; 
-    
+    -webkit-text-stroke: 1px #1c1d1f;
   }
 }
 
@@ -32,310 +31,317 @@ html {
   scroll-behavior: smooth;
 }
 
-
-.PokeGachaCard{
-  @apply bg-[#FBF8CB] w-28 h-auto p-2 rounded-3xl border border-[#1C1D1F]
-  flex flex-col justify-center items-center space-y-4
+.SignInput {
+  @apply w-full h-8 bg-transparent border-b-2 border-black text-black pl-10 placeholder-black outline-none focus:border-[#BC99FF];
 }
 
-.PokeGachaCardCoinBox{
+.SignButton {
+  @apply w-full py-2 rounded-full bg-[#E0FE6A] border border-black text-lg font-medium uppercase tracking-wider mt-5;
+}
+
+.SingTogglebtn {
+  @apply block text-center py-5 text-black uppercase bg-[#BC99FF] hover:bg-[#FBF8CB] transition-colors duration-300;
+}
+
+.PokeGachaCard {
+  @apply bg-[#FBF8CB] w-28 h-auto p-2 rounded-3xl border border-[#1C1D1F]
+  flex flex-col justify-center items-center space-y-4;
+}
+
+.PokeGachaCardCoinBox {
   @apply flex items-center justify-center gap-0.5
-  bg-[#E0FE6A] w-14 h-8 rounded-3xl border border-[#1C1D1F]
+  bg-[#E0FE6A] w-14 h-8 rounded-3xl border border-[#1C1D1F];
 }
 
 .PokeGachaCardCoinText {
-  @apply font-bold
+  @apply font-bold;
 }
 
 .PokeGachaCardCoinImg {
-  @apply w-4 h-4
+  @apply w-4 h-4;
 }
 
 .PokeGachaCardBallImg {
-  @apply h-20 w-20
+  @apply h-20 w-20;
 }
 
-.PokeGachaCardRankText{
-  @apply font-bold text-4xl
+.PokeGachaCardRankText {
+  @apply font-bold text-4xl;
 }
 
 .HomeText {
-  @apply text-[#1C1D1F] text-4xl font-bold
+  @apply text-[#1C1D1F] text-4xl font-bold;
 }
 
 .HomeTextDiv {
-  @apply flex justify-center mt-72
+  @apply flex justify-center mt-72;
 }
 
 .HomeAboutMeInfo {
-  @apply flex flex-col justify-center space-y-1
+  @apply flex flex-col justify-center space-y-1;
 }
 .HomeAboutMeIcon {
-  @apply w-5 h-5 fill-[#1C1D1F]
+  @apply w-5 h-5 fill-[#1C1D1F];
 }
 .HomeAboutMeIconText {
-  @apply text-sm
+  @apply text-sm;
 }
 
 .MyPhoto {
- @apply w-32 h-40 rounded-md
+  @apply w-32 h-40 rounded-md;
 }
 .navbar {
-  @apply p-4 bg-white
+  @apply p-4 bg-white;
 }
 .navbarLogoText {
-  @apply font-bold text-lg
+  @apply font-bold text-lg;
 }
-.navbarUl{
-  @apply flex flex-col gap-y-1
+.navbarUl {
+  @apply flex flex-col gap-y-1;
 }
 
-.navbarList{
-  @apply w-full flex justify-center
+.navbarList {
+  @apply w-full flex justify-center;
 }
 
 .navbarListText {
-  @apply text-center text-sm  hover:text-[#BC99FF] hover:font-bold
+  @apply text-center text-sm  hover:text-[#BC99FF] hover:font-bold;
 }
 
 .navbarIcon {
-  @apply hidden
+  @apply hidden;
 }
 
-.projectBox{
-  @apply mt-20 mb-20 gap-y-4 px-2 flex flex-col items-center justify-center
+.projectBox {
+  @apply mt-20 mb-20 gap-y-4 px-2 flex flex-col items-center justify-center;
 }
 
 .projectBgBox {
-  @apply w-full h-auto bg-[#ffffff] rounded-xl drop-shadow-lg px-4 py-1 border border-[#1C1D1F]
+  @apply w-full h-auto bg-[#ffffff] rounded-xl drop-shadow-lg px-4 py-1 border border-[#1C1D1F];
 }
 
 .projectTitle {
   @apply w-44 h-8 bg-[#BC99FF] rounded-lg flex items-center justify-center 
-  border border-[#1C1D1F]
+  border border-[#1C1D1F];
 }
-.projectTitleText{
-  @apply text-sm font-bold
+.projectTitleText {
+  @apply text-sm font-bold;
 }
-.projectDateText{
-  @apply text-xs text-[#878787] mt-2 
+.projectDateText {
+  @apply text-xs text-[#878787] mt-2;
 }
 .dividingLine {
-  @apply mt-2 w-auto h-[1px] bg-[#878787]
+  @apply mt-2 w-auto h-[1px] bg-[#878787];
 }
 
-.descriptionBox{
-  @apply w-auto h-[420px] px-4 mt-8
+.descriptionBox {
+  @apply w-auto h-[420px] px-4 mt-8;
 }
-.descriptionBoxText{
-  @apply text-base font-bold
-}
-
-.projectButton{
-  @apply flex flex-row items-center gap-2 mt-6
+.descriptionBoxText {
+  @apply text-base font-bold;
 }
 
-.projectButtonBg{
-  @apply w-2 h-4 bg-[#585D7C]
+.projectButton {
+  @apply flex flex-row items-center gap-2 mt-6;
 }
 
-.projectSkillsBg{
+.projectButtonBg {
+  @apply w-2 h-4 bg-[#585D7C];
+}
+
+.projectSkillsBg {
   @apply mt-6 w-auto h-8 rounded-lg bg-[#E0FE6A] border border-[#1C1D1F]
-  flex items-center 
+  flex items-center;
 }
 
-.projectSkillsText{
-  @apply text-xs ml-4
+.projectSkillsText {
+  @apply text-xs ml-4;
 }
-.HomeSkillsComponent{
-  @apply p-2 rounded-lg border border-[#1C1D1F] text-sm
+.HomeSkillsComponent {
+  @apply p-2 rounded-lg border border-[#1C1D1F] text-sm;
 }
 
-.SkillsBg{
+.SkillsBg {
   @apply bg-white w-auto h-auto rounded-xl drop-shadow-lg space-y-4 border border-[#1C1D1F]
-  flex flex-col justify-center p-6 
+  flex flex-col justify-center p-6;
 }
 
-.SkillsComponentBox{
-  @apply flex flex-wrap gap-x-1 gap-y-1
+.SkillsComponentBox {
+  @apply flex flex-wrap gap-x-1 gap-y-1;
 }
 
 .SkillsLine {
-  @apply flex flex-col items-start gap-y-1 
+  @apply flex flex-col items-start gap-y-1;
 }
 
 .pokeCardBg {
   @apply flex flex-col justify-center items-center p-2 gap-y-2
   w-full h-full bg-[#FBF8CB] border border-[#1C1D1F]
-  rounded-lg cursor-pointer
+  rounded-lg cursor-pointer;
 }
 
 .pokeCardnumber {
-  @apply font-bold text-xl
+  @apply font-bold text-xl;
 }
 
-.pokeCardImgBox{
-  @apply bg-white rounded-lg w-24 h-24
+.pokeCardImgBox {
+  @apply bg-white rounded-lg w-24 h-24;
 }
 
-.pokeCardImg{
-  @apply w-full h-full object-contain p-2 
+.pokeCardImg {
+  @apply w-full h-full object-contain p-2;
 }
 
-.pokeCardName{
-  @apply font-bold text-sm
+.pokeCardName {
+  @apply font-bold text-sm;
 }
 
-.pokeCardType{
-  @apply bg-[#ffffff] p-1 w-12 h-auto flex flex-col items-center justify-center rounded-2xl border border-[#1C1D1F]
+.pokeCardType {
+  @apply bg-[#ffffff] p-1 w-12 h-auto flex flex-col items-center justify-center rounded-2xl border border-[#1C1D1F];
 }
 
-.pokeCardTypeImg{
-  @apply w-4 h-4
+.pokeCardTypeImg {
+  @apply w-4 h-4;
 }
 
-.pokeCardTypeText{
-  @apply text-xs
+.pokeCardTypeText {
+  @apply text-xs;
 }
 
 @screen tablet {
-
-  .PokeGachaCard{
-    @apply w-32 p-4
+  .PokeGachaCard {
+    @apply w-32 p-4;
   }
-  .PokeGachaCardCoinBox{
-    @apply w-16 gap-1
+  .PokeGachaCardCoinBox {
+    @apply w-16 gap-1;
   }
   .PokeGachaCardCoinText {
-    @apply text-lg
+    @apply text-lg;
   }
   .PokeGachaCardCoinImg {
-    @apply w-6 h-6
+    @apply w-6 h-6;
   }
   .PokeGachaCardBallImg {
-    @apply h-24 w-24
+    @apply h-24 w-24;
   }
   .HomeText {
-    @apply text-6xl
+    @apply text-6xl;
   }
   .HomeAboutMeIconText {
-    @apply text-lg
+    @apply text-lg;
   }
 
   .MyPhoto {
-    @apply w-40 h-52
-   }
+    @apply w-40 h-52;
+  }
 
   .navbar {
-    @apply p-4 flex items-center justify-between
-  }
-  
-  .navbarLogoText {
-  @apply text-2xl
-}
-  .navbarUl{
-    @apply flex flex-row gap-4 pr-20
+    @apply p-4 flex items-center justify-between;
   }
 
-  .navbarList{
-    @apply w-auto
+  .navbarLogoText {
+    @apply text-2xl;
   }
-  
+  .navbarUl {
+    @apply flex flex-row gap-4 pr-20;
+  }
+
+  .navbarList {
+    @apply w-auto;
+  }
+
   .navbarListText {
-    @apply text-base 
+    @apply text-base;
   }
 
   .navbarIcon {
-    @apply flex w-7 h-7
+    @apply flex w-7 h-7;
   }
 
-  .projectBox{
-    @apply px-8
+  .projectBox {
+    @apply px-8;
   }
-  .projectTitle{
-    @apply w-[300px] h-12
+  .projectTitle {
+    @apply w-[300px] h-12;
   }
-  .projectTitleText{
-    @apply text-2xl
+  .projectTitleText {
+    @apply text-2xl;
   }
-  .projectDateText{
-    @apply text-lg
-  }
-
-  .descriptionBox{
-    @apply px-8
+  .projectDateText {
+    @apply text-lg;
   }
 
-  .descriptionBoxText{
-    @apply text-lg
+  .descriptionBox {
+    @apply px-8;
   }
 
-  .projectSkillsText{
-    @apply text-sm
+  .descriptionBoxText {
+    @apply text-lg;
   }
-  .SkillsBg{
-    @apply p-10
+
+  .projectSkillsText {
+    @apply text-sm;
+  }
+  .SkillsBg {
+    @apply p-10;
   }
 
   .SkillsLine {
-    @apply flex-row gap-2
+    @apply flex-row gap-2;
   }
 
   .pokeCardnumber {
-    @apply text-2xl
+    @apply text-2xl;
   }
-  .pokeCardImgBox{
-    @apply w-36 h-36
+  .pokeCardImgBox {
+    @apply w-36 h-36;
   }
-  .pokeCardName{
-    @apply text-base
+  .pokeCardName {
+    @apply text-base;
   }
 
   .pokeCardType {
-    @apply flex-row w-20
+    @apply flex-row w-20;
   }
 
-  .pokeCardTypeImg{
-    @apply w-6 h-6
-  }
-  
-  .pokeCardTypeText{
-    @apply text-sm
+  .pokeCardTypeImg {
+    @apply w-6 h-6;
   }
 
-  
+  .pokeCardTypeText {
+    @apply text-sm;
+  }
 }
 
 @screen desktop {
-
-  .PokeGachaCard{
-    @apply w-36
+  .PokeGachaCard {
+    @apply w-36;
   }
 
   .navbar {
-    @apply p-6 flex justify-between
+    @apply p-6 flex justify-between;
   }
-  .navbarUl{
-    @apply gap-6
+  .navbarUl {
+    @apply gap-6;
   }
 
   .navbarListText {
-    @apply text-lg
+    @apply text-lg;
   }
 
-  .projectBox{
-    @apply flex-row gap-4 px-40
+  .projectBox {
+    @apply flex-row gap-4 px-40;
   }
 
-  .pokeCardBg{
-    @apply py-6
+  .pokeCardBg {
+    @apply py-6;
   }
 
-  .pokeCardImgBox{
-    @apply w-44 h-44
+  .pokeCardImgBox {
+    @apply w-44 h-44;
   }
 
-  .pokeCardImg{
-    @apply p-4
+  .pokeCardImg {
+    @apply p-4;
   }
 }
