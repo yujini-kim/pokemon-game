@@ -15,13 +15,13 @@ import { getAnalytics } from "firebase/analytics";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyB_TcRsEX-x0rrKazrbmRffI-xpal2bMWM",
-  authDomain: "jinijinionline-pokemon.firebaseapp.com",
-  projectId: "jinijinionline-pokemon",
-  storageBucket: "jinijinionline-pokemon.firebasestorage.app",
-  messagingSenderId: "622355097523",
-  appId: "1:622355097523:web:6f7c128fdbf5f7e6bc4dc6",
-  measurementId: "G-7QYBVL1Y6V",
+  apiKey: process.env.LOGIN_API_KEY,
+  authDomain: process.env.LOGIN_AUTH_DOMAIN,
+  projectId: process.env.LOGIN_PROJECT_ID,
+  storageBucket: process.env.LOGIN_STORAGE_BUCKET,
+  messagingSenderId: process.env.LOGIN_MESSAGING_SENDER_ID,
+  appId: process.env.LOGIN_APP_ID,
+  measurementId: process.env.LOGIN_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
