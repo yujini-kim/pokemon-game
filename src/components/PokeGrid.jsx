@@ -128,9 +128,9 @@ export default function PokeGrid({}) {
 
       <div
         className="grid grid-cols-3 justify-center items-center
-            gap-4 p-2
+            gap-2 p-2
             tablet:grid-cols-4
-            desktop:grid-cols-6  desktop:mx-44"
+            desktop:grid-cols-7 desktop:gap-4 desktop:mx-44"
       >
         {isLoading
           ? [...Array(18)].map((_, index) => <PokeCardSkeleton key={index} />)

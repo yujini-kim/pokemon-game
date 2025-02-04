@@ -2,67 +2,77 @@
 
 import { useState } from "react";
 import {
-  getAuth,
+  updateProfile,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { FirebaseError } from "firebase/app";
 import { useRouter } from "next/navigation";
-
-const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_LOGIN_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_LOGIN_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_LOGIN_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_LOGIN_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_LOGIN_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_LOGIN_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_LOGIN_MEASUREMENT_ID,
-};
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+import { auth } from "@/lib/firebase";
 
 export default function SignUp() {
-  const [isSignUp, setIsSignUp] = useState(false);
-  const [emailValue, setEmailValue] = useState("");
-  const [passwordValue, setPasswordValue] = useState("");
-
-  const handleEmailChange = (e) => {
-    setEmailValue(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPasswordValue(e.target.value);
-  };
+  const [isSignUp, setIsSignUp] = useState(false); //토글버튼
+  const [isLoading, setIsLoading] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const router = useRouter();
-  const auth = getAuth();
-  // 회원가입
-  const signupClick = (e) => {
-    e.preventDefault();
-    createUserWithEmailAndPassword(auth, emailValue, passwordValue)
-      .then((userCredential) => {
-        console.log("회원가입성공", userCredential.user);
-        alert("회원가입이 완료되었습니다");
-        router.push("/singup");
-      })
-      .catch((error) => {
-        console.log("회원가입실패", error.message);
-        alert(error.message);
-      });
+
+  const onChange = (e) => {
+    const {
+      target: { name, value },
+    } = e;
+    if (name === "name") {
+      setName(value);
+    } else if (name === "email") {
+      setemail(value);
+    } else if (name === "password") {
+      setPassword(value);
+    }
   };
 
-  const signinClick = (e) => {
+  // 회원가입
+  const signUpSubmit = async (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, emailValue, passwordValue)
-      .then((userCredential) => {
-        console.log("로그인성공", userCredential.user);
-        alert("로그인 성공");
-        router.push("/");
-      })
-      .catch((error) => {
-        console.log("로그인실패", error.message);
-        alert(error.message);
-      });
+    if (name === "" || email === "" || password === "") return;
+    try {
+      setIsLoading(true);
+      const credentials = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      await updateProfile(credentials.user, {
+        displayName: name,
+      }); //프로필업데이트
+      router.push("/");
+    } catch (e) {
+      if (e instanceof FirebaseError) {
+        setError(e.message);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  //로그인
+  const signInSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    if (isLoading || email === "" || password === "") return;
+    try {
+      setIsLoading(true);
+      await signInWithEmailAndPassword(auth, email, password);
+      router.push("/"); //홈페이지로 이동
+    } catch (e) {
+      if (e instanceof FirebaseError) {
+        setError(e.message);
+      }
+      //setError
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const toggleForm = (e) => {
@@ -71,7 +81,7 @@ export default function SignUp() {
   };
 
   return (
-    <div className="mt-32 relative h-[580px] w-[400px] mx-auto rounded-lg overflow-hidden top-0 bottom-0 left-0 right-0">
+    <div className="mt-32 relative w-80 h-[460px] tablet:h-[580px] tablet:w-[400px] mx-auto rounded-lg overflow-hidden top-0 bottom-0 left-0 right-0">
       {/* 로그인 */}
       <div
         className={`absolute inset-0 transition-transform ease-in-out duration-500 ${
@@ -79,11 +89,11 @@ export default function SignUp() {
         }`}
       >
         <form
-          onSubmit={signinClick}
+          onSubmit={signInSubmit}
           className="bg-white shadow-md p-8 flex flex-col"
         >
           <div className="flex justify-center">
-            <img src="/img/singIcon.webp" className="size-48" />
+            <img src="/img/singIcon.webp" className="size-32 tablet:size-48" />
           </div>
 
           <div className="relative mb-5">
@@ -92,11 +102,12 @@ export default function SignUp() {
               className="absolute top-1/2 left-3 transform -translate-y-1/2 size-4"
             />
             <input
+              name="email"
               type="email"
               placeholder="Email"
               className="SignInput"
-              value={emailValue}
-              onChange={handleEmailChange}
+              value={email}
+              onChange={onChange}
             />
           </div>
           <div className="relative mb-5">
@@ -105,19 +116,25 @@ export default function SignUp() {
               className="absolute top-1/2 left-3 transform -translate-y-1/2 size-4"
             />
             <input
+              name="password"
               type="password"
               placeholder="Password"
               className="SignInput"
-              value={passwordValue}
-              onChange={handlePasswordChange}
+              value={password}
+              onChange={onChange}
             />
           </div>
-          <button type="submit" className="SignButton">
-            Sign In
-          </button>
+          <div className="flex flex-col items-center justify-center">
+            <button type="submit" className="SignButton">
+              {isLoading ? "Loading..." : "로그인"}
+            </button>
+            {error !== "" ? (
+              <span className="text-sm text-center text-red-500">{error}</span>
+            ) : null}
+          </div>
         </form>
-        <a href="#" onClick={toggleForm} className="SingTogglebtn border-t-0">
-          sign up
+        <a href="#" onClick={toggleForm} className="SingTogglebtn">
+          회원가입하기
         </a>
       </div>
 
@@ -128,18 +145,25 @@ export default function SignUp() {
         }`}
       >
         <a href="#" onClick={toggleForm} className="SingTogglebtn border-b-0">
-          sign in
+          로그인하기
         </a>
-        <form onSubmit={signupClick} className="bg-white p-8">
+        <form onSubmit={signUpSubmit} className="bg-white p-8">
           <div className="flex justify-center">
-            <img src="/img/singIcon.webp" className="size-48" />
+            <img src="/img/singIcon.webp" className="size-32 tablet:size-48" />
           </div>
           <div className="relative mb-5">
             <img
               src="/img/icon_name.webp"
               className="absolute top-1/2 left-3 transform -translate-y-1/2 size-4"
             />
-            <input type="text" placeholder="Username" className="SignInput" />
+            <input
+              name="name"
+              onChange={onChange}
+              value={name}
+              type="text"
+              placeholder="Username"
+              className="SignInput"
+            />
           </div>
           <div className="relative mb-5">
             <img
@@ -147,11 +171,12 @@ export default function SignUp() {
               className="absolute top-1/2 left-3 transform -translate-y-1/2 size-4"
             />
             <input
+              name="email"
               type="text"
               placeholder="Email"
               className="SignInput"
-              onChange={handleEmailChange}
-              value={emailValue}
+              onChange={onChange}
+              value={email}
             />
           </div>
           <div className="relative mb-5">
@@ -160,17 +185,22 @@ export default function SignUp() {
               className="absolute top-1/2 left-3 transform -translate-y-1/2 size-4"
             />
             <input
+              name="password"
               type="password"
               placeholder="Password"
               className="SignInput"
-              onChange={handlePasswordChange}
-              value={passwordValue}
+              onChange={onChange}
+              value={password}
             />
           </div>
-
-          <button type="submit" className="SignButton">
-            Sign Up
-          </button>
+          <div className="flex flex-col items-center justify-center">
+            <button type="submit" className="SignButton">
+              {isLoading ? "Loading..." : "회원가입"}
+            </button>
+            {error !== "" ? (
+              <span className="text-sm text-center text-red-500">{error}</span>
+            ) : null}
+          </div>
         </form>
       </div>
     </div>
