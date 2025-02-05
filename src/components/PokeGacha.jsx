@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useMemo, useContext, Suspense } from "react";
-import PokeGachaCard from "./PokeGachaCard";
+import { db, storage, auth } from "@/lib/firebase";
+import { addDoc, collection, updateDoc } from "firebase/firestore";
 import { useQuery } from "@tanstack/react-query";
 import { getPokemonList } from "@/lib/PokemonApi";
 import { CoinContext } from "./PokeCoinProviders";
@@ -73,7 +74,12 @@ export default function PokeGacha() {
   };
 
   // 가챠 카드 클릭 시 호출되는 핸들러
-  const handleGachaClick = (rank) => {
+  const handleGachaClick = async (rank) => {
+    const user = auth.currentUser;
+    if (!user) {
+      alert("로그인이 필요합니다.");
+      return;
+    }
     const cost = rankCoinCost[rank]; // 해당 랭크의 코인 비용
 
     // 충분한 코인인지 확인
@@ -111,6 +117,17 @@ export default function PokeGacha() {
     const randomIndex = Math.floor(Math.random() * selectedList.length);
     const randomPokemon = selectedList[randomIndex];
     setSelectedPokemon(randomPokemon);
+
+    try {
+      await addDoc(collection(db, "myPokemon"), {
+        selectedPokemon: randomPokemon,
+        createdAt: Date.now(),
+        username: user.displayName, // user 정보를 올바르게 가져와야 함
+        userId: user.uid, // user 정보를 올바르게 가져와야 함
+      });
+    } catch (error) {
+      console.error("Firestore 저장 에러: ", error);
+    }
   };
 
   // 상세 정보 UI 닫기 핸들러

@@ -44,8 +44,8 @@ html {
 }
 
 .PokeGachaCard {
-  @apply bg-white w-28 h-auto p-2 rounded-3xl border border-[#F1F1F1] shadow-md
-  flex flex-col justify-center items-center space-y-4;
+  @apply bg-white w-28 h-auto p-2 rounded-3xl hover:opacity-70 border border-[#F1F1F1] shadow-md
+  flex flex-col justify-center items-center space-y-4 cursor-pointer;
 }
 
 .PokeGachaCardCoinBox {

@@ -72,6 +72,7 @@ export default function SignUp() {
       //setError
     } finally {
       setIsLoading(false);
+      console.log(auth.currentUser);
     }
   };
 
