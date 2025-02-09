@@ -1,18 +1,14 @@
-import PokeGameCountdown from "@components/PokeGameCountdown"
-import PokeNavbar from '@components/PokeNavbar';
-import PokeGame from '@components/PokeGame';
-import { CoinProvider } from '@components/PokeCoinProviders';
+import PokeGameCountdown from "@components/PokeGameCountdown";
+
+import PokeGame from "@components/PokeGame";
 import PokeProviders from "@/components/PokeProviders";
 
-export default function gamePage(){
-    return(
-        <>
-            <PokeProviders>
-                <CoinProvider>
-                    <PokeNavbar />
-                    <PokeGame />
-                </CoinProvider>
-            </PokeProviders>
-        </>
-    )
+export default function gamePage() {
+  return (
+    <>
+      <PokeProviders>
+        <PokeGame />
+      </PokeProviders>
+    </>
+  );
 }

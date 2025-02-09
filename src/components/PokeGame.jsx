@@ -4,26 +4,55 @@ import { useState, useEffect, useContext } from "react";
 import { CoinContext } from "./PokeCoinProviders";
 import { useQuery } from "@tanstack/react-query";
 import { getPokemonList } from "@/lib/PokemonApi";
+import { auth, db } from "@/lib/firebase";
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import PokeGameExp from "./PokeGameExp";
-import PokeGameCountdown from "./PokeGameCountdown";
 
 export default function PokeGame({}) {
   const [hammer, setHammer] = useState(false);
   const [clickCount, setClickCount] = useState(0);
   const [eggImage, setEggImage] = useState("/img/알1.webp");
   const [selectedPokemon, setSelectedPokemon] = useState(null);
-
+  const [time, setTime] = useState(15);
+  const [isCounting, setIsCounting] = useState(true);
+  const user = auth.currentUser;
   const { data: pokemonList = [] } = useQuery({
     queryKey: ["pokemon"],
     queryFn: getPokemonList,
   });
 
-  const { setCoin } = useContext(CoinContext);
+  const { coin, setCoin } = useContext(CoinContext);
 
   const clickHammer = () => {
+    if (!user) {
+      console.error("로그인이 필요합니다.");
+      return;
+    }
     setHammer((prevHammer) => !prevHammer);
     setClickCount((pre) => pre + 1);
   };
+  const handleRestart = () => {
+    setTime(15);
+    setIsCounting(true);
+    resetGame();
+  };
+
+  useEffect(() => {
+    let countdownInterval;
+
+    if (isCounting && time > 0) {
+      countdownInterval = setInterval(() => {
+        setTime((prev) => prev - 1);
+      }, 1000);
+    }
+
+    if (time <= 0 && isCounting) {
+      clearInterval(countdownInterval);
+      setIsCounting(false);
+    }
+
+    return () => clearInterval(countdownInterval);
+  }, [isCounting, time]);
 
   useEffect(() => {
     if (clickCount === 10) {
@@ -46,17 +75,28 @@ export default function PokeGame({}) {
   useEffect(() => {
     if (selectedPokemon) {
       const { totalBaseStat } = selectedPokemon;
+      let addition = 0;
       if (totalBaseStat > 0 && totalBaseStat < 300) {
-        setCoin((prev) => prev + 10);
+        addition = 10;
       } else if (totalBaseStat >= 300 && totalBaseStat < 400) {
-        setCoin((prev) => prev + 20);
+        addition = 20;
       } else if (totalBaseStat >= 400 && totalBaseStat < 500) {
-        setCoin((prev) => prev + 30);
+        addition = 30;
       } else if (totalBaseStat >= 500 && totalBaseStat < 600) {
-        setCoin((prev) => prev + 40);
+        addition = 40;
       } else if (totalBaseStat >= 600) {
-        setCoin((prev) => prev + 50);
+        addition = 50;
       }
+      setCoin((prevCoin) => {
+        const newCoin = prevCoin + addition;
+        addDoc(collection(db, "Coin"), {
+          coin: newCoin,
+          createdAt: Date.now(),
+          username: user.displayName,
+          userId: user.uid,
+        });
+        return newCoin;
+      });
     }
   }, [selectedPokemon, setCoin]);
 
@@ -66,17 +106,34 @@ export default function PokeGame({}) {
     setSelectedPokemon(null);
   };
 
-  const closeDetail = () => {
-    setSelectedPokemon(null);
-  };
-
   return (
     <div className="relative h-screen">
       <div className="flex items-center justify-center py-2 desktop:py-8">
-        <PokeGameCountdown
-          selectedPokemon={selectedPokemon}
-          resetGame={resetGame}
-        />
+        {isCounting && <div className="font-semibold">{time}초 남았다!!!</div>}
+
+        <div className="mt-4 text-2xl font-bold">
+          {!isCounting && (
+            <div>
+              {selectedPokemon ? (
+                <button
+                  className="bg-[#FEEDEF] w-24 h-10 
+                    border border-[#1C1D1F] rounded-3xl font-bold text-base"
+                  onClick={handleRestart}
+                >
+                  다시시작
+                </button>
+              ) : (
+                <button
+                  className="bg-[#FEEDEF] w-24 h-10 
+                  border border-[#1C1D1F] rounded-3xl font-bold text-base"
+                  onClick={handleRestart}
+                >
+                  다시시작
+                </button>
+              )}
+            </div>
+          )}
+        </div>
       </div>
 
       <div
@@ -114,11 +171,11 @@ export default function PokeGame({}) {
           />
           <p className="text-xs">
             타입: {selectedPokemon.type1}
-            {selectedPokemon.type2 && ` / ${selectedPokemon.type2}`}
+            {selectedPokemon.type2 && `${selectedPokemon.type2}`}
           </p>
           <p className="text-xs">총 종족값: {selectedPokemon.totalBaseStat}</p>
           <button
-            onClick={closeDetail}
+            onClick={handleRestart}
             className="mt-2 p-2 bg-[#E8E8E8]  rounded-lg text-xs"
           >
             닫기

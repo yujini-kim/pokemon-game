@@ -1,26 +1,43 @@
 "use client";
 
+import { db, auth } from "@/lib/firebase";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { createContext, useState, useEffect } from "react";
 
 export const CoinContext = createContext();
 
 export function CoinProvider({ children }) {
-  const [coin, setCoin] = useState(null); // 초기값을 null로 설정
+  const [coin, setCoin] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const savedCoin = localStorage.getItem("coin");
-    const parsedCoin = Number(savedCoin);
-    setCoin(!isNaN(parsedCoin) ? parsedCoin : 0); // NaN 체크
+    const unsubscribe = auth.onAuthStateChanged((u) => {
+      setUser(u);
+    });
+    return () => unsubscribe();
   }, []);
 
-  useEffect(() => {
-    if (coin !== null) {
-      localStorage.setItem("coin", coin);
+  const fetchCoin = async (userId) => {
+    const coinQuery = query(
+      collection(db, "Coin"),
+      where("userId", "==", userId)
+    );
+    const snapshot = await getDocs(coinQuery);
+    if (snapshot.empty) {
+      setCoin(0);
+    } else {
+      const fetchedCoin = snapshot.docs[0].data().coin;
+      setCoin(fetchedCoin);
     }
-  }, [coin]);
+  };
+
+  useEffect(() => {
+    if (user) {
+      fetchCoin(user.uid);
+    }
+  }, [user]);
 
   if (coin === null) {
-    // 로딩 상태 처리
     return null;
   }
 
