@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   updateProfile,
   createUserWithEmailAndPassword,
@@ -80,6 +80,10 @@ export default function SignUp() {
     e.preventDefault();
     setIsSignUp(!isSignUp);
   };
+
+  useEffect(() => {
+    console.log("sdad");
+  }, []);
 
   return (
     <div className="mt-32 relative w-80 h-[460px] tablet:h-[580px] tablet:w-[400px] mx-auto rounded-lg overflow-hidden top-0 bottom-0 left-0 right-0">
