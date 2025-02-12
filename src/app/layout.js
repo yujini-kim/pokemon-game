@@ -1,13 +1,6 @@
-import { Noto_Sans_KR } from "next/font/google";
 import { CoinProvider } from "@components/PokeCoinProviders";
 import PokeNavbar from "@/components/PokeNavbar";
 import "./globals.css";
-
-const notoSansKR = Noto_Sans_KR({
-  weight: ["400", "700"],
-  subsets: ["korean"],
-  display: "swap",
-});
 
 export const metadata = {
   title: {
@@ -20,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <body className={`${notoSansKR.className} antialiased`}>
+      <body className={`antialiased`}>
         <CoinProvider>
           <PokeNavbar />
           {children}

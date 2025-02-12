@@ -7,7 +7,7 @@ import { createContext, useState, useEffect } from "react";
 export const CoinContext = createContext();
 
 export function CoinProvider({ children }) {
-  const [coin, setCoin] = useState(null);
+  const [coin, setCoin] = useState(0);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -36,10 +36,6 @@ export function CoinProvider({ children }) {
       fetchCoin(user.uid);
     }
   }, [user]);
-
-  if (coin === null) {
-    return null;
-  }
 
   return (
     <CoinContext.Provider value={{ coin, setCoin }}>
