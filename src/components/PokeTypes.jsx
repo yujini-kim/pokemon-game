@@ -55,7 +55,7 @@ export default function PokeTypes({ selectedType, setSelectedType }) {
               alt={type}
               className="w-4 h-4 tablet:w-6 tablet:h-6"
             />
-            <span className="text-xs tablet:text-sm">{type}</span>
+            <span className="text-xs desktop:text-sm">{type}</span>
           </button>
         </div>
       ))}

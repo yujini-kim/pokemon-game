@@ -1,10 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   updateProfile,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithRedirect,
+  signInWithPopup,
+  GithubAuthProvider,
+  GoogleAuthProvider,
 } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
 import { useRouter } from "next/navigation";
@@ -72,21 +76,44 @@ export default function SignUp() {
       //setError
     } finally {
       setIsLoading(false);
-      console.log(auth.currentUser);
     }
   };
 
+  const githubBtn = async (e) => {
+    try {
+      const provider = new GithubAuthProvider();
+      await signInWithPopup(auth, provider);
+      router.push("/");
+    } catch (e) {
+      if (e instanceof FirebaseError) {
+        setError(e.message);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const googleBtn = async (e) => {
+    try {
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider);
+      router.push("/");
+    } catch (e) {
+      kingyujin;
+      if (e instanceof FirebaseError) {
+        setError(e.message);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
   const toggleForm = (e) => {
     e.preventDefault();
     setIsSignUp(!isSignUp);
   };
 
-  useEffect(() => {
-    console.log("sdad");
-  }, []);
-
   return (
-    <div className="mt-32 relative w-80 h-[460px] tablet:h-[580px] tablet:w-[400px] mx-auto rounded-lg overflow-hidden top-0 bottom-0 left-0 right-0">
+    <div className="mt-20 tablet:mt-32 relative w-80 h-[460px] tablet:h-[580px] tablet:w-[400px] mx-auto rounded-lg overflow-hidden top-0 bottom-0 left-0 right-0">
       {/* 로그인 */}
       <div
         className={`absolute inset-0 transition-transform ease-in-out duration-500 ${
@@ -133,13 +160,21 @@ export default function SignUp() {
             <button type="submit" className="SignButton">
               {isLoading ? "Loading..." : "로그인"}
             </button>
+            <div className="flex flex-row gap-8 mt-6">
+              <button type="button" onClick={githubBtn}>
+                <img src="/img/icon_git.webp" className="size-8" />
+              </button>
+              <button type="button" onClick={googleBtn}>
+                <img src="/img/icon_google.webp" className="size-8" />
+              </button>
+            </div>
             {error !== "" ? (
               <span className="text-sm text-center text-red-500">{error}</span>
             ) : null}
           </div>
         </form>
         <a href="#" onClick={toggleForm} className="SingTogglebtn">
-          회원가입하기
+          회원가입하기!!
         </a>
       </div>
 
