@@ -26,14 +26,14 @@ export default function PokeGrid({}) {
     const FilterName = pokemonList.filter(
       (pokemon) =>
         pokemon.name.toLowerCase().includes(searchName.toLowerCase()) ||
-        pokemon.number.toString() === searchName.toString()
+        pokemon.number.toString() === searchName.toString(),
     );
 
     const filteredPokemon = FilterName.filter(
       (pokemon) =>
         !selectedType ||
         pokemon.type1 === selectedType ||
-        pokemon.type2 === selectedType
+        pokemon.type2 === selectedType,
     );
     return filteredPokemon;
   };

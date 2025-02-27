@@ -20,7 +20,7 @@ export function CoinProvider({ children }) {
   const fetchCoin = async (userId) => {
     const coinQuery = query(
       collection(db, "Coin"),
-      where("userId", "==", userId)
+      where("userId", "==", userId),
     );
     const snapshot = await getDocs(coinQuery);
     if (snapshot.empty) {

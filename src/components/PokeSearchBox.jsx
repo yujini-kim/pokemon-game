@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function PokeSearchBox({
   searchText,
   setSearchText,
@@ -27,7 +29,12 @@ export default function PokeSearchBox({
         className="w-auto h-full p-2 border border-[#1C1D1F] bg-[#F1F1F1] rounded-lg flex items-center justify-center
             tablet:p-3"
       >
-        <img src="/img/icon_search.webp" className="w-3 h-3" />
+        <Image
+          width={12}
+          height={12}
+          src="/img/icon_search.webp"
+          alt="search icon"
+        />
       </button>
     </div>
   );

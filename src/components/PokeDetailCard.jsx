@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function PokeDetailCard({
   HP,
   attack,
@@ -25,10 +27,10 @@ export default function PokeDetailCard({
         </div>
 
         <div
-          className="bg-white rounded-lg w-36 h-36
+          className="relative bg-white rounded-lg w-36 h-36
                     tablet:w-48 tablet:h-48"
         >
-          <img className="w-full h-full p-2" src={image} />
+          <Image fill className="p-2" src={image} alt="pokemon image" />
         </div>
         <div className="flex flex-col gap-y-1 items-center mt-2">
           <span className="text-xs tablet:text-base">HP : {HP}</span>

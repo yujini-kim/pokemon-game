@@ -5,6 +5,7 @@ import { CoinContext } from "./PokeCoinProviders";
 import { useContext, useState, useEffect } from "react";
 import { auth } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function PokeNavbar() {
   const { coin } = useContext(CoinContext);
@@ -75,10 +76,15 @@ export default function PokeNavbar() {
           </div>
           <Link
             href="/"
-            className="size-12 flex flex-col items-center justify-center  rounded-xl tablet:size-16
+            className="relative size-12 flex flex-col items-center justify-center  rounded-xl tablet:size-16
              "
           >
-            <img src="/img/logo.webp" />
+            <Image
+              fill
+              className="object-cover"
+              alt="Logo image"
+              src="/img/logo.webp"
+            />
           </Link>
           <div className="flex gap-2">
             <li>
@@ -89,9 +95,12 @@ export default function PokeNavbar() {
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
               >
-                <img
+                <Image
+                  width={16}
+                  height={16}
+                  alt="coin icon"
                   src="/img/icon_coin.webp"
-                  className="size-4 tablet:size-6"
+                  className="tablet:size-6"
                 />
                 <span className="text-[10px] tablet:text-sm font-semibold">
                   {hover ? "뽑기" : `${coin}`}

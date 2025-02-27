@@ -283,7 +283,7 @@ html {
   }
 
   .pokeCardType {
-    @apply flex-row w-[70px];
+    @apply flex-row w-[72px];
   }
 
   .pokeCardTypeImg {

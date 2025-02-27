@@ -8,6 +8,8 @@ import { getPokemonList } from "@/lib/PokemonApi";
 import { CoinContext } from "./PokeCoinProviders";
 import PokeGachaCardSkeleton from "@components/PokeGachaCardSkeleton";
 import React from "react";
+import Image from "next/image";
+import { v4 as uuidv4 } from "uuid";
 
 const LazyPokeGachaCard = React.lazy(() => import("./PokeGachaCard"));
 
@@ -199,6 +201,7 @@ export default function PokeGacha() {
       {selectedPokemon && (
         <>
           <div
+            key={uuidv4()}
             className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 space-y-2
             bg-[#FEEDEF] border border-[#1C1D1F] p-4 px-6 rounded-xl shadow-lg flex flex-col items-center z-50
             tablet:px-12 tablet:space-y-4"
@@ -222,10 +225,12 @@ export default function PokeGacha() {
               </h2>
             </div>
 
-            <img
+            <Image
+              width={112}
+              height={112}
               src={selectedPokemon.image}
               alt={selectedPokemon.name}
-              className="w-28 h-28 mb-2
+              className="mb-2
               tablet:w-36 tablet:h-36"
             />
             <div className="flex flex-col items-center">

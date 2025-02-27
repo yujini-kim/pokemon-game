@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function PokeTypes({ selectedType, setSelectedType }) {
   const types = [
     "노말",
@@ -50,10 +52,12 @@ export default function PokeTypes({ selectedType, setSelectedType }) {
               desktop:flex-row desktop:w-full desktop:h-10`}
             onClick={() => onClick(type)}
           >
-            <img
+            <Image
+              width={16}
+              height={16}
               src={`/img/${type}.webp`}
               alt={type}
-              className="w-4 h-4 tablet:w-6 tablet:h-6"
+              className="tablet:w-6 tablet:h-6"
             />
             <span className="text-xs desktop:text-sm">{type}</span>
           </button>

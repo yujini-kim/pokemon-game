@@ -13,6 +13,7 @@ import {
 import { FirebaseError } from "firebase/app";
 import { useRouter } from "next/navigation";
 import { auth } from "@/lib/firebase";
+import Image from "next/image";
 
 export default function SignUp() {
   const [isSignUp, setIsSignUp] = useState(false); //토글버튼
@@ -45,7 +46,7 @@ export default function SignUp() {
       const credentials = await createUserWithEmailAndPassword(
         auth,
         email,
-        password
+        password,
       );
       await updateProfile(credentials.user, {
         displayName: name,
@@ -125,13 +126,22 @@ export default function SignUp() {
           className="bg-white shadow-md p-8 flex flex-col"
         >
           <div className="flex justify-center">
-            <img src="/img/singIcon.webp" className="size-32 tablet:size-48" />
+            <Image
+              src="/img/singIcon.webp"
+              width={128}
+              height={128}
+              alt="sign icon"
+              className="tablet:size-48"
+            />
           </div>
 
           <div className="relative mb-5">
-            <img
+            <Image
               src="/img/icon_mail.webp"
-              className="absolute top-1/2 left-3 transform -translate-y-1/2 size-4"
+              width={16}
+              height={16}
+              alt="mail icon"
+              className="absolute top-1/2 left-3 transform -translate-y-1/2"
             />
             <input
               name="email"
@@ -143,9 +153,12 @@ export default function SignUp() {
             />
           </div>
           <div className="relative mb-5">
-            <img
+            <Image
               src="/img/icon_password.webp"
-              className="absolute top-1/2 left-3 transform -translate-y-1/2 size-4"
+              width={16}
+              height={16}
+              alt="password icon"
+              className="absolute top-1/2 left-3 transform -translate-y-1/2"
             />
             <input
               name="password"
@@ -162,10 +175,20 @@ export default function SignUp() {
             </button>
             <div className="flex flex-row gap-8 mt-6">
               <button type="button" onClick={githubBtn}>
-                <img src="/img/icon_git.webp" className="size-8" />
+                <Image
+                  src="/img/icon_git.webp"
+                  width={32}
+                  height={32}
+                  alt="git icon"
+                />
               </button>
               <button type="button" onClick={googleBtn}>
-                <img src="/img/icon_google.webp" className="size-8" />
+                <Image
+                  src="/img/icon_google.webp"
+                  width={32}
+                  height={32}
+                  alt="google icon"
+                />
               </button>
             </div>
             {error !== "" ? (
@@ -189,12 +212,21 @@ export default function SignUp() {
         </a>
         <form onSubmit={signUpSubmit} className="bg-white p-8">
           <div className="flex justify-center">
-            <img src="/img/singIcon.webp" className="size-32 tablet:size-48" />
+            <Image
+              src="/img/singIcon.webp"
+              width={128}
+              height={128}
+              alt="sing icon"
+              className="tablet:size-48"
+            />
           </div>
           <div className="relative mb-5">
-            <img
+            <Image
               src="/img/icon_name.webp"
-              className="absolute top-1/2 left-3 transform -translate-y-1/2 size-4"
+              width={16}
+              height={16}
+              alt="username icon"
+              className="absolute top-1/2 left-3 transform -translate-y-1/2"
             />
             <input
               name="name"
@@ -206,9 +238,12 @@ export default function SignUp() {
             />
           </div>
           <div className="relative mb-5">
-            <img
+            <Image
               src="/img/icon_mail.webp"
-              className="absolute top-1/2 left-3 transform -translate-y-1/2 size-4"
+              width={16}
+              height={16}
+              alt="mail icon"
+              className="absolute top-1/2 left-3 transform -translate-y-1/2"
             />
             <input
               name="email"
@@ -220,9 +255,12 @@ export default function SignUp() {
             />
           </div>
           <div className="relative mb-5">
-            <img
+            <Image
               src="/img/icon_password.webp"
-              className="absolute top-1/2 left-3 transform -translate-y-1/2 size-4"
+              width={16}
+              height={16}
+              alt="password icon"
+              className="absolute top-1/2 left-3 transform -translate-y-1/2"
             />
             <input
               name="password"
