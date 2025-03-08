@@ -2,13 +2,13 @@
 
 import React, { useState } from "react";
 import PokeCard from "@/components/PokeCard";
-import PokeCardSkeleton from "./PokeCardSkeleton";
-import PokeTypes from "./PokeTypes";
-import PokeSearchBox from "./PokeSearchBox";
-import PokeSortBox from "./PokeSortBox";
+import PokeCardSkeleton from "../components/PokeCardSkeleton";
+import PokeTypes from "../components/PokeTypes";
+import PokeSearchBox from "../components/PokeSearchBox";
+import PokeSortBox from "../components/PokeSortBox";
 import { useQuery } from "@tanstack/react-query";
 import { getPokemonList } from "@/lib/PokemonApi";
-import PokeDetailCard from "./PokeDetailCard";
+import PokeDetailCard from "../components/PokeDetailCard";
 
 export default function PokeGrid({}) {
   const [searchText, setSearchText] = useState("");
@@ -26,14 +26,14 @@ export default function PokeGrid({}) {
     const FilterName = pokemonList.filter(
       (pokemon) =>
         pokemon.name.toLowerCase().includes(searchName.toLowerCase()) ||
-        pokemon.number.toString() === searchName.toString(),
+        pokemon.number.toString() === searchName.toString()
     );
 
     const filteredPokemon = FilterName.filter(
       (pokemon) =>
         !selectedType ||
         pokemon.type1 === selectedType ||
-        pokemon.type2 === selectedType,
+        pokemon.type2 === selectedType
     );
     return filteredPokemon;
   };

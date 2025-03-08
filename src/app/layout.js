@@ -1,5 +1,5 @@
 import { CoinProvider } from "@components/PokeCoinProviders";
-import PokeNavbar from "@/components/PokeNavbar";
+import PokeNavbar from "@/section/PokeNavbar";
 import "./globals.css";
 
 export const metadata = {

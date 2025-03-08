@@ -5,13 +5,15 @@ import { db, storage, auth } from "@/lib/firebase";
 import { addDoc, collection, updateDoc } from "firebase/firestore";
 import { useQuery } from "@tanstack/react-query";
 import { getPokemonList } from "@/lib/PokemonApi";
-import { CoinContext } from "./PokeCoinProviders";
+import { CoinContext } from "../components/PokeCoinProviders";
 import PokeGachaCardSkeleton from "@components/PokeGachaCardSkeleton";
 import React from "react";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 
-const LazyPokeGachaCard = React.lazy(() => import("./PokeGachaCard"));
+const LazyPokeGachaCard = React.lazy(
+  () => import("../components/PokeGachaCard")
+);
 
 export default function PokeGacha() {
   const [selectedPokemon, setSelectedPokemon] = useState(null);

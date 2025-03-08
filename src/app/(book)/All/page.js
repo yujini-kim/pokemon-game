@@ -1,4 +1,4 @@
-import PokeGrid from "@/components/PokeGrid";
+import PokeGrid from "@/section/PokeGrid";
 
 import PokeProviders from "@/components/PokeProviders";
 

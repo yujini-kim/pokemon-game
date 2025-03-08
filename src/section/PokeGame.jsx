@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect, useContext } from "react";
-import { CoinContext } from "./PokeCoinProviders";
+import { CoinContext } from "../components/PokeCoinProviders";
 import { useQuery } from "@tanstack/react-query";
 import { getPokemonList } from "@/lib/PokemonApi";
 import { auth, db } from "@/lib/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
-import PokeGameExp from "./PokeGameExp";
+import PokeGameExp from "../components/PokeGameExp";
 import Image from "next/image";
 
 export default function PokeGame() {

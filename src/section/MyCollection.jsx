@@ -3,7 +3,7 @@
 import { db, auth } from "@/lib/firebase";
 import { collection, query, orderBy, getDocs, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import PokeCard from "./PokeCard";
+import PokeCard from "../components/PokeCard";
 
 export default function MyPokeGrid() {
   const [myPokemonList, setMyPokemonList] = useState([]);
@@ -19,7 +19,7 @@ export default function MyPokeGrid() {
     const myPokemonQuery = query(
       collection(db, "myPokemon"),
       where("userId", "==", user.uid),
-      orderBy("createdAt", "desc"),
+      orderBy("createdAt", "desc")
     );
     const snapshot = await getDocs(myPokemonQuery);
     const fetchedPokemonList = snapshot.docs.map((doc) => {
@@ -42,9 +42,9 @@ export default function MyPokeGrid() {
       tablet:grid-cols-4
       desktop:grid-cols-7 desktop:gap-4 desktop:mx-44"
     >
-      {myPokemonList.map((item) => (
+      {myPokemonList.map((item, index) => (
         <PokeCard
-          key={item.selectedPokemon.number}
+          key={index}
           number={item.selectedPokemon.number}
           name={item.selectedPokemon.name}
           img={item.selectedPokemon.image}

@@ -1,4 +1,4 @@
-import MyCollection from "@components/MyCollection";
+import MyCollection from "@/section/MyCollection";
 
 export const metadata = {
   title: "나의 포켓몬 도감",

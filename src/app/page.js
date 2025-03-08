@@ -1,4 +1,4 @@
-import PokeGacha from "@/components/PokeGacha";
+import PokeGacha from "@/section/PokeGacha";
 import PokeGamego from "@/components/PokeGogame";
 import PokeProviders from "@/components/PokeProviders";
 
