@@ -4,6 +4,7 @@ import { db, auth } from "@/lib/firebase";
 import { collection, query, orderBy, getDocs, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import PokeCard from "../components/PokeCard";
+import PokeFilters from "./PokeFilters";
 
 export default function MyPokeGrid() {
   const [myPokemonList, setMyPokemonList] = useState([]);
@@ -11,7 +12,6 @@ export default function MyPokeGrid() {
   const fetchMypokemon = async () => {
     const user = auth.currentUser;
     if (!user) {
-      // 로그인 되어 있지 않으면 빈 리스트를 설정
       setMyPokemonList([]);
       return;
     }
@@ -19,7 +19,7 @@ export default function MyPokeGrid() {
     const myPokemonQuery = query(
       collection(db, "myPokemon"),
       where("userId", "==", user.uid),
-      orderBy("createdAt", "desc"),
+      orderBy("createdAt", "desc")
     );
     const snapshot = await getDocs(myPokemonQuery);
     const fetchedPokemonList = snapshot.docs.map((doc) => {
@@ -37,21 +37,23 @@ export default function MyPokeGrid() {
   }, []);
 
   return (
-    <div
-      className="grid grid-cols-3 justify-center items-center gap-2 p-2
+    <>
+      <div
+        className="grid grid-cols-3 justify-center items-center gap-2 p-2
       tablet:grid-cols-4
       desktop:grid-cols-7 desktop:gap-4 desktop:mx-44"
-    >
-      {myPokemonList.map((item, index) => (
-        <PokeCard
-          key={index}
-          number={item.selectedPokemon.number}
-          name={item.selectedPokemon.name}
-          img={item.selectedPokemon.image}
-          type1={item.selectedPokemon.type1}
-          type2={item.selectedPokemon.type2}
-        />
-      ))}
-    </div>
+      >
+        {myPokemonList.map((item, index) => (
+          <PokeCard
+            key={index}
+            number={item.selectedPokemon.number}
+            name={item.selectedPokemon.name}
+            img={item.selectedPokemon.image}
+            type1={item.selectedPokemon.type1}
+            type2={item.selectedPokemon.type2}
+          />
+        ))}
+      </div>
+    </>
   );
 }
