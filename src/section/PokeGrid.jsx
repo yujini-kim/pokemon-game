@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import PokeCard from "@/components/PokeCard";
 import PokeCardSkeleton from "../components/PokeCardSkeleton";
-import PokeTypes from "../components/PokeTypes";
 import PokeSearchBox from "../components/PokeSearchBox";
 import PokeSortBox from "../components/PokeSortBox";
 import { useQuery } from "@tanstack/react-query";
@@ -26,14 +25,14 @@ export default function PokeGrid({}) {
     const FilterName = pokemonList.filter(
       (pokemon) =>
         pokemon.name.toLowerCase().includes(searchName.toLowerCase()) ||
-        pokemon.number.toString() === searchName.toString(),
+        pokemon.number.toString() === searchName.toString()
     );
 
     const filteredPokemon = FilterName.filter(
       (pokemon) =>
         !selectedType ||
         pokemon.type1 === selectedType ||
-        pokemon.type2 === selectedType,
+        pokemon.type2 === selectedType
     );
     return filteredPokemon;
   };
@@ -100,24 +99,13 @@ export default function PokeGrid({}) {
 
   return (
     <div className="flex flex-col px-6 mt-6 tablet:mx-4">
-      <div
-        className="m-2 w-auto h-auto p-3 bg-white rounded-lg 
-            tablet:py-6 desktop:mx-44"
-      >
-        <div className="space-y-2">
-          {/* 검색 */}
-          <PokeSearchBox
-            searchText={searchText}
-            setSearchText={setSearchText}
-            setSearchName={setSearchName}
-          />
-          <PokeTypes
-            selectedType={selectedType}
-            setSelectedType={setSelectedType}
-          />
-        </div>
-        {/* 검색 */}
-      </div>
+      <PokeSearchBox
+        searchText={searchText}
+        setSearchText={setSearchText}
+        setSearchName={setSearchName}
+        selectedType={selectedType}
+        setSelectedType={setSelectedType}
+      />
 
       <div>
         <PokeSortBox

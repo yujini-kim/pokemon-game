@@ -1,7 +1,5 @@
 "use clinet";
 
-import React from "react";
-
 export default function PokeSortBox({ selectedOption, setSelectedOption }) {
   const handleSortChange = (e) => {
     const selectedSort = e.target.value;
