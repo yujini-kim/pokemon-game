@@ -12,7 +12,7 @@ import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 
 const LazyPokeGachaCard = React.lazy(
-  () => import("../components/PokeGachaCard")
+  () => import("../components/PokeGachaCard"),
 );
 
 export default function PokeGacha() {

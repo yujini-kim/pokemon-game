@@ -44,7 +44,7 @@ export default function PokeNavbar() {
 
   return (
     <>
-      <nav className="bg-[#F74D66] w-full h-full">
+      <nav className={`bg-[#F74D66] w-full tablet:h-full`}>
         <ul className="flex px-4 tablet:px-6 py-4">
           <div className="flex items-center w-full justify-between">
             <button onClick={onMenuClick} className="tablet:hidden">
@@ -107,7 +107,7 @@ export default function PokeNavbar() {
           </div>
         </ul>
       </nav>
-      {menu && <NavbarMenu />}
+      <NavbarMenu isOpen={menu} />
     </>
   );
 }

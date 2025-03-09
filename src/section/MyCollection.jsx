@@ -19,7 +19,7 @@ export default function MyPokeGrid() {
     const myPokemonQuery = query(
       collection(db, "myPokemon"),
       where("userId", "==", user.uid),
-      orderBy("createdAt", "desc")
+      orderBy("createdAt", "desc"),
     );
     const snapshot = await getDocs(myPokemonQuery);
     const fetchedPokemonList = snapshot.docs.map((doc) => {

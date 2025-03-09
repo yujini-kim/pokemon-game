@@ -27,6 +27,15 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      keyframes: {
+        slideOutDown: {
+          "0%": { maxHeight: "0px", opacity: "0" },
+          "100%": { maxHeight: "500px", opacity: "1" },
+        },
+      },
+      animation: {
+        slideDown: "slideDown 0.4s ease-out forwards",
+      },
     },
   },
   plugins: [],
