@@ -4,7 +4,6 @@ import { db, auth } from "@/lib/firebase";
 import { collection, query, orderBy, getDocs, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import PokeCard from "../components/PokeCard";
-import PokeFilters from "./PokeFilters";
 
 export default function MyPokeGrid() {
   const [myPokemonList, setMyPokemonList] = useState([]);
