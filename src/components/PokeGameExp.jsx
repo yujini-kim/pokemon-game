@@ -18,11 +18,11 @@ export default function PokeGameExp() {
             onClick={toggleBalloon}
           ></div>
           <div
-            className="absolute w-72 h-72 bg-[#FEEDEF]
-                rounded-lg p-4 flex justify-center items-center text-center z-50
+            className="absolute w-72 bg-[#FEEDEF] 
+                rounded-lg px-4 pt-8 pb-4 flex flex-col justify-center items-center text-center z-50
                  "
           >
-            <p className="text-black text-sm">
+            <p className="text-black text-xs tablet:text-sm">
               15초 안에 망치로 알을 후드려 패면 포켓몬이 나온다!!!
               <br />
               15초 안에 후드려패지 못하면 포켓몬은 없다!!!
@@ -33,6 +33,12 @@ export default function PokeGameExp() {
               주겠다!!!
               <br />
             </p>
+            <button
+              onClick={toggleBalloon}
+              className="bg-white p-2 rounded-lg border border-black mt-8 text-sm"
+            >
+              닫기
+            </button>
           </div>
         </>
       )}
