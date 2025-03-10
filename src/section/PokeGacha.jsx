@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useContext, Suspense } from "react";
 import { db, storage, auth } from "@/lib/firebase";
-import { addDoc, collection, updateDoc } from "firebase/firestore";
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import { useQuery } from "@tanstack/react-query";
 import { getPokemonList } from "@/lib/PokemonApi";
 import { CoinContext } from "../components/PokeCoinProviders";
@@ -12,7 +12,7 @@ import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 
 const LazyPokeGachaCard = React.lazy(
-  () => import("../components/PokeGachaCard"),
+  () => import("../components/PokeGachaCard")
 );
 
 export default function PokeGacha() {
@@ -93,7 +93,12 @@ export default function PokeGacha() {
     }
 
     // 코인 차감
-    setCoin(coin - cost);
+    setCoin((prevCoin) => {
+      const newCoin = prevCoin - cost;
+      // Firestore에 코인 저장
+      updateCoinData(newCoin);
+      return newCoin;
+    });
 
     let selectedList = [];
 
@@ -133,6 +138,20 @@ export default function PokeGacha() {
       console.error("Firestore 저장 에러: ", error);
     }
   };
+
+  async function updateCoinData(newCoin) {
+    const user = auth.currentUser;
+    if (user) {
+      try {
+        const userDocRef = doc(db, "Coin", user.uid);
+        await updateDoc(userDocRef, {
+          coin: newCoin,
+        });
+      } catch (error) {
+        console.error("코인 업데이트 에러:", error);
+      }
+    }
+  }
 
   // 상세 정보 UI 닫기 핸들러
   const closeSelectedPokemon = () => {

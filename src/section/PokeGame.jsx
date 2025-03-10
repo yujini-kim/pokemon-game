@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getPokemonList } from "@/lib/PokemonApi";
 import { auth, db } from "@/lib/firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import PokeGameExp from "../components/PokeGameExp";
 import Image from "next/image";
 
@@ -18,6 +18,7 @@ export default function PokeGame() {
   const [time, setTime] = useState(15);
   const [isCounting, setIsCounting] = useState(true);
   const [user, setUser] = useState(null);
+  const [gameStart, setGameStart] = useState(false);
 
   const { data: pokemonList = [] } = useQuery({
     queryKey: ["pokemon"],
@@ -34,8 +35,8 @@ export default function PokeGame() {
   }, []);
 
   const clickHammer = () => {
-    if (!user) return console.error("로그인이 필요합니다.");
-
+    if (!user) return alert("로그인해주세요");
+    if (!isCounting) return alert("다시시작 버튼을 눌러주세요");
     setClickCount((prev) => {
       setHammer(!hammer);
       return prev + 1;
@@ -46,6 +47,10 @@ export default function PokeGame() {
     resetGame();
     setTime(15);
     setIsCounting(true);
+  };
+
+  const onGameStart = () => {
+    setGameStart(true);
   };
 
   useEffect(() => {
@@ -76,7 +81,7 @@ export default function PokeGame() {
   }, [clickCount]);
 
   useEffect(() => {
-    if (clickCount === 31 && pokemonList.length > 0) {
+    if (clickCount === 30 && pokemonList.length > 0) {
       const randomIndex = Math.floor(Math.random() * pokemonList.length);
       const pokemon = pokemonList[randomIndex];
       setSelectedPokemon(pokemon);
@@ -103,12 +108,17 @@ export default function PokeGame() {
 
     async function updateCoinData(newCoin) {
       try {
-        await addDoc(collection(db, "Coin"), {
-          coin: newCoin,
-          createdAt: Date.now(),
-          username: user.displayName,
-          userId: user.uid,
-        });
+        const userDocRef = doc(db, "Coin", user.uid);
+        await setDoc(
+          userDocRef,
+          {
+            coin: newCoin,
+            createdAt: Date.now(),
+            username: user.displayName,
+            userId: user.uid,
+          },
+          { merge: true }
+        );
       } catch (error) {
         console.error("코인 저장 오류:", error);
       }
@@ -123,19 +133,32 @@ export default function PokeGame() {
   return (
     <div className="relative h-screen">
       <div className="flex items-center justify-center py-2 desktop:py-8">
-        {isCounting && <div className="font-semibold">{time}초 남았다!!!</div>}
-
-        <div className="mt-4 text-2xl font-bold">
-          {!isCounting && (
-            <button
-              className="bg-[#FEEDEF] w-24 h-10 
-                border border-[#1C1D1F] rounded-3xl font-bold text-base"
-              onClick={handleRestart}
-            >
-              다시시작
-            </button>
-          )}
-        </div>
+        {gameStart ? (
+          <>
+            {isCounting && (
+              <div className="font-semibold">{time}초 남았다!!!</div>
+            )}
+            <div className="mt-4 text-2xl font-bold">
+              {!isCounting && (
+                <button
+                  className="bg-[#FEEDEF] w-24 h-10 
+        border border-[#1C1D1F] rounded-3xl font-bold text-base"
+                  onClick={handleRestart}
+                >
+                  다시시작
+                </button>
+              )}
+            </div>
+          </>
+        ) : (
+          <button
+            className="bg-[#FEEDEF] w-24 h-10 
+              border border-[#1C1D1F] rounded-3xl font-bold text-base"
+            onClick={onGameStart}
+          >
+            게임시작
+          </button>
+        )}
       </div>
 
       <div
@@ -190,7 +213,13 @@ export default function PokeGame() {
           </div>
 
           <button
-            onClick={handleRestart}
+            onClick={() => {
+              setGameStart(true);
+              setIsCounting(false);
+              setSelectedPokemon(null);
+              setTime(15);
+              setEggImage("/img/알1.webp");
+            }}
             className="mt-2 p-2 bg-[#E8E8E8] rounded-lg text-xs"
           >
             닫기
