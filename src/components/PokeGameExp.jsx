@@ -12,22 +12,29 @@ export default function PokeGameExp() {
   return (
     <>
       {isBalloonVisible && (
-        <div
-          className="absolute w-72 h-72 bg-[#FEEDEF]
-                rounded-lg p-4 z-20 flex justify-center items-center text-center
+        <>
+          <div
+            className="fixed inset-0 w-screen h-screen bg-black opacity-50 z-40"
+            onClick={toggleBalloon}
+          ></div>
+          <div
+            className="absolute w-72 h-72 bg-[#FEEDEF]
+                rounded-lg p-4 flex justify-center items-center text-center z-50
                  "
-        >
-          <p className="text-black text-sm">
-            15초 안에 망치로 알을 후드려 패면 포켓몬이 나온다!!!
-            <br />
-            15초 안에 후드려패지 못하면 포켓몬은 없다!!!
-            <br />
-            그리고 돈도 없다!!!
-            <br />
-            망치로 후드려 패서 나온 포켓몬을 우리에게 주면 포켓코인을 주겠다!!!
-            <br />
-          </p>
-        </div>
+          >
+            <p className="text-black text-sm">
+              15초 안에 망치로 알을 후드려 패면 포켓몬이 나온다!!!
+              <br />
+              15초 안에 후드려패지 못하면 포켓몬은 없다!!!
+              <br />
+              그리고 돈도 없다!!!
+              <br />
+              망치로 후드려 패서 나온 포켓몬을 우리에게 주면 포켓코인을
+              주겠다!!!
+              <br />
+            </p>
+          </div>
+        </>
       )}
 
       <div
