@@ -19,6 +19,7 @@ export default function PokeGame() {
   const [isCounting, setIsCounting] = useState(true);
   const [user, setUser] = useState(null);
   const [gameStart, setGameStart] = useState(false);
+  const [showBoom, setShowBoom] = useState(false);
 
   const { data: pokemonList = [] } = useQuery({
     queryKey: ["pokemon"],
@@ -65,6 +66,7 @@ export default function PokeGame() {
     if (time <= 0 && isCounting) {
       clearInterval(countdownInterval);
       setIsCounting(false);
+      setShowBoom(true);
     }
 
     return () => clearInterval(countdownInterval);
@@ -85,6 +87,7 @@ export default function PokeGame() {
       const randomIndex = Math.floor(Math.random() * pokemonList.length);
       const pokemon = pokemonList[randomIndex];
       setSelectedPokemon(pokemon);
+      setTime(0);
     }
   }, [clickCount, pokemonList]);
 
@@ -124,6 +127,7 @@ export default function PokeGame() {
       }
     }
   }, [selectedPokemon, user, setCoin]);
+
   const resetGame = () => {
     setEggImage("/img/알1.webp");
     setClickCount(0);
@@ -131,7 +135,21 @@ export default function PokeGame() {
   };
 
   return (
-    <div className="relative h-screen">
+    <div>
+      {showBoom && !selectedPokemon && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-20 z-50 flex justify-center items-center"
+          onClick={() => setShowBoom(false)}
+        >
+          <Image
+            src="/img/boom.png"
+            width={240}
+            height={240}
+            alt="boom image"
+          />
+        </div>
+      )}
+
       <div className="flex items-center justify-center py-2 desktop:py-8">
         {gameStart ? (
           <>
@@ -219,6 +237,7 @@ export default function PokeGame() {
               setSelectedPokemon(null);
               setTime(15);
               setEggImage("/img/알1.webp");
+              setShowBoom(false);
             }}
             className="mt-2 p-2 bg-[#E8E8E8] rounded-lg text-xs"
           >
