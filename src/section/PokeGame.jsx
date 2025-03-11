@@ -120,7 +120,7 @@ export default function PokeGame() {
             username: user.displayName,
             userId: user.uid,
           },
-          { merge: true }
+          { merge: true },
         );
       } catch (error) {
         console.error("코인 저장 오류:", error);
