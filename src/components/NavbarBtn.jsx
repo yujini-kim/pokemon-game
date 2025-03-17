@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export function NavbarBtn({ path, icon, text }) {
+export function NavbarBtn({ path: string, icon, text }) {
   return (
     <Link
       href={path}

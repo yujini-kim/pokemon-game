@@ -1,18 +1,29 @@
 {
-  "extends": ["next", "next/core-web-vitals", "plugin:prettier/recommended"],
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "plugin:prettier/recommended",
+    "plugin:storybook/recommended"
+  ],
   "parserOptions": {
     "ecmaVersion": 2022,
     "sourceType": "module"
   },
   "overrides": [
     {
-      "files": ["*.js", "*.jsx"],
+      "files": [
+        "*.js",
+        "*.jsx"
+      ],
       "parserOptions": {
         "project": "./tsconfig.json"
       }
     }
   ],
-  "plugins": ["prettier", "import"],
+  "plugins": [
+    "prettier",
+    "import"
+  ],
   "rules": {
     "prettier/prettier": "error"
   }
