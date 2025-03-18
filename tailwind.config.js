@@ -5,6 +5,7 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/section/**/*.{js,ts,jsx,tsx}",
+    "./.storybook/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
