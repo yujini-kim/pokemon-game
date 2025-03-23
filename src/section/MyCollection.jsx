@@ -25,14 +25,14 @@ export default function MyPokeGrid() {
         pokemon.selectedPokemon.name
           .toLowerCase()
           .includes(searchName.toLowerCase()) ||
-        pokemon.selectedPokemon.number.toString() === searchName.toString()
+        pokemon.selectedPokemon.number.toString() === searchName.toString(),
     );
 
     const filteredPokemon = FilterName.filter(
       (pokemon) =>
         !selectedType ||
         pokemon.selectedPokemon.type1 === selectedType ||
-        pokemon.selectedPokemon.type2 === selectedType
+        pokemon.selectedPokemon.type2 === selectedType,
     );
     return filteredPokemon;
   };
@@ -42,38 +42,38 @@ export default function MyPokeGrid() {
     switch (selectedOption) {
       case "name":
         sortedList.sort((a, b) =>
-          a.selectedPokemon.name.localeCompare(b.selectedPokemon.name)
+          a.selectedPokemon.name.localeCompare(b.selectedPokemon.name),
         );
         break;
       case "Rename":
         sortedList.sort((a, b) =>
-          b.selectedPokemon.name.localeCompare(a.selectedPokemon.name)
+          b.selectedPokemon.name.localeCompare(a.selectedPokemon.name),
         );
         break;
       case "number":
         sortedList.sort(
-          (a, b) => a.selectedPokemon.number - b.selectedPokemon.number
+          (a, b) => a.selectedPokemon.number - b.selectedPokemon.number,
         );
         break;
       case "Renumber":
         sortedList.sort(
-          (a, b) => b.selectedPokemon.number - a.selectedPokemon.number
+          (a, b) => b.selectedPokemon.number - a.selectedPokemon.number,
         );
         break;
       case "weight":
         sortedList.sort(
-          (a, b) => a.selectedPokemon.weight - b.selectedPokemon.weight
+          (a, b) => a.selectedPokemon.weight - b.selectedPokemon.weight,
         );
         break;
       case "weight2":
         sortedList.sort(
-          (a, b) => b.selectedPokemon.weight - a.selectedPokemon.weight
+          (a, b) => b.selectedPokemon.weight - a.selectedPokemon.weight,
         );
         break;
       case "totalBaseStat":
         sortedList.sort(
           (a, b) =>
-            b.selectedPokemon.totalBaseStat - a.selectedPokemon.totalBaseStat
+            b.selectedPokemon.totalBaseStat - a.selectedPokemon.totalBaseStat,
         );
         break;
       case "HP":
@@ -81,29 +81,29 @@ export default function MyPokeGrid() {
         break;
       case "attack":
         sortedList.sort(
-          (a, b) => b.selectedPokemon.attack - a.selectedPokemon.attack
+          (a, b) => b.selectedPokemon.attack - a.selectedPokemon.attack,
         );
         break;
       case "defense":
         sortedList.sort(
-          (a, b) => b.selectedPokemon.defense - a.selectedPokemon.defense
+          (a, b) => b.selectedPokemon.defense - a.selectedPokemon.defense,
         );
         break;
       case "specialAttack":
         sortedList.sort(
           (a, b) =>
-            b.selectedPokemon.specialAttack - a.selectedPokemon.specialAttack
+            b.selectedPokemon.specialAttack - a.selectedPokemon.specialAttack,
         );
         break;
       case "specialDefense":
         sortedList.sort(
           (a, b) =>
-            b.selectedPokemon.specialDefense - a.selectedPokemon.specialDefense
+            b.selectedPokemon.specialDefense - a.selectedPokemon.specialDefense,
         );
         break;
       case "speed":
         sortedList.sort(
-          (a, b) => b.selectedPokemon.speed - a.selectedPokemon.speed
+          (a, b) => b.selectedPokemon.speed - a.selectedPokemon.speed,
         );
         break;
       default:
@@ -125,7 +125,7 @@ export default function MyPokeGrid() {
     const myPokemonQuery = query(
       collection(db, "myPokemon"),
       where("userId", "==", user.uid),
-      orderBy("createdAt", "desc")
+      orderBy("createdAt", "desc"),
     );
     const snapshot = await getDocs(myPokemonQuery);
     const fetchedPokemonList = snapshot.docs.map((doc) => {

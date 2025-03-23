@@ -11,19 +11,13 @@
   },
   "overrides": [
     {
-      "files": [
-        "*.js",
-        "*.jsx"
-      ],
+      "files": ["*.js", "*.jsx"],
       "parserOptions": {
         "project": "./tsconfig.json"
       }
     }
   ],
-  "plugins": [
-    "prettier",
-    "import"
-  ],
+  "plugins": ["prettier", "import"],
   "rules": {
     "prettier/prettier": "error"
   }

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import PokeCard from "@/components/PokeCard";
 import PokeCardSkeleton from "../components/PokeCardSkeleton";
 import PokeSearchBox from "../components/PokeSearchBox";
@@ -21,18 +21,20 @@ export default function PokeGrid({}) {
     queryFn: getPokemonList,
   });
 
+  const LazyPokeCard = React.lazy(() => import("@/components/PokeCard"));
+
   const searchFilter = (pokemonList) => {
     const FilterName = pokemonList.filter(
       (pokemon) =>
         pokemon.name.toLowerCase().includes(searchName.toLowerCase()) ||
-        pokemon.number.toString() === searchName.toString(),
+        pokemon.number.toString() === searchName.toString()
     );
 
     const filteredPokemon = FilterName.filter(
       (pokemon) =>
         !selectedType ||
         pokemon.type1 === selectedType ||
-        pokemon.type2 === selectedType,
+        pokemon.type2 === selectedType
     );
     return filteredPokemon;
   };
@@ -123,15 +125,16 @@ export default function PokeGrid({}) {
         {isLoading
           ? [...Array(18)].map((_, index) => <PokeCardSkeleton key={index} />)
           : filteredPokemon.map((pokemon) => (
-              <PokeCard
-                key={pokemon.number}
-                name={pokemon.name}
-                number={pokemon.number}
-                img={pokemon.image}
-                type1={pokemon.type1}
-                type2={pokemon.type2}
-                onClick={() => handleCardClick(pokemon)}
-              />
+              <Suspense fallback={<PokeCardSkeleton />} key={pokemon.number}>
+                <LazyPokeCard
+                  name={pokemon.name}
+                  number={pokemon.number}
+                  img={pokemon.image}
+                  type1={pokemon.type1}
+                  type2={pokemon.type2}
+                  onClick={() => handleCardClick(pokemon)}
+                />
+              </Suspense>
             ))}
       </div>
       {selectedPokemon && (

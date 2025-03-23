@@ -1,16 +1,21 @@
 "use client";
 import { auth } from "@/lib/firebase";
 import { useState, useEffect } from "react";
-
+import { useRouter } from "next/navigation";
 export default function NavbarMenu({ isOpen }) {
   const [isLogin, setIsLogin] = useState(false);
-
+  const router = useRouter();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setIsLogin(!!user); // 사용자가 있으면 true
     });
     return () => unsubscribe(); // 클린업
   }, []);
+
+  const logOut = () => {
+    auth.signOut();
+    router.push("/auth");
+  };
 
   return (
     <ul
@@ -36,9 +41,12 @@ export default function NavbarMenu({ isOpen }) {
       >
         게임
       </a>
-      <li className="hover:bg-black hover:text-[#F74D66] w-full p-1 text-center">
+      <a
+        onClick={() => (isLogin ? logOut() : router.push("/auth"))}
+        className="hover:bg-black hover:text-[#F74D66] w-full p-1 text-center"
+      >
         {isLogin ? "로그아웃" : "로그인"}
-      </li>
+      </a>
     </ul>
   );
 }
