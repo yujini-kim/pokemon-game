@@ -1,3 +1,10 @@
+## 🍔 포켓몬 도감채우기 프로젝트
+
+- 배포 URL : https://jinijini-online.vercel.app/
+- Test id:test@id.test
+- Test pw:test1234
+
+
 ## 프로젝트 소개
 
 - 간단한 미니 게임을 통해 코인을 획득하고, 모은 코인으로 포켓몬 뽑기를 진행하여 다양한 등급의 포켓몬을 수집하는 웹 애플리케이션 입니다.
@@ -8,10 +15,6 @@
 
 - 상태 관리, react query를 활용한 데이터 페칭 등 React 핵심 개념을 실전에서 활용하고자 했습니다.
 
-##
-
-test id:test@id.test
-test pw:test1234
 
 ## 개발기간
 
