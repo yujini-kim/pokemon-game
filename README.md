@@ -1,20 +1,27 @@
 
 
-
-## 포켓몬 게
-
-
-## 🌟 프로젝트 소개
+##  프로젝트 소개
 - 간단한 미니 게임을 통해 코인을 획득하고, 모은 코인으로 포켓몬 뽑기를 진행하여 다양한 등급의 포켓몬을 수집하는 웹 애플리케이션 입니다.
 - 포켓몬 전체 도감 메뉴를 통해 포켓몬 검색, 상세 정보를 확인할 수 있습니다
-- 로그인 사용자는 코인 관리 및 나만의 도감을 완성 시킬 수 있습니다.
+- 로그인 사용자는 코인 관리 및 나만의 도감을 완성할 수 있습니다.
+
+## 프로젝트 목적
+- 상태 관리, react query를 활용한 데이터 페칭 등 React 핵심 개념을 실전에서 활용하고자 했습니다.
 
 ## 개발기간
 - 2024.11 ~ 2025.03
 
 ## 기술스택
-<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white">
-<img src="https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=reactquery&logoColor=white">
-<img src="https://img.shields.io/badge/nextjs-000000?style=for-the-badge&logo=nextjs&logoColor=white">
-<img src="https://img.shields.io/badge/firebase-DD2C00?style=for-the-badge&logo=firebase&logoColor=white">
-<img src="https://img.shields.io/badge/tailwind CSS-06B6D4?style=for-the-badge&logo=tailwind CSS&logoColor=white">
+<img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">
+<img src="https://img.shields.io/badge/React_Context-61DAFB?style=for-the-badge&logo=react&logoColor=white">
+<img src="https://img.shields.io/badge/ReactQuery-FF4154?style=for-the-badge&logo=reactquery&logoColor=white">
+<img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
+<img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black">
+
+## 주요기능
+- 회원가입 및 로그인 기능을 통해 유저별 코인과 포켓몬 데이터를 분리 저장
+- 코인 획득 게임 을 통해 얻은 코인은 해당 사용자의 데이터로 저장
+- 포켓몬 뽑기 기능을 통해 뽑은 포켓몬은 사용자의 도감에 저장
+- 전체 포켓몬 리스트를 조회하고, 검색·정렬·필터링 할 수 있는 포켓몬 도감 기능
+- 내가 뽑은 포켓몬만 볼 수 있는 개인 도감 기능
+- 도감 데이터를 불러오는 동안 Skeleton UI로 로딩 상태 표시
