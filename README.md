@@ -1,6 +1,6 @@
 
 
-<img src="https://capsule-render.vercel.app/api?type=wave&color=F74D66&height=150&section=header&text='pokemon game'&fontSize=90" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=F74D66&height=150&section=header&text='pokemon game'&fontSize=90" />
 
 
 ## 🌟 프로젝트 소개
