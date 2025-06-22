@@ -41,7 +41,7 @@ test pw:test1234
 ### [회원가입]
 
 - 이메일/비밀번호 기반 회원가입 및 로그인이 가능합니다.
-- 소셜 로그인(GitHub, Google) 지원 합니다.
+- 소셜 로그인(GitHub, Google)기능을 지원 합니다.
 
   <img src="./public/img/singup_page.png" width="420"/>
 
@@ -62,7 +62,7 @@ test pw:test1234
 ## [포켓몬 뽑기]
 
 - 미니게임을 통해 획득한 코인으로 등급별 포켓몬을 뽑을 수 있습니다.
-- 선택한 등급에 따라 핻당 랭크 포켓몬 중 무작위 1종이 등장합니다.
+- 선택한 등급에 따라 해당 랭크 포켓몬 중 무작위 1종이 등장합니다.
 
   <img src="./public/img/gacha_page.gif" width="420"/>
 
