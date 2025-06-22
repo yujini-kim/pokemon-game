@@ -1,8 +1,6 @@
 
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=F74D66&height=150&section=header&text='pokemon game'&fontSize=90" />
-
-
+<img src="https://capsule-render.vercel.app/api?type=wave&color=auto&height=300&section=header&text=capsule%20render&fontSize=90" />
 ## 🌟 프로젝트 소개
 
 - 간단한 미니 게임을 통해 코인을 획득하고, 모은 코인으로 포켓몬 뽑기를 진행하여 다양한 등급의 포켓몬을 수집하는 웹 애플리케이션 입니다.
