@@ -72,4 +72,4 @@ test pw:test1234
 - 내 도감 내에서도 이름/번호 검색, 타입 필터링, 스탯 정렬 등 다양한 조건으로 탐색이 가능합니다.
 - 각 포켓몬 카드 클릭시 상세정보 모달이 표시됩니다.
 
-  <img src="./public/img/mybook_page.gif" width="420"/>
+  <img src="./public/img/mybook_page.ㅔㅜ" width="420"/>
