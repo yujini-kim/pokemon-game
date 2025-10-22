@@ -2,13 +2,15 @@
 
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
+import { Spinner } from '@/components/ui/spinner'
 import { toast } from '@/hooks/use-toast'
 import { auth } from '@/lib/firebase'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { signInWithEmailAndPassword } from 'firebase/auth'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { loginFormSchema, LoginFormType } from '../model/login.schema'
 import FormInputField from './form-input-field'
-import { loginFormSchema, LoginFormType } from './login.schema'
 
 export default function LoginForm() {
   const form = useForm<LoginFormType>({
@@ -19,12 +21,18 @@ export default function LoginForm() {
     },
     mode: 'onBlur',
   })
+
+  const [loading, setLoading] = useState(false)
+
   const onSubmit = async (values: LoginFormType) => {
+    setLoading(true)
     try {
       await signInWithEmailAndPassword(auth, values.email, values.password)
       toast({ title: '로그인 성공' })
     } catch (error) {
       toast({ title: '로그인 실패 ', description: '다시 시도해주세요' })
+    } finally {
+      setLoading(false)
     }
   }
   return (
@@ -44,7 +52,9 @@ export default function LoginForm() {
           type="password"
           placeholder="비밀번호를 입력하세요"
         />
-        <Button className="mt-2">로그인</Button>
+        <Button disabled={loading} className="mt-2">
+          {loading ? <Spinner size="sm" /> : '로그인'}
+        </Button>
       </form>
     </Form>
   )
