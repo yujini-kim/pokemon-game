@@ -1,7 +1,7 @@
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
+import { initializeApp } from 'firebase/app'
+import { getAuth } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
+import { getStorage } from 'firebase/storage'
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_LOGIN_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_LOGIN_AUTH_DOMAIN,
@@ -10,8 +10,11 @@ const firebaseConfig = {
   messagingSenderId: process.env.NEXT_PUBLIC_LOGIN_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_LOGIN_APP_ID,
   measurementId: process.env.NEXT_PUBLIC_LOGIN_MEASUREMENT_ID,
-};
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-export const storage = getStorage(app);
-export const db = getFirestore(app);
+}
+const app = initializeApp(firebaseConfig)
+
+const auth = getAuth(app)
+const storage = getStorage(app)
+const db = getFirestore(app)
+
+export { auth, db, storage }
