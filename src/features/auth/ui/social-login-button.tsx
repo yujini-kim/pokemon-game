@@ -25,7 +25,7 @@ export default function SocialLoginButton() {
   }
 
   return (
-    <div className="mt-4 flex flex-row gap-4">
+    <div className="mt-4 flex flex-row gap-2">
       {SOCIAL_PROVIDERS.map(({ key, icon, label }) => (
         <button
           key={key}

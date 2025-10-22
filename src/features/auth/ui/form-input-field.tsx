@@ -18,23 +18,25 @@ export default function FormInputField<T extends FieldValues>({
   placeholder,
 }: FormInputFieldProps<T>) {
   return (
-    <FormField
-      control={control}
-      name={name}
-      render={({ field }) => (
-        <FormItem className="flex flex-col">
-          <FormLabel>{label}</FormLabel>
-          <FormControl>
-            <Input
-              placeholder={placeholder}
-              className="placeholder:text-xs"
-              type={type}
-              {...field}
-            />
-          </FormControl>
-          <FormMessage className="text-xs" />
-        </FormItem>
-      )}
-    />
+    <div>
+      <FormField
+        control={control}
+        name={name}
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>{label}</FormLabel>
+            <FormControl>
+              <Input
+                placeholder={placeholder}
+                className="placeholder:text-xs"
+                type={type}
+                {...field}
+              />
+            </FormControl>
+            <FormMessage className="text-xs" />
+          </FormItem>
+        )}
+      />
+    </div>
   )
 }
