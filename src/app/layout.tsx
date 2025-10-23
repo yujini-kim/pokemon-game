@@ -15,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
-      <body className={`antialiased`}>
+      <body className="font-pretendard antialiased">
         <CoinProvider>
           <Toaster />
           {children}
