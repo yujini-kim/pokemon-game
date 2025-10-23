@@ -1,7 +1,7 @@
+import { CoinProvider } from '@/components/PokeCoinProviders'
 import { Toaster } from '@/components/ui/toaster'
-import PokeNavbar from '@/section/PokeNavbar'
-import { CoinProvider } from '@components/PokeCoinProviders'
 
+import { ReactNode } from 'react'
 import './globals.css'
 
 export const metadata = {
@@ -12,13 +12,12 @@ export const metadata = {
   description: 'Yujin Portfolio',
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
       <body className={`antialiased`}>
         <CoinProvider>
-          <Toaster position="top-center" />
-          <PokeNavbar />
+          <Toaster />
           {children}
         </CoinProvider>
       </body>
