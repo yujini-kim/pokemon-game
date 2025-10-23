@@ -10,7 +10,7 @@ export default function AuthFooterLink({ message, linkText, href }: AuthFooterLi
   return (
     <div className="mt-4 space-x-2 text-center text-xs">
       <span>{message}</span>
-      <Link href={href} className="text-blue-600 underline">
+      <Link href={href} className="underline">
         {linkText}
       </Link>
     </div>

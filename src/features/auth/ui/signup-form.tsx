@@ -3,14 +3,12 @@
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
 import { Spinner } from '@/components/ui/spinner'
-import { toast } from '@/hooks/use-toast'
 import { auth } from '@/lib/firebase'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { LoginFormType } from '../model/login.schema'
-import { signupFormSchema, SignupFormType } from '../model/signup.shema'
+import { signupFormSchema, SignupFormType } from '../model/signup.schema'
+import { useAuthForm } from '../model/use-auth-form'
 import FormInputField from './form-input-field'
 
 export default function SignupForm() {
@@ -23,23 +21,15 @@ export default function SignupForm() {
     },
     mode: 'onBlur',
   })
-
-  const [loading, setLoading] = useState(false)
-
-  const onSubmit = async (values: LoginFormType) => {
-    setLoading(true)
-    try {
-      await createUserWithEmailAndPassword(auth, values.email, values.password)
-      toast({ title: '회원가입 성공' })
-    } catch (error) {
-      toast({ title: '회원가입 실패 ', description: '다시 시도해주세요' })
-    } finally {
-      setLoading(false)
-    }
-  }
+  const { loading, handleSubmit } = useAuthForm<SignupFormType>({
+    onSubmitHandler: (v) => createUserWithEmailAndPassword(auth, v.email, v.password),
+    successMessage: '회원가입 성공',
+    errorMessage: '회원가입 실패',
+    redirectPath: '/',
+  })
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-2 px-10">
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="flex flex-col gap-2 px-10">
         <FormInputField
           control={form.control}
           name="email"
@@ -61,7 +51,7 @@ export default function SignupForm() {
           type="password"
           placeholder="비밀번호를 입력하세요"
         />
-        <Button disabled={loading} className="mt-2">
+        <Button disabled={loading} className="mt-4">
           {loading ? <Spinner size="sm" /> : '회원가입'}
         </Button>
       </form>

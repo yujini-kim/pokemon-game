@@ -18,10 +18,12 @@ export default function SocialLoginButton() {
   const handleSocialLoginClick = async (providerKey: ProviderKey) => {
     if (loading) return
     setLoading(providerKey)
-    const success = await handleSocialLogin(providerKey)
-    setLoading(null)
-
-    if (success) router.push('/')
+    try {
+      const success = await handleSocialLogin(providerKey)
+      if (success) router.push('/')
+    } finally {
+      setLoading(null)
+    }
   }
 
   return (
@@ -33,10 +35,10 @@ export default function SocialLoginButton() {
           disabled={!!loading}
           onClick={() => handleSocialLoginClick(key)}
           aria-label={`${label} 로그인`}
-          className="relative flex size-8 items-center justify-center"
+          className="flex size-8 items-center justify-center"
         >
           {loading === key ? (
-            <Spinner size="sm" className="absolute" />
+            <Spinner size="sm" />
           ) : (
             <Image src={icon} width={32} height={32} alt={`${label} icon`} />
           )}
