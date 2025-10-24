@@ -12,10 +12,8 @@ export function useAuthObserver() {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user)
-        console.log('로그인 됨')
       } else {
         clearUser()
-        console.log('로그아웃 됨')
       }
     })
 
