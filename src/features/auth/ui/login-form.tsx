@@ -20,12 +20,14 @@ export default function LoginForm() {
     },
     mode: 'onBlur',
   })
+
   const { loading, handleSubmit } = useAuthForm<LoginFormType>({
     onSubmitHandler: (v) => signInWithEmailAndPassword(auth, v.email, v.password),
     successMessage: '로그인 성공',
     errorMessage: '로그인 실패',
     redirectPath: '/',
   })
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="flex w-1/2 flex-col gap-2 px-10">

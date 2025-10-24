@@ -1,9 +1,13 @@
 'use client'
 
+import { useAuthObserver } from '@/hooks/use-auth-observer'
 import { useCoinStore } from '@/store/use-coin-store'
+import { useUserStore } from '@/store/use-user-store'
 import Image from 'next/image'
 
 export default function Navbar() {
+  const { user } = useUserStore()
+  useAuthObserver()
   const coin = useCoinStore((state) => state.coin)
   return (
     <div className="fixed top-0 mb-10 flex h-20 w-full items-center bg-primary px-4 text-sm text-white">
@@ -21,7 +25,11 @@ export default function Navbar() {
         <li className="hover:opacity-80">전체도감</li>
         <li className="hover:opacity-80">내도감</li>
         <li className="hover:opacity-80">게임</li>
-        <li className="hover:opacity-80">로그인</li>
+        {user ? (
+          <li className="hover:opacity-80">로그아웃</li>
+        ) : (
+          <li className="hover:opacity-80">로그인</li>
+        )}
       </ul>
     </div>
   )
