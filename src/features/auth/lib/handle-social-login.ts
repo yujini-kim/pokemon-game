@@ -5,6 +5,7 @@ import { auth } from '@/lib/firebase'
 import { FirebaseError } from 'firebase/app'
 import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 
 const providers = {
   github: new GithubAuthProvider(),
@@ -13,18 +14,29 @@ const providers = {
 
 export type ProviderKey = keyof typeof providers
 
-export async function handleSocialLogin(providerKey: ProviderKey) {
+export function useSocialLogin() {
   const router = useRouter()
-  try {
-    const provider = providers[providerKey]
-    await signInWithPopup(auth, provider)
-    toast({ title: `${providerKey} 로그인 성공` })
-    router.push('/')
-    return true
-  } catch (e) {
-    if (e instanceof FirebaseError) {
-      toast({ title: `${providerKey} 로그인 실패`, description: e.message })
+  const [loading, setLoading] = useState<ProviderKey | null>(null)
+
+  const handleSocialLogin = async (providerKey: ProviderKey) => {
+    setLoading(providerKey)
+    try {
+      const provider = providers[providerKey]
+      await signInWithPopup(auth, provider)
+      toast({ title: `${providerKey} 로그인 성공` })
+      router.push('/')
+    } catch (e) {
+      if (e instanceof FirebaseError) {
+        toast({ title: `${providerKey} 로그인 실패`, description: e.message })
+      } else {
+        toast({
+          title: `${providerKey} 로그인 실패`,
+        })
+      }
+    } finally {
+      setLoading(null)
     }
-    return false
   }
+
+  return { handleSocialLogin, loading }
 }

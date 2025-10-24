@@ -1,7 +1,7 @@
-import { CoinProvider } from '@/components/PokeCoinProviders'
 import { Toaster } from '@/components/ui/toaster'
 
 import Navbar from '@/components/common/navbar'
+import { AuthProvider } from '@/features/auth'
 import { ReactNode } from 'react'
 import './globals.css'
 
@@ -17,13 +17,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
       <body className="font-pretendard antialiased">
-        <CoinProvider>
+        <AuthProvider>
           <Navbar />
           <main className="mt-32">
             <Toaster />
             {children}
           </main>
-        </CoinProvider>
+        </AuthProvider>
       </body>
     </html>
   )

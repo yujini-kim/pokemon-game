@@ -4,5 +4,12 @@ export { default as LoginForm } from './ui/login-form'
 export { default as SignupForm } from './ui/signup-form'
 export { default as SocialLoginButton } from './ui/social-login-button'
 
+export * from './hooks/use-auth-form'
+export * from './hooks/use-auth-observer'
+
 export * from './lib/handle-social-login'
+
 export * from './model/login.schema'
+export * from './model/signup.schema'
+
+export * from './providers/auth-provider'
