@@ -12,7 +12,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 
 export default function Navbar() {
   const { user } = useUserStore()
-  const coin = useCoinStore((state) => state.coin)
+  const { coin, setCoin } = useCoinStore()
   const router = useRouter()
   const handleLogout = () => {
     signOut(auth)
@@ -62,6 +62,9 @@ export default function Navbar() {
                 sideOffset={10}
                 className="w-fit rounded-md border border-gray-200 bg-white p-2 text-xs shadow-md"
               >
+                <p className="rounded px-2 py-1 text-center text-black">
+                  {user.displayName ?? '익명'} 님
+                </p>
                 <p className="cursor-pointer rounded px-2 py-1 text-center text-black hover:bg-gray-100">
                   프로필 변경
                 </p>

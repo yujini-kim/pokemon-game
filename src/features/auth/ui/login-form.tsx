@@ -25,6 +25,7 @@ export default function LoginForm() {
     errorMessage: '로그인 실패',
     redirectPath: '/',
   })
+  
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="flex w-1/2 flex-col gap-2 px-10">
