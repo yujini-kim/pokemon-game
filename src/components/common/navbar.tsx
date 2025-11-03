@@ -1,13 +1,15 @@
 'use client'
 
 import { toast } from '@/hooks'
-import { auth } from '@/lib/firebase'
+import { auth, db } from '@/lib/firebase'
 import { useCoinStore, useUserStore } from '@/store'
 
 import { signOut } from 'firebase/auth'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 
 export default function Navbar() {
@@ -19,6 +21,25 @@ export default function Navbar() {
     router.push('/auth/login')
     toast({ title: '로그아웃 성공' })
   }
+  const fetchCoin = async ({ userId }: { userId: string }) => {
+    const coinQuery = query(collection(db, 'Coin'), where('userId', '==', userId))
+    const snapshot = await getDocs(coinQuery)
+    if (snapshot.empty) {
+      setCoin(0)
+    } else {
+      const fetchedCoin = snapshot.docs[0].data().coin
+      setCoin(fetchedCoin)
+    }
+  }
+
+  useEffect(() => {
+    if (!user) {
+      setCoin(0)
+      return
+    }
+
+    fetchCoin({ userId: user.uid })
+  }, [user, coin])
 
   return (
     <nav className="fixed top-0 flex h-20 w-full items-center bg-primary px-4 text-sm text-white">
