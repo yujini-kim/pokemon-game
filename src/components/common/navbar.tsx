@@ -8,12 +8,13 @@ import { signOut } from 'firebase/auth'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 
 export default function Navbar() {
   const { user } = useUserStore()
   const coin = useCoinStore((state) => state.coin)
   const router = useRouter()
-  const hanldeLogout = () => {
+  const handleLogout = () => {
     signOut(auth)
     router.push('/auth/login')
     toast({ title: '로그아웃 성공' })
@@ -49,8 +50,32 @@ export default function Navbar() {
         </li>
 
         {user ? (
-          <li onClick={hanldeLogout} className="cursor-pointer hover:opacity-80">
-            로그아웃
+          <li className="grid size-7 cursor-pointer place-items-center rounded-full bg-white hover:opacity-80">
+            <Popover>
+              <PopoverTrigger asChild>
+                <Image src="/img/avatar.svg" alt="avatar" width={24} height={24} />
+              </PopoverTrigger>
+
+              <PopoverContent
+                side="bottom"
+                align="start"
+                sideOffset={10}
+                className="w-fit rounded-md border border-gray-200 bg-white p-2 text-xs shadow-md"
+              >
+                <p className="cursor-pointer rounded px-2 py-1 text-center text-black hover:bg-gray-100">
+                  프로필 변경
+                </p>
+                <p
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handleLogout()
+                  }}
+                  className="cursor-pointer rounded px-2 py-1 text-center text-black hover:bg-gray-100"
+                >
+                  로그아웃
+                </p>
+              </PopoverContent>
+            </Popover>
           </li>
         ) : (
           <li>
